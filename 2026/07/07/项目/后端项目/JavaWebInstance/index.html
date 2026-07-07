@@ -1,0 +1,1030 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/zyq.github.io/img/icon/icon.png">
+  <link rel="icon" href="/zyq.github.io/img/icon/icon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zyq">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="员工部门管理系统——后端环境搭建 创建一个spring项目，添加4个依赖：spring web，mybatis framework，mysql driver，lombok。 数据库配置文件：application.properties:数据库连接经典四件套 和 两个经典mybatis优化配置 log和camelCase MVC代码框架： pojo：Emp，Dept，Result controlle">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaWeb基础实例1">
+<meta property="og:url" content="https://yq2004.github.io/zyq.github.io/2026/07/07/%E9%A1%B9%E7%9B%AE/%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE/JavaWebInstance/index.html">
+<meta property="og:site_name" content="zyq">
+<meta property="og:description" content="员工部门管理系统——后端环境搭建 创建一个spring项目，添加4个依赖：spring web，mybatis framework，mysql driver，lombok。 数据库配置文件：application.properties:数据库连接经典四件套 和 两个经典mybatis优化配置 log和camelCase MVC代码框架： pojo：Emp，Dept，Result controlle">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2023/11/20/b18f88897cc0af29.png">
+<meta property="article:published_time" content="2026-07-07T14:04:54.186Z">
+<meta property="article:modified_time" content="2026-07-07T14:04:54.187Z">
+<meta property="article:author" content="zyq">
+<meta property="article:tag" content="后端">
+<meta property="article:tag" content="SpringBoot">
+<meta property="article:tag" content="Mybatis">
+<meta property="article:tag" content="项目">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s3.bmp.ovh/imgs/2023/11/20/b18f88897cc0af29.png">
+  
+  
+  
+  <title>JavaWeb基础实例1 - zyq</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/zyq.github.io/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/zyq.github.io/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/zyq.github.io/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"yq2004.github.io","root":"/zyq.github.io/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":50,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/zyq.github.io/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/zyq.github.io/js/utils.js" ></script>
+  <script  src="/zyq.github.io/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/zyq.github.io/">
+      <strong>SpringBeara</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zyq.github.io/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zyq.github.io/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zyq.github.io/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zyq.github.io/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zyq.github.io/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/zyq.github.io/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="JavaWeb基础实例1"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-07-07 22:04" pubdate>
+          2026年7月7日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          23k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          194 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">JavaWeb基础实例1</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="员工部门管理系统——后端"><a href="#员工部门管理系统——后端" class="headerlink" title="员工部门管理系统——后端"></a>员工部门管理系统——后端</h1><h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><ol>
+<li>创建一个spring项目，添加4个依赖：spring web，mybatis framework，mysql driver，lombok。</li>
+<li>数据库配置文件：application.properties:数据库连接经典四件套 和 两个经典mybatis优化配置 log和camelCase</li>
+<li>MVC代码框架：<ol>
+<li>pojo：Emp，Dept，Result</li>
+<li>controller：@restController @autowired class:EmpController DeptController</li>
+<li>service：@service interface:EmpService DepService class:EmpServiceImp DeptServiceImp</li>
+<li>mapper：@mapper interface</li>
+<li>mapper.XML：执行动态SQL必不可少的文件</li>
+</ol>
+</li>
+<li>其他：<ol>
+<li>@Slf4j 用于类中日志操作</li>
+<li>RequestMapping(“&#x2F;api”):设置统一父路径</li>
+<li>@GetMapping @DeleteMapping @PostMapping @PutMapping 约束数据交流方法</li>
+<li>@data @allArgxxx @noArgxxx </li>
+<li>动态SQL的相关知识点：各种标签的使用和处理</li>
+</ol>
+</li>
+<li>注：代码初步框架如上，但在开发过程中，为了实现需求，还会增加其他的类和依赖和配置文件。</li>
+</ol>
+<h2 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h2><p>实现员工-部门的小型后台管理系统：</p>
+<blockquote>
+<ol>
+<li>实现员工和部门的增删查改；</li>
+<li>登录校验和异常处理。</li>
+</ol>
+</blockquote>
+<p>具体分析：</p>
+<ol>
+<li>为了完成员工和部门的增删查改。<strong>动态SQL</strong>是必须的，因此在上述代码框架中还要增加相应的XML文件完成动态SQL。员工的属性有头像，因此涉及到<strong>文件的上传</strong>，可以考虑用本地存储或阿里云OSS，若为阿里云OSS还必须创建aliOSSUtil类，两种方法都要创建一个uploadController来完成上传文件的控制。<strong>分页查询</strong>也是必要的，因此需要创建一个PageBean类存储返回的数据和数据条目数。</li>
+<li>为了完成登录校验，可以利用JWT和拦截器，因此需要一个jwt的工具类专门来生成和转换jwt，需要一个登录拦截器类和拦截器的注册类，而登录操作也可以创建一个loginController。为了完成异常处理，定义一个全局异常处理类。</li>
+<li>为了完成上述功能，除了定义额外的类，还需要必要的依赖和配置文件。而这些都是在具体的开发过程中慢慢完善的。在本阶段先分析到这一步。</li>
+</ol>
+<h2 id="代码编写"><a href="#代码编写" class="headerlink" title="代码编写"></a>代码编写</h2><h3 id="类的设计"><a href="#类的设计" class="headerlink" title="类的设计"></a>类的设计</h3><p>考虑到需要返回信息给前端，因此可以设置一个返回结果类，封装返回码，状态和数据，数据直接用最泛的Object。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Data</span><br><span class="hljs-meta">@NoArgsConstructor</span><br><span class="hljs-meta">@AllArgsConstructor</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Result</span> &#123;<br>    <span class="hljs-keyword">private</span> Integer code;<span class="hljs-comment">//响应码，1 代表成功; 0 代表失败</span><br>    <span class="hljs-keyword">private</span> String msg;  <span class="hljs-comment">//响应信息 描述字符串</span><br>    <span class="hljs-keyword">private</span> Object data; <span class="hljs-comment">//返回的数据</span><br><br>    <span class="hljs-comment">//增删改 成功响应</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Result <span class="hljs-title function_">success</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Result</span>(<span class="hljs-number">1</span>,<span class="hljs-string">&quot;success&quot;</span>,<span class="hljs-literal">null</span>);<br>    &#125;<br>    <span class="hljs-comment">//查询 成功响应</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Result <span class="hljs-title function_">success</span><span class="hljs-params">(Object data)</span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Result</span>(<span class="hljs-number">1</span>,<span class="hljs-string">&quot;success&quot;</span>,data);<br>    &#125;<br>    <span class="hljs-comment">//失败响应</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Result <span class="hljs-title function_">error</span><span class="hljs-params">(String msg)</span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Result</span>(<span class="hljs-number">0</span>,msg,<span class="hljs-literal">null</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>由开发过程的分析：依次从controller,service interface,service class,mapping interface(or with XML)完成业务的实现。</p>
+<h3 id="简短的增删查改（部门增删查改）"><a href="#简短的增删查改（部门增删查改）" class="headerlink" title="简短的增删查改（部门增删查改）"></a>简短的增删查改（部门增删查改）</h3><p>对于简短的增删查改，可以行云流水地实现在mapper层，不必写在xml中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Slf4j</span><br><span class="hljs-meta">@RestController</span><br><span class="hljs-meta">@RequestMapping(&quot;/depts&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">deptController</span> &#123;<br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> deptService deptService;<br><br>    <span class="hljs-comment">//getMapping,对于get请求的映射 等价于---@RequestMapping(value = &quot;/depts&quot; , method = RequestMethod.GET)</span><br>    <span class="hljs-meta">@GetMapping</span><br>    <span class="hljs-keyword">public</span> Result <span class="hljs-title function_">deptList</span><span class="hljs-params">()</span>&#123;<br>        log.info(<span class="hljs-string">&quot;查询所有部门数据&quot;</span>);<br>        List&lt;Dept&gt; deptList=deptService.deptList();<br>        <span class="hljs-keyword">return</span> Result.success(deptList);<br>    &#125;<br><br>    <span class="hljs-comment">//获取路径参数 pathVariable注解</span><br>    <span class="hljs-meta">@DeleteMapping(&quot;/&#123;id&#125;&quot;)</span><br>    <span class="hljs-keyword">public</span> Result <span class="hljs-title function_">deptDel</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable</span> Integer id)</span>&#123;<br>        log.info(<span class="hljs-string">&quot;删除部门，id：&quot;</span>+id);<br>        deptService.deptDel(id);<br>        <span class="hljs-keyword">return</span> Result.success();<br>    &#125;<br><br>    <span class="hljs-meta">@PostMapping</span><br>    <span class="hljs-keyword">public</span> Result <span class="hljs-title function_">deptIns</span><span class="hljs-params">(<span class="hljs-meta">@RequestBody</span> Dept dept)</span>&#123;<br>        log.info(<span class="hljs-string">&quot;添加部门:&quot;</span>+dept.getName());<br>        deptService.deptIns(dept);<br>        <span class="hljs-keyword">return</span> Result.success();<br>    &#125;<br>    <span class="hljs-meta">@PutMapping</span><br>    <span class="hljs-keyword">public</span> Result <span class="hljs-title function_">deptMod</span><span class="hljs-params">(<span class="hljs-meta">@RequestBody</span> Dept dept)</span>&#123;<br>        log.info(<span class="hljs-string">&quot;修改部门:&quot;</span>+dept.getId());<br>        deptService.deptMod(dept);<br>        <span class="hljs-keyword">return</span> Result.success();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>每个函数对应一种业务，从controller开始，层层定义，实现。具体实现中值得注意的地方有：</p>
+<blockquote>
+<ol>
+<li>@RequestBody</li>
+<li>@RequestMapping</li>
+<li>Result.success()和Result.success(object)</li>
+<li>特殊属性记得每次都更新：updateTime</li>
+</ol>
+</blockquote>
+<p>当设计较为复杂的业务时：分页查询，动态sql，文件处理。可以按以下策略进行：</p>
+<h3 id="动态增删查改（员工增删查改）"><a href="#动态增删查改（员工增删查改）" class="headerlink" title="动态增删查改（员工增删查改）"></a>动态增删查改（员工增删查改）</h3><p>对于“查”，不仅是动态的，而且是分页的。当数据很多的时候，总不能够全都塞在页面吧，因此要设计分页的机制。前端向后端提供页码和每页的大小。</p>
+<p>后端根据页码和每页的大小，算出每页显示的元素的范围，用select limit完成操作。同时，前端尝尝还需要统计总的数据量给用户，因此需要用到sql中的count函数。后端将具体的信息和总的数据数返回给前端，这样一看，需要返回两种数据了，因此考虑专门设计一个类来返回这些数据。于是PageBean类由此诞生，当然，它属于pojo。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Data</span><br><span class="hljs-meta">@AllArgsConstructor</span><br><span class="hljs-meta">@NoArgsConstructor</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">PageBean</span> &#123;<br><span class="hljs-comment">//    List&lt;Emp&gt; empList;</span><br>   <span class="hljs-comment">/* 这里不要用EmpList，因为将来所有的分页查询都会用到这个类，不能在这里限定泛型*/</span><br>    <span class="hljs-keyword">private</span> List rows;<br>    <span class="hljs-keyword">private</span> Long total;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>那后端还需要获取到前端传过来的参数：页码，每页大小，并且考虑实际运用，还需要设定默认值从第一页开始默认页码为xx，这些业务的实现需要用到：</p>
+<blockquote>
+<p>@RequestParam(defaulValue&#x3D;“xxx”)</p>
+</blockquote>
+<p>再接着思考，查询时添加条件是完全必要的，动态添加条件更是重要，因此考虑动态sql，因此，为了一次实现，万金油的利用，如果可以的话，将所有表属性作为参数执行动态SQL将会是一劳永逸的。当然还是得结合实际情况，要是根本不可能去根据某些属性来查询，那就确实没必要编写含有它的动态SQL了。因此可以设计出如下的controller代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//这里是根据分页，姓名，性别，入职日期几个属性完成的条件查询</span><br><span class="hljs-meta">@GetMapping</span><br>    <span class="hljs-keyword">public</span> Result <span class="hljs-title function_">selectEmpFilter</span><span class="hljs-params">(<span class="hljs-meta">@RequestParam(defaultValue = &quot;1&quot;)</span> Integer page,</span><br><span class="hljs-params">                                  <span class="hljs-meta">@RequestParam(defaultValue = &quot;10&quot;)</span> Integer pageSize,</span><br><span class="hljs-params">                                  String name, Short gender,</span><br><span class="hljs-params">                                  <span class="hljs-meta">@DateTimeFormat(pattern = &quot;yyyy-MM-dd&quot;)</span> LocalDate begin,</span><br><span class="hljs-params">                                  <span class="hljs-meta">@DateTimeFormat(pattern = &quot;yyyy-MM-dd&quot;)</span> LocalDate end)</span><br>    &#123;<br>        log.info(<span class="hljs-string">&quot;条件查询对应的员工&quot;</span>);<br>        PageBean pageBean=empService.selectEmpFilter(page,pageSize,name,gender,begin,end);<br>        <span class="hljs-keyword">return</span> Result.success(pageBean);<br>    &#125;<br><span class="hljs-meta">@DeleteMapping(&quot;/&#123;ids&#125;&quot;)</span><br>    <span class="hljs-keyword">public</span> Result <span class="hljs-title function_">delEmp</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable</span> Integer[] ids)</span>&#123;<br>        empService.delEmp(ids);<br>        <span class="hljs-keyword">return</span> Result.success();<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<p>对应的XML实现如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span> ?&gt;</span><br><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">mapper</span></span><br><span class="hljs-meta">        <span class="hljs-keyword">PUBLIC</span> <span class="hljs-string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span></span><br><span class="hljs-meta">        <span class="hljs-string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">mapper</span> <span class="hljs-attr">namespace</span>=<span class="hljs-string">&quot;com.example.instance.mapper.empMapper&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;selectEmpFilterRows&quot;</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">&quot;com.example.instance.pojo.Emp&quot;</span>&gt;</span><br>        select * from emp<br>            <span class="hljs-tag">&lt;<span class="hljs-name">where</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">&quot;name!=null and name!=&#x27;&#x27;&quot;</span>&gt;</span><br>                    name like concat (&#x27;%&#x27;,#&#123;name&#125;,&#x27;%&#x27;)<br>                <span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span><br><br>                <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">&quot;gender!=null&quot;</span>&gt;</span><br>                    and gender = #&#123;gender&#125;<br>                <span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span><br><br>                <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">&quot;begin!=null and end!=null&quot;</span>&gt;</span><br>                    and entrydate between #&#123;begin&#125; and #&#123;end&#125;<br>                <span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">where</span>&gt;</span><br>            limit #&#123;startIndex&#125;,#&#123;pageSize&#125;<br>--             order by update_time desc<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;selectEmpFilterTotal&quot;</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">&quot;long&quot;</span>&gt;</span><br>        select count(*) from emp<br>        <span class="hljs-tag">&lt;<span class="hljs-name">where</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">&quot;name!=null and name!=&#x27;&#x27;&quot;</span>&gt;</span><br>                name like concat (&#x27;%&#x27;,#&#123;name&#125;,&#x27;%&#x27;)<br>            <span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span><br><br>            <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">&quot;gender!=null&quot;</span>&gt;</span><br>                and gender = #&#123;gender&#125;<br>            <span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span><br><br>            <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">&quot;begin!=null and end!=null&quot;</span>&gt;</span><br>                and entrydate between #&#123;begin&#125; and #&#123;end&#125;<br>            <span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">where</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">delete</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;delEmp&quot;</span>&gt;</span><br>        delete from emp where id in<br>        <span class="hljs-tag">&lt;<span class="hljs-name">foreach</span> <span class="hljs-attr">collection</span>=<span class="hljs-string">&quot;ids&quot;</span> <span class="hljs-attr">item</span>=<span class="hljs-string">&quot;id&quot;</span> <span class="hljs-attr">open</span>=<span class="hljs-string">&quot;(&quot;</span> <span class="hljs-attr">close</span>=<span class="hljs-string">&quot;)&quot;</span> <span class="hljs-attr">separator</span>=<span class="hljs-string">&quot;,&quot;</span>&gt;</span><br>            #&#123;id&#125;<br>        <span class="hljs-tag">&lt;/<span class="hljs-name">foreach</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">delete</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">mapper</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>值得注意的几个点：</p>
+<blockquote>
+<ol>
+<li><p>name like concat (‘%’,#{name},’%’) ：利用concat 既能实现拼接又能防止sql注入！</p>
+</li>
+<li><p>name !&#x3D;null and name!&#x3D;‘’ 这里是空的引号，千万不要加空格，否则会出现很<del>傻逼</del>的错误：NumberFormatException: For input string:“xx”&lt;-这里是你输入的name，他认为你输入了number；</p>
+</li>
+<li><p>最重要的还得是动态sql到底是如何实现的，那几个关键字一定要学会使用<foreach> <where> <if>……</p>
+</li>
+<li><p>还有一点就是XML建立时，确定对应的函数的那几个对应，一定也要记住；</p>
+</li>
+<li><p>对于日期的处理，可以使用@DateTimeFormat(pattern&#x3D;“yyyy-MM-dd”)来规范，前端不按照这个格式传，就会返回对应的提示警告。</p>
+</li>
+</ol>
+</blockquote>
+<h3 id="文件上传（带头像的员工的增改）"><a href="#文件上传（带头像的员工的增改）" class="headerlink" title="文件上传（带头像的员工的增改）"></a>文件上传（带头像的员工的增改）</h3><p>上传文件，由于文件与其他一般数据不同，需要在前段端和后端都进行额外处理。</p>
+<p>前端：form表格中 method&#x3D;“post” enctype&#x3D;“multipart&#x2F;form-data” input中type&#x3D;‘file’ name&#x3D;‘xxx(设为image)’</p>
+<p>设置好这些后，前端通过post方法传给后端的body中就会包含一般数据和类型为MultipartFile的文件，名称为：xxx（image），后端接受时应保持名称的一致，若是非要不同，可以采用：@RequestParam(“image”) MultipartFile file)来映射名称。</p>
+<p>为了实现文件上传，不如将其考虑为单独的一个controller层，因此设置：uploadController类，然后在这个类中编写相应的代码。</p>
+<p>至此，后端可以接受到前端传来的文件数据，但若不将其存储下来，他将是ephemeral的，存放在本地，数据量少尚可如此，倘若数据量大了就不现实也不安全，可以考虑阿里云的oos服务。</p>
+<blockquote>
+<p>为文件上传专门定义一个接口，在添加或修改员工头像时调用并自动回显，这并不与添加或修改操作本身冲突，因为在选择文件的那瞬间就调用了upload接口，而另外的是另外的接口&#x2F;emps &#x2F;emps&#x2F;update</p>
+</blockquote>
+<h4 id="本地存储"><a href="#本地存储" class="headerlink" title="本地存储"></a>本地存储</h4><p>先创建一个文件夹专门存放这些数据，在这里就已经提前想到了，可能会有同名文件的存在，可以通过uuid来解决这个问题。为了存放文件，必须知道（获取）文件的名称，大小，内容，输入流，和存储具体的方法。MultipartFile 常见方法中包括了这些： </p>
+<blockquote>
+<ul>
+<li>String  getOriginalFilename();  &#x2F;&#x2F;获取原始文件名</li>
+<li>void  transferTo(File dest);     &#x2F;&#x2F;将接收的文件转存到磁盘文件中</li>
+<li>long  getSize();     &#x2F;&#x2F;获取文件的大小，单位：字节</li>
+<li>byte[]  getBytes();    &#x2F;&#x2F;获取文件内容的字节数组</li>
+<li>InputStream  getInputStream();    &#x2F;&#x2F;获取接收到的文件内容的输入流</li>
+</ul>
+</blockquote>
+<p>还要考虑到文件大小，上传一个较大的文件(超出1M)时会报错，因为springBoot默认最大单个大小为1MB。</p>
+<p>为了扩大一点，需要在application.properties中添加配置：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-comment">#配置单个文件最大上传大小</span><br><span class="hljs-attr">spring.servlet.multipart.max-file-size</span>=<span class="hljs-string">10MB</span><br><span class="hljs-comment">#配置单个请求最大上传大小(一次请求可以上传多个文件)</span><br><span class="hljs-attr">spring.servlet.multipart.max-request-size</span>=<span class="hljs-string">100MB</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Slf4j</span><br><span class="hljs-meta">@RestController</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UploadController</span> &#123;<br>    <span class="hljs-meta">@PostMapping(&quot;/upload&quot;)</span><br>    <span class="hljs-keyword">public</span> Result <span class="hljs-title function_">upload</span><span class="hljs-params">(String username, Integer age, MultipartFile image)</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>        log.info(<span class="hljs-string">&quot;文件上传：&#123;&#125;,&#123;&#125;,&#123;&#125;&quot;</span>,username,age,image);<br>        <span class="hljs-comment">//获取原始文件名</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">originalFilename</span> <span class="hljs-operator">=</span> image.getOriginalFilename();<br>        <span class="hljs-comment">//构建新的文件名</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">extname</span> <span class="hljs-operator">=</span> originalFilename.substring(originalFilename.lastIndexOf(<span class="hljs-string">&quot;.&quot;</span>));<span class="hljs-comment">//文件扩展名</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">newFileName</span> <span class="hljs-operator">=</span> UUID.randomUUID().toString()+extname;<span class="hljs-comment">//随机名+文件扩展名</span><br>        <span class="hljs-comment">//将文件存储在服务器的磁盘目录</span><br>        image.transferTo(<span class="hljs-keyword">new</span> <span class="hljs-title class_">File</span>(<span class="hljs-string">&quot;E:/images/&quot;</span>+newFileName));<br>        <span class="hljs-keyword">return</span> Result.success();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>由此可以进一步完成新增员工和修改员工的功能。</p>
+<p>修改员工的实现：为了增强用户体验，在前端点击修改员工时，表格中应默认提供目前的员工信息，也就是要先返回一次按id的查询，然后再进行一次update操作，因此为了完成这一功能实际上要完成两部分，后端分别写与这些功能对应的接口即可，分别的调用由前端完成。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs xml">    <span class="hljs-tag">&lt;<span class="hljs-name">update</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;update&quot;</span>&gt;</span><br>        update emp<br>        <span class="hljs-tag">&lt;<span class="hljs-name">set</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">&quot;username != null and username != &#x27;&#x27;&quot;</span>&gt;</span><br>                username = #&#123;username&#125;,<br>            <span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">&quot;password != null and password != &#x27;&#x27;&quot;</span>&gt;</span><br>                password = #&#123;password&#125;,<br>            <span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">&quot;name != null and name != &#x27;&#x27;&quot;</span>&gt;</span><br>                name = #&#123;name&#125;,<br>            <span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">&quot;gender != null&quot;</span>&gt;</span><br>                gender = #&#123;gender&#125;,<br>            <span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">&quot;image != null and image != &#x27;&#x27;&quot;</span>&gt;</span><br>                image = #&#123;image&#125;,<br>            <span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">&quot;job != null&quot;</span>&gt;</span><br>                job = #&#123;job&#125;,<br>            <span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">&quot;entrydate != null&quot;</span>&gt;</span><br>                entrydate = #&#123;entrydate&#125;,<br>            <span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">&quot;deptId != null&quot;</span>&gt;</span><br>                dept_id = #&#123;deptId&#125;,<br>            <span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">&quot;updateTime != null&quot;</span>&gt;</span><br>                update_time = #&#123;updateTime&#125;<br>            <span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">set</span>&gt;</span><br>        where id = #&#123;id&#125;<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">update</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">mapper</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>&#x3D;&#x3D;注意&#x3D;&#x3D;在empServiceImp中还应设置updateTime，对于这一点一定要注意，只要涉及改动就要默认更新updateTime，添加员工时还需要注意设置creteTime。</p>
+<h4 id="阿里云OSS"><a href="#阿里云OSS" class="headerlink" title="阿里云OSS"></a>阿里云OSS</h4><p>可以创建一个util类，当然，不要忘记@component。</p>
+<p>要提前购买和开通oss服务，创建一个bucket，这里有四个关键信息需要保存：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-type">String</span> <span class="hljs-variable">endpoint</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;https://oss-cn-wuhan-lr.aliyuncs.com&quot;</span>; ---&gt;对应着外网访问的endpoint<br>   <span class="hljs-keyword">private</span> <span class="hljs-type">String</span> <span class="hljs-variable">accessKeyId</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;xxx&quot;</span>;<br>   <span class="hljs-keyword">private</span> <span class="hljs-type">String</span> <span class="hljs-variable">accessKeySecret</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;xxx&quot;</span>;<br>   <span class="hljs-keyword">private</span> <span class="hljs-type">String</span> <span class="hljs-variable">bucketName</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;xxx&quot;</span>;<br></code></pre></td></tr></table></figure>
+
+<p>然后再根据官方给出的示例程序，修改这四个信息即可：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AliOSSUtils</span> &#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">String</span> <span class="hljs-variable">endpoint</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;https://oss-cn-wuhan-lr.aliyuncs.com&quot;</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">String</span> <span class="hljs-variable">accessKeyId</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;xxx&quot;</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">String</span> <span class="hljs-variable">accessKeySecret</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;xxx&quot;</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">String</span> <span class="hljs-variable">bucketName</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;web-framework01&quot;</span>;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 实现上传图片到OSS</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">upload</span><span class="hljs-params">(MultipartFile multipartFile)</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>        <span class="hljs-comment">// 获取上传的文件的输入流</span><br>        <span class="hljs-type">InputStream</span> <span class="hljs-variable">inputStream</span> <span class="hljs-operator">=</span> multipartFile.getInputStream();<br><br>        <span class="hljs-comment">// 避免文件覆盖</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">originalFilename</span> <span class="hljs-operator">=</span> multipartFile.getOriginalFilename();<br>        <span class="hljs-type">String</span> <span class="hljs-variable">fileName</span> <span class="hljs-operator">=</span> UUID.randomUUID().toString() + originalFilename.substring(originalFilename.lastIndexOf(<span class="hljs-string">&quot;.&quot;</span>));<br><br>        <span class="hljs-comment">//上传文件到 OSS</span><br>        <span class="hljs-type">OSS</span> <span class="hljs-variable">ossClient</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">OSSClientBuilder</span>().build(endpoint, accessKeyId, accessKeySecret);<br>        ossClient.putObject(bucketName, fileName, inputStream);<br><br>        <span class="hljs-comment">//文件访问路径</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">url</span> <span class="hljs-operator">=</span> endpoint.split(<span class="hljs-string">&quot;//&quot;</span>)[<span class="hljs-number">0</span>] + <span class="hljs-string">&quot;//&quot;</span> + bucketName + <span class="hljs-string">&quot;.&quot;</span> + endpoint.split(<span class="hljs-string">&quot;//&quot;</span>)[<span class="hljs-number">1</span>] + <span class="hljs-string">&quot;/&quot;</span> + fileName;<br><br>        <span class="hljs-comment">// 关闭ossClient</span><br>        ossClient.shutdown();<br>        <span class="hljs-keyword">return</span> url;<span class="hljs-comment">// 把上传到oss的路径返回</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p>若在项目中每涉及到一个第三方技术服务，就将其参数硬编码，那参数变化时要动源码，这是要避免的。难以寻找而且很不优雅。</p>
+<h4 id="参数配置化"><a href="#参数配置化" class="headerlink" title="参数配置化"></a>参数配置化</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-comment">#自定义的阿里云OSS配置信息</span><br><span class="hljs-attr">aliyun.oss.endpoint</span>=<span class="hljs-string">https://oss-cn-wuhan-lr.aliyuncs.com</span><br><span class="hljs-attr">aliyun.oss.accessKeyId</span>=<span class="hljs-string">xxxxxx</span><br><span class="hljs-attr">aliyun.oss.accessKeySecret</span>=<span class="hljs-string">xxxxxx</span><br><span class="hljs-attr">aliyun.oss.bucketName</span>=<span class="hljs-string">springbear-instance1</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AliOSSUtils</span> &#123;<br><br>    <span class="hljs-meta">@Value(&quot;$&#123;aliyun.oss.endpoint&#125;&quot;)</span><br>    <span class="hljs-keyword">private</span> String endpoint;<br>    <br>    <span class="hljs-meta">@Value(&quot;$&#123;aliyun.oss.accessKeyId&#125;&quot;)</span><br>    <span class="hljs-keyword">private</span> String accessKeyId;<br>    <br>    <span class="hljs-meta">@Value(&quot;$&#123;aliyun.oss.accessKeySecret&#125;&quot;)</span><br>    <span class="hljs-keyword">private</span> String accessKeySecret;<br>    <br>    <span class="hljs-meta">@Value(&quot;$&#123;aliyun.oss.bucketName&#125;&quot;)</span><br>    <span class="hljs-keyword">private</span> String bucketName;<br> 	<br> 	<span class="hljs-comment">//省略其他代码...</span><br> &#125; <br></code></pre></td></tr></table></figure>
+
+<h4 id="yml"><a href="#yml" class="headerlink" title="yml"></a>yml</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-attr">server.port</span>=<span class="hljs-string">8080</span><br><span class="hljs-attr">server.address</span>=<span class="hljs-string">127.0.0.1</span><br>=<span class="hljs-attr">&gt;</span><br><span class="hljs-attr">server</span>:<span class="hljs-string"></span><br>  <span class="hljs-attr">port</span>: <span class="hljs-string">8080</span><br>  <span class="hljs-attr">address</span>: <span class="hljs-string">127.0.0.1 #注意数据和属性之间的空格！！</span><br></code></pre></td></tr></table></figure>
+
+<p>可以看到配置同样的数据信息，yml格式的数据有以下特点：</p>
+<ul>
+<li>容易阅读</li>
+<li>容易与脚本语言交互</li>
+<li>以数据为核心，重数据轻格式</li>
+</ul>
+<p>yml配置文件的基本语法：</p>
+<blockquote>
+<ul>
+<li>大小写敏感</li>
+<li>数值前边必须有空格，作为分隔符</li>
+<li>使用缩进表示层级关系，缩进时，不允许使用Tab键，只能用空格（idea中会自动将Tab转换为空格）</li>
+<li>缩进的空格数目不重要，只要相同层级的元素左侧对齐即可</li>
+<li><code>#</code>表示注释，从这个字符一直到行尾，都会被解析器忽略</li>
+</ul>
+</blockquote>
+<p>yml文件中常见的数据格式：</p>
+<p>对象&#x2F;Map集合</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">user:</span><br>  <span class="hljs-attr">name:</span> <span class="hljs-string">zhangsan</span><br>  <span class="hljs-attr">age:</span> <span class="hljs-number">18</span><br>  <span class="hljs-attr">password:</span> <span class="hljs-number">123456</span><br></code></pre></td></tr></table></figure>
+
+<p>数组&#x2F;List&#x2F;Set集合</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">hobby:</span> <br>  <span class="hljs-bullet">-</span> <span class="hljs-string">java</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">game</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">sport</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">spring:</span><br>  <span class="hljs-attr">datasource:</span><br>    <span class="hljs-attr">driver-class-name:</span> <span class="hljs-string">com.mysql.cj.jdbc.Driver</span><br>    <span class="hljs-attr">url:</span> <span class="hljs-string">jdbc:mysql://localhost:3306/tlias</span><br>    <span class="hljs-attr">username:</span> <span class="hljs-string">root</span><br>    <span class="hljs-attr">password:</span> <span class="hljs-number">1234</span><br>  <span class="hljs-attr">servlet:</span><br>    <span class="hljs-attr">multipart:</span><br>      <span class="hljs-attr">max-file-size:</span> <span class="hljs-string">10MB</span><br>      <span class="hljs-attr">max-request-size:</span> <span class="hljs-string">100MB</span><br>      <br><span class="hljs-attr">mybatis:</span><br>  <span class="hljs-attr">configuration:</span><br>    <span class="hljs-attr">log-impl:</span> <span class="hljs-string">org.apache.ibatis.logging.stdout.StdOutImpl</span><br>    <span class="hljs-attr">map-underscore-to-camel-case:</span> <span class="hljs-literal">true</span><br>	<br><span class="hljs-attr">aliyun:</span><br>  <span class="hljs-attr">oss:</span><br>    <span class="hljs-attr">endpoint:</span> <span class="hljs-string">https://oss-cn-hangzhou.aliyuncs.com</span><br>    <span class="hljs-attr">accessKeyId:</span> <span class="hljs-string">&lt;your-access-key-id&gt;</span><br>    <span class="hljs-attr">accessKeySecret:</span> <span class="hljs-string">&lt;your-access-key-secret&gt;</span><br>    <span class="hljs-attr">bucketName:</span> <span class="hljs-string">web-397</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="ConfigurationProperties"><a href="#ConfigurationProperties" class="headerlink" title="@ConfigurationProperties"></a>@ConfigurationProperties</h4><p>对于@value注解，当处理成批的配置文件属性时会很臃肿；可以通过@ConfigurationProperties注解来优化：</p>
+<p>首先要在maven中引入依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-configuration-processor<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<ol>
+<li><p>需要创建一个实现类xxxProperties来专门存放这些配置信息，且实体类中的属性名和配置文件当中key的名字必须要一致</p>
+<blockquote>
+<p>比如：配置文件当中叫endpoints，实体类当中的属性也得叫endpoints，另外实体类当中的属性还需要提供 getter &#x2F; setter方法</p>
+</blockquote>
+</li>
+<li><p>需要将实体类交给Spring的IOC容器管理，成为IOC容器当中的bean对象</p>
+</li>
+<li><p>在实体类上添加<code>@ConfigurationProperties</code>注解，并通过perfix属性来指定配置参数项的前缀</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//AliOSSProperties.java</span><br><span class="hljs-keyword">import</span> lombok.Data;<br><span class="hljs-keyword">import</span> org.springframework.boot.context.properties.ConfigurationProperties;<br><span class="hljs-keyword">import</span> org.springframework.stereotype.Component;<br><br><span class="hljs-comment">/*阿里云OSS相关配置*/</span><br><span class="hljs-meta">@Data</span><br><span class="hljs-meta">@Component</span><br><span class="hljs-meta">@ConfigurationProperties(prefix = &quot;aliyun.oss&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AliOSSProperties</span> &#123;<br>    <span class="hljs-comment">//区域</span><br>    <span class="hljs-keyword">private</span> String endpoint;<br>    <span class="hljs-comment">//身份ID</span><br>    <span class="hljs-keyword">private</span> String accessKeyId ;<br>    <span class="hljs-comment">//身份密钥</span><br>    <span class="hljs-keyword">private</span> String accessKeySecret ;<br>    <span class="hljs-comment">//存储空间</span><br>    <span class="hljs-keyword">private</span> String bucketName;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>最终完成的AliOSSUtils工具类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Component</span> <span class="hljs-comment">//当前类对象由Spring创建和管理</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AliOSSUtils</span> &#123;<br><br>    <span class="hljs-comment">//注入配置参数实体类对象</span><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> AliOSSProperties aliOSSProperties;-----------&gt;把原来的各种属性改成了专门存储属性的类<br>   <br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 实现上传图片到OSS</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">upload</span><span class="hljs-params">(MultipartFile multipartFile)</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>        <span class="hljs-comment">// 获取上传的文件的输入流</span><br>        <span class="hljs-type">InputStream</span> <span class="hljs-variable">inputStream</span> <span class="hljs-operator">=</span> multipartFile.getInputStream();<br><br>        <span class="hljs-comment">// 避免文件覆盖</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">originalFilename</span> <span class="hljs-operator">=</span> multipartFile.getOriginalFilename();<br>        <span class="hljs-type">String</span> <span class="hljs-variable">fileName</span> <span class="hljs-operator">=</span> UUID.randomUUID().toString() + originalFilename.substring(originalFilename.lastIndexOf(<span class="hljs-string">&quot;.&quot;</span>));<br><br>        <span class="hljs-comment">//上传文件到 OSS</span><br>        <span class="hljs-type">OSS</span> <span class="hljs-variable">ossClient</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">OSSClientBuilder</span>().build(aliOSSProperties.getEndpoint(),<br>                aliOSSProperties.getAccessKeyId(), aliOSSProperties.getAccessKeySecret());<br>        ossClient.putObject(aliOSSProperties.getBucketName(), fileName, inputStream);<br><br>        <span class="hljs-comment">//文件访问路径</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">url</span> <span class="hljs-operator">=</span>aliOSSProperties.getEndpoint().split(<span class="hljs-string">&quot;//&quot;</span>)[<span class="hljs-number">0</span>] + <span class="hljs-string">&quot;//&quot;</span> + aliOSSProperties.getBucketName() + <span class="hljs-string">&quot;.&quot;</span> + aliOSSProperties.getEndpoint().split(<span class="hljs-string">&quot;//&quot;</span>)[<span class="hljs-number">1</span>] + <span class="hljs-string">&quot;/&quot;</span> + fileName;<br><br>        <span class="hljs-comment">// 关闭ossClient</span><br>        ossClient.shutdown();<br>        <span class="hljs-keyword">return</span> url;<span class="hljs-comment">// 把上传到oss的路径返回</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h4><p>还可以通过设置环境变量来完成配置文件的处理。环境变量是在操作系统级别设置的全局变量。它们包含有关操作系统和正在运行的应用程序的信息。应用程序可以读取环境变量以获取配置参数。在大多数操作系统中，可以使用特定的命令来设置和获取环境变量。例如，在Linux和Mac上，可以使用<code>export</code>命令设置环境变量，如下所示：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-built_in">export</span> <span class="hljs-attribute">MY_VAR</span>=value<br></code></pre></td></tr></table></figure>
+
+<p>应用程序可以通过读取<code>MY_VAR</code>环境变量来获取值。</p>
+<blockquote>
+<p>关于配置文件的处理，无非是从程序的可维护性和安全性出发的。<del>非常好程序，这使我的屁股旋转。</del></p>
+</blockquote>
+<h3 id="登录功能"><a href="#登录功能" class="headerlink" title="登录功能"></a>登录功能</h3><p>根据需求：在访问网站时，如果没有登录，则不能进入子路径url，这一点通过&#x3D;&#x3D;过滤器或拦截器&#x3D;&#x3D;来完成，也就是需要对除了&#x2F;login路径外的其他访问，在访问前进行拦截验证，如果已经登录了，则可以完成api的请求，否则不提供服务，为了识别是否登录过了，这一点通过&#x3D;&#x3D;会话跟踪&#x3D;&#x3D;来完成。因此,“登录”不能仅仅只是执行一个查询检验那么简单。</p>
+<h4 id="会话跟踪"><a href="#会话跟踪" class="headerlink" title="会话跟踪"></a>会话跟踪</h4><p>关于会话、会话跟踪，需要知道：</p>
+<p>&#x3D;&#x3D;会话&#x3D;&#x3D;指的是浏览器与服务器之间的一次连接，我们就称为一次会话。</p>
+<blockquote>
+<p>在用户打开浏览器第一次访问服务器的时候，这个会话就建立了，直到有任何一方断开连接，此时会话就结束了。在一次会话当中，是可以包含多次请求和响应的。</p>
+<p>比如：打开了浏览器来访问web服务器上的资源（浏览器不能关闭、服务器不能断开）</p>
+<ul>
+<li><p>第1次：访问的是登录的接口，完成登录操作</p>
+</li>
+<li><p><code>会话</code>:在用户打开浏览器第一次访问服务器的时候，这个会话就建立了，直到有任何一方断开连接，此时会话就结束了。在一次会话当中，是可以包含多次请求和响应的。</p>
+<p>比如：打开了浏览器来访问web服务器上的资源（浏览器不能关闭、服务器不能断开）</p>
+</li>
+<li><p>第1次：访问的是登录的接口，完成登录操作</p>
+</li>
+<li><p>第2次：访问的是部门管理接口，查询所有部门数据</p>
+</li>
+<li><p>第3次：访问的是员工管理接口，查询员工数据</p>
+</li>
+</ul>
+<p>只要浏览器和服务器都没有关闭，以上3次请求都属于一次会话当中完成的。</p>
+</blockquote>
+<p>&#x3D;&#x3D;会话跟踪&#x3D;&#x3D;：一种维护浏览器状态的方法，服务器需要识别多次请求是否来自于同一浏览器，以便在同一次会话的多次请求间共享数据。</p>
+<blockquote>
+<p>服务器会接收很多的请求，但是服务器是需要识别出这些请求是不是同一个浏览器发出来的。比如：1和2这两个请求是不是同一个浏览器发出来的，3和5这两个请求不是同一个浏览器发出来的。如果是同一个浏览器发出来的，就说明是同一个会话。如果是不同的浏览器发出来的，就说明是不同的会话。而识别多次请求是否来自于同一浏览器的过程，我就称为会话跟踪。</p>
+</blockquote>
+<p>使用会话跟踪技术就是要完成在同一个会话中多个请求之间数据的共享。</p>
+<blockquote>
+<p>为什么要共享数据呢？</p>
+<p>由于HTTP是无状态协议，在后面请求中怎么拿到前一次请求生成的数据呢？此时就需要在一次会话的多次请求之间进行数据共享</p>
+</blockquote>
+<p>题外话：有没有想过在刷微博或者其他客户端软件时，你所看到的表象是你的账号会显示你所个性化的内容，而别人的账号显示的是别人的个性化内容（关注，粉丝等等等），这都是数据，根据你的ID，这些数据都已存入相应的表中了，根据你的id唯一标识，将这些绑定着id的个性化内容全部连根拔起显示给你。有没有想过为什么网页版会保持登录状态，这个就是会话跟踪技术实现的，他会在一定期限内保留住登录状态。</p>
+<p>可以通过JWT,cookie,session来实现会话跟踪。</p>
+<h5 id="JWT"><a href="#JWT" class="headerlink" title="JWT"></a>JWT</h5><p>json web token（官网：<a target="_blank" rel="noopener" href="https://jwt.io/%EF%BC%89">https://jwt.io/）</a></p>
+<ul>
+<li><p>定义了一种简洁的、自包含的格式，用于在通信双方以json数据格式安全的传输信息。由于数字签名的存在，这些信息是可靠的。</p>
+<blockquote>
+<p>简洁：是指jwt就是一个简单的字符串。可以在请求参数或者是请求头当中直接传递。</p>
+<p>自包含：指的是jwt令牌，看似是一个随机的字符串，但是可以根据自身的需求在jwt令牌中存储自定义的数据内容。如：可以直接在jwt令牌中存储用户的相关信息。</p>
+<p>简单来讲，jwt就是将原始的json数据格式进行了安全的封装，这样就可以直接基于jwt在通信双方安全的进行信息传输了。</p>
+</blockquote>
+</li>
+</ul>
+<p>JWT的组成： （JWT令牌由三个部分组成，三个部分之间用点来分割）</p>
+<ul>
+<li><p>第一部分：Header(头）， 记录令牌类型、签名算法等。 例如：{“alg”:”HS256”,”type”:”JWT”}</p>
+</li>
+<li><p>第二部分：Payload(有效载荷），携带一些自定义信息、默认信息等。 例如：{“id”:”1”,”username”:”Tom”}</p>
+</li>
+<li><p>第三部分：Signature(签名），防止Token被篡改、确保安全性。将header、payload，并加入指定秘钥，通过指定签名算法计算而来。</p>
+<blockquote>
+<p>签名的目的就是为了防jwt令牌被篡改，而正是因为jwt令牌最后一个部分数字签名的存在，整个jwt令牌是非常安全可靠的。一旦jwt令牌当中任何一个部分、任何一个字符被篡改了，整个令牌在校验的时候都会失败。</p>
+</blockquote>
+</li>
+</ul>
+<p>JWT是如何将原始的JSON格式数据，转变为字符串的呢？</p>
+<p>在生成JWT令牌时，会对JSON格式的数据进行一次编码————base64编码</p>
+<p>Base64：是一种基于64个可打印的字符来表示二进制数据的编码方式。既然能编码，那也就意味着也能解码。所使用的64个字符分别是A到Z、a到z、 0- 9，一个加号，一个斜杠，加起来就是64个字符。任何数据经过base64编码之后，最终就会通过这64个字符来表示。当然还有一个符号，那就是等号。等号它是一个补位的符号</p>
+<p>需要注意的是Base64是编码方式，而不是加密方式。</p>
+<p>JWT令牌最典型的应用场景就是登录认证：</p>
+<ol>
+<li>在浏览器发起请求来执行登录操作，此时会访问登录的接口，如果登录成功之后，我们需要生成一个jwt令牌，将生成的 jwt令牌返回给前端。</li>
+<li>前端拿到jwt令牌之后，会将jwt令牌存储(浏览器localStorage)起来。在后续的每一次请求中都会将jwt令牌携带到服务端。</li>
+<li>服务端统一拦截请求之后，先来判断一下这次请求有没有把令牌带过来，如果没有带过来，直接拒绝访问，如果带过来了，还要校验一下令牌是否是有效。如果有效，就直接放行进行请求的处理。</li>
+</ol>
+<p>在JWT登录认证的场景中我们发现，整个流程当中涉及到两步操作：</p>
+<ol>
+<li>在登录成功之后，要生成令牌。</li>
+<li>每一次请求当中，要接收令牌并对令牌进行校验。</li>
+</ol>
+<p>为此定义一个工具类JWTutil。</p>
+<p>当然，首先要引入依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>io.jsonwebtoken<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>jjwt<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>0.9.1<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>JWTutil：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">JWTutil</span> &#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> String signKey=<span class="hljs-string">&quot;springbear&quot;</span>;<br>    <span class="hljs-comment">//有效期30天</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">Long</span> <span class="hljs-variable">expire</span> <span class="hljs-operator">=</span> <span class="hljs-number">1000</span>*<span class="hljs-number">3600</span>*<span class="hljs-number">24</span>*<span class="hljs-number">30L</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title function_">genJWT</span><span class="hljs-params">(Map&lt;String,Object&gt; claims)</span>&#123;<br>        String jwt= Jwts.builder()<br>                .addClaims(claims)    <span class="hljs-comment">//自定义消息--有效载荷---有效载荷中存放什么数据也要和前端沟通好。这个项目中是id username 和 name</span><br>                .signWith(SignatureAlgorithm.HS256, signKey)    <span class="hljs-comment">//签名算法</span><br>                .setExpiration(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(System.currentTimeMillis()+expire))<br>                .compact();<br>        <span class="hljs-keyword">return</span> jwt;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Claims <span class="hljs-title function_">parseJWT</span><span class="hljs-params">(String jwt)</span>&#123;<br>        Claims claims=Jwts.parser()<br>                .setSigningKey(signKey)<br>                .parseClaimsJws(jwt)<br>                .getBody();<br>        <span class="hljs-keyword">return</span> claims;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<p>在使用JWT令牌时需要注意：</p>
+<ul>
+<li>JWT校验时使用的签名秘钥，必须和生成JWT令牌时使用的秘钥是配套的。</li>
+<li>如果JWT令牌解析校验时报错，则说明 JWT令牌被篡改 或 失效了，令牌非法。</li>
+</ul>
+<p>因此登录功能的实现又清晰了：登录成功则生成token，执行业务则校验token，若非法，则拦截，合法就放行。</p>
+<p>具体在项目中：前端请求登录，先验证账密是否合法（select），如果登陆成功了，就生成JWT，并将其返回，并且这使得用户在一定时间段内（token有效期间且没有清理浏览器localstorage）不必重复进行登录验证。</p>
+<p>登录功能：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RestController</span><br><span class="hljs-meta">@Slf4j</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">LoginController</span> &#123;<br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> empService empService;<br>    <br>    <span class="hljs-meta">@PostMapping(&quot;/login&quot;)</span><br>    <span class="hljs-keyword">public</span> Result <span class="hljs-title function_">loginTry</span><span class="hljs-params">(<span class="hljs-meta">@RequestBody</span> Emp emp)</span>&#123;<br>        Emp empExist=empService.loginTry(emp);<br>        <span class="hljs-keyword">if</span>(empExist!=<span class="hljs-literal">null</span>)&#123;<br>            log.info(<span class="hljs-string">&quot;登陆成功&quot;</span>);<br>            Map&lt;String,Object&gt; claims=<span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>            claims.put(<span class="hljs-string">&quot;id&quot;</span>,empExist.getId());<br>            claims.put(<span class="hljs-string">&quot;username&quot;</span>,empExist.getUsername());<br>            claims.put(<span class="hljs-string">&quot;name&quot;</span>,empExist.getName());<br>            <span class="hljs-comment">//假如登录成功，生成token（一个能被唯一转化的字符串）返回给前端，前端将会获取它并存储。</span><br>            <span class="hljs-comment">//在此后的操作，前端都会携带这个token来进行操作，只要token还在有效期，就能够放行，否则被拦截器拦截。</span><br>            String token=JWTutil.genJWT(claims);<br>            <span class="hljs-keyword">return</span> Result.success(token);<br>        &#125;<br>        <span class="hljs-keyword">return</span> Result.error(<span class="hljs-string">&quot;登录失败&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h5 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h5><p>cookie是客户端会话跟踪技术，存储在客户端浏览器中。用cookie来跟踪会话，可以在浏览器第一次发起服务器请求时，在服务器端来设置一个cookie。</p>
+<p>比如第一次请求了登录接口，登录接口执行完成之后，就可以设置一个cookie，在cookie中就可以来存储用户相关的数据信息。比如在cookie中存储当前登录用户的用户名，ID。</p>
+<p>服务器端给客户端响应数据时会<strong>自动</strong>将cookie响应给浏览器，浏览器接收到此cookie后，会<strong>自动</strong>将cookie的值存储在浏览器本地。接下来在后续的每一次请求当中，都会将浏览器本地所存储的cookie<strong>自动</strong>地携带到服务端。</p>
+<p>接下来服务端就可以获取到cookie的值。因此只需要判断这个cookie的值是否存在，如果不存在这个cookie，就说明客户端之前是没有访问登录接口的；如果存在，就说明客户端之前已经登录完成了。这样就可以基于cookie在同一次会话的不同请求之间来共享数据。</p>
+<p>3个自动：</p>
+<ul>
+<li>服务器<strong>自动</strong>将cookie响应给浏览器。</li>
+<li>浏览器接收到响应回来的数据之后，<strong>自动</strong>将cookie存储在浏览器本地。</li>
+<li>在后续的请求当中，浏览器会<strong>自动</strong>将cookie携带到服务器端。</li>
+</ul>
+<p><strong>为什么这一切都是自动化进行的？</strong></p>
+<p>因为cookie是HTTP协议中所支持的技术，而各大浏览器厂商都支持了这一标准。协议官方给我们提供了一个响应头和请求头：</p>
+<ul>
+<li>响应头 Set-Cookie ：设置Cookie数据</li>
+<li>请求头 Cookie：携带Cookie数据</li>
+</ul>
+<p><strong>优缺点</strong></p>
+<ul>
+<li>优点：HTTP协议中支持的技术（像Set-Cookie 响应头的解析以及 Cookie 请求头数据的携带都由浏览器自动进行，无需手动操作）</li>
+<li>缺点：<ul>
+<li>移动端APP(Android、IOS)中无法使用Cookie</li>
+<li>不安全，用户可以自己禁用Cookie</li>
+<li>Cookie不能跨域</li>
+</ul>
+</li>
+</ul>
+<h5 id="session"><a href="#session" class="headerlink" title="session"></a>session</h5><p>服务器端会话跟踪技术，存储在服务器端的。Session就是基于Cookie来实现的</p>
+<p><strong>优缺点</strong></p>
+<ul>
+<li>优点：Session是存储在服务端的，安全</li>
+<li>缺点：<ul>
+<li>服务器集群环境下无法直接使用Session</li>
+<li>移动端APP(Android、IOS)中无法使用Cookie</li>
+<li>用户可以自己禁用Cookie</li>
+<li>Cookie不能跨域</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>PS：Session 底层是基于Cookie实现的会话跟踪，如果Cookie不可用，则该方案也就失效了。</p>
+</blockquote>
+<h4 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h4><h5 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h5><p>什么是拦截器？</p>
+<ul>
+<li>是一种动态拦截方法调用的机制，类似于过滤器。</li>
+<li>拦截器是Spring框架中提供的，用来动态拦截控制器方法的执行。</li>
+</ul>
+<p>拦截器的作用：</p>
+<ul>
+<li>拦截请求，在指定方法调用前后，根据业务需要执行预先设定的代码。</li>
+</ul>
+<p>在拦截器中通常做一些通用性操作，比如：通过拦截器来拦截前端发起的请求，将登录校验的逻辑全部编写在拦截器当中。在校验的过程当中，如发现用户登录了(携带JWT令牌且是合法令牌)，就可以直接放行，去访问spring当中的资源。如果校验时发现并没有登录或是非法令牌，就可以直接给前端响应未登录的错误信息。</p>
+<h5 id="拦截路径"><a href="#拦截路径" class="headerlink" title="拦截路径"></a>拦截路径</h5><p>在注册拦截器时要指定拦截器的拦截路径，通过<code>addPathPatterns(&quot;要拦截路径&quot;)</code>指定要拦截的请求路径，<code>excludePathPatterns</code>指定不拦截的请求路径。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Configuration</span>  <br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">WebConfig</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">WebMvcConfigurer</span> &#123;<br>    <span class="hljs-comment">//拦截器对象</span><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> LoginCheckInterceptor loginCheckInterceptor;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">addInterceptors</span><span class="hljs-params">(InterceptorRegistry registry)</span> &#123;<br>        <span class="hljs-comment">//注册自定义拦截器对象</span><br>        registry.addInterceptor(loginCheckInterceptor)<br>                .addPathPatterns(<span class="hljs-string">&quot;/**&quot;</span>)<span class="hljs-comment">//设置拦截器拦截的请求路径（ /** 表示拦截所有请求）</span><br>                .excludePathPatterns(<span class="hljs-string">&quot;/login&quot;</span>);<span class="hljs-comment">//设置不拦截的请求路径</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>在拦截器中除了可以设置<code>/**</code>拦截所有资源外，还有一些常见拦截路径设置：</p>
+<table>
+<thead>
+<tr>
+<th>拦截路径</th>
+<th>含义</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x2F;*</td>
+<td>一级路径</td>
+<td>能匹配&#x2F;depts，&#x2F;emps，&#x2F;login，不能匹配 &#x2F;depts&#x2F;1</td>
+</tr>
+<tr>
+<td>&#x2F;**</td>
+<td>任意级路径</td>
+<td>能匹配&#x2F;depts，&#x2F;depts&#x2F;1，&#x2F;depts&#x2F;1&#x2F;2</td>
+</tr>
+<tr>
+<td>&#x2F;depts&#x2F;*</td>
+<td>&#x2F;depts下的一级路径</td>
+<td>能匹配&#x2F;depts&#x2F;1，不能匹配&#x2F;depts&#x2F;1&#x2F;2，&#x2F;depts</td>
+</tr>
+<tr>
+<td>&#x2F;depts&#x2F;**</td>
+<td>&#x2F;depts下的任意级路径</td>
+<td>能匹配&#x2F;depts，&#x2F;depts&#x2F;1，&#x2F;depts&#x2F;1&#x2F;2，不能匹配&#x2F;emps&#x2F;1</td>
+</tr>
+</tbody></table>
+<h5 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h5><p>基本使用主要包括：定义拦截器，注册拦截器。</p>
+<p>定义拦截器：一个项目中可能有多个拦截器，不妨建立一个拦截器包，对于登录功能中的拦截，定义LoginInterceptor类,(别忘了@component),该类需要实现HandlerInterceptor，并重写其三个方法，特别是prehandle这一方法，他决定着能否放行，因此jwt的验证也在此方法中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Component</span><br><span class="hljs-meta">@Slf4j</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">LoginInterceptor</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">HandlerInterceptor</span> &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">preHandle</span><span class="hljs-params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        String token=request.getHeader(<span class="hljs-string">&quot;token&quot;</span>);<br>        <span class="hljs-keyword">if</span>(token==<span class="hljs-literal">null</span>)&#123;<br>            <span class="hljs-comment">//设置返回消息并转json</span><br>            Result result=Result.error(<span class="hljs-string">&quot;NOT_LOGIN&quot;</span>);<br>            <span class="hljs-type">String</span> <span class="hljs-variable">json</span> <span class="hljs-operator">=</span> JSONObject.toJSONString(result);<br>            <span class="hljs-comment">//设置响应头（告知浏览器：响应的数据类型为json、响应的数据编码表为utf-8）</span><br>            response.setContentType(<span class="hljs-string">&quot;application/json;charset=utf-8&quot;</span>);<br>            <span class="hljs-comment">//响应</span><br>            response.getWriter().write(json);<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>        <span class="hljs-comment">//若存在 则验证合法性</span><br>        <span class="hljs-keyword">try</span> &#123;<br>            JWTutil.parseJWT(token);<br>        &#125; <span class="hljs-keyword">catch</span> (Exception e)&#123;<br>            log.info(<span class="hljs-string">&quot;非法token&quot;</span>);<br>            <span class="hljs-comment">//设置返回消息并转json</span><br>            Result result=Result.error(<span class="hljs-string">&quot;NOT_LOGIN&quot;</span>);<br>            <span class="hljs-type">String</span> <span class="hljs-variable">json</span> <span class="hljs-operator">=</span> JSONObject.toJSONString(result);<br>            <span class="hljs-comment">//设置响应头（告知浏览器：响应的数据类型为json、响应的数据编码表为utf-8）</span><br>            response.setContentType(<span class="hljs-string">&quot;application/json;charset=utf-8&quot;</span>);<br>            <span class="hljs-comment">//响应</span><br>            response.getWriter().write(json);<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;<br><span class="hljs-comment">/*分析此实例的流程：</span><br><span class="hljs-comment">* 1. 登录页面不拦截，其他页面拦截，这一点在注册拦截器时控制拦截路径实现。</span><br><span class="hljs-comment">* 2. 其他路径的资源请求，需要携带token(位于请求头中)来若不存在则拒绝并返回相应的信息(json)，若存在则进行验证，合法则放行，否则拒绝并返回相应信息。</span><br><span class="hljs-comment">* 注：为了实现object到json的转换，可以导入阿里的fastjson依赖</span><br><span class="hljs-comment">* 注：返回的erro信息也是有讲究的，不能瞎写，前端需要根据erro中的信息来重定向或者进行其他操作的。比如这里是not_longin,前端获取到就会执行重定向到登录页面</span><br><span class="hljs-comment">* */</span><br></code></pre></td></tr></table></figure>
+
+<p>注册拦截器：定义一个类WebConfig，该类需要实现webMvcConfigurer，该类中需要重写addInterceptor方法，也是在此类中完成注册拦截器和拦截路径的设置。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Configuration</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">WebConfig</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">WebMvcConfigurer</span> &#123;<br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> LoginInterceptor loginInterceptor;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">addInterceptors</span><span class="hljs-params">(InterceptorRegistry registry)</span> &#123;<br>        registry.addInterceptor(loginInterceptor)<br>                .addPathPatterns(<span class="hljs-string">&quot;/**&quot;</span>)<br>                .excludePathPatterns(<span class="hljs-string">&quot;/login&quot;</span>);<br>        <span class="hljs-comment">//为除了登录页外的其他页面注册拦截器。</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="登录业务"><a href="#登录业务" class="headerlink" title="登录业务"></a>登录业务</h4><p>再次梳理登录业务：登录时，根据账密判断登录是否成功（select），成功则返回token和成功消息（jwt），否则返回错误信息，在token有效期内，该浏览器中的路径访问不会被阻拦（interceptor放行）。</p>
+<p><img src="https://s3.bmp.ovh/imgs/2023/11/20/b18f88897cc0af29.png" srcset="/zyq.github.io/img/loading.gif" lazyload></p>
+<h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><p>项目编写到这里，以为已经OK了？？实际上忽略了异常处理这一点，因此下次在设计项目时，可以提前考虑。</p>
+<p>当添加部门或者员工时，如果客户端输入的重名了，而数据库又不能完成插入语句，如果没有异常处理，那么前后端将无法完成相应的错误操作，而用户也最好能够得到对应的解释或者哪怕只是简短的提示，也可以通过异常处理来实现，捕获异常后，后端向前端返回额外的消息，前端再经过处理提示给用户。</p>
+<p>异常处理很简单，在每一处可能会出现异常的地方都try catch显然太杂乱臃肿。因此可以定义一个类，专门处理异常，即：全局异常处理器。</p>
+<ol>
+<li><p>定义全局异常处理器非常简单，定义一个类，为此类加上@RestControllerAdvice，加上这个注解就代表定义了一个全局异常处理器。</p>
+</li>
+<li><p>在类中定义一个方法来捕获异常，此方法需要加注解@ExceptionHandler。通过@ExceptionHandler注解当中的value属性来指定要捕获异常的类型。</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RestControllerAdvice</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">GlobalExceptionHandler</span> &#123;<br>    <span class="hljs-comment">//处理异常</span><br>    <span class="hljs-meta">@ExceptionHandler(Exception.class)</span> <span class="hljs-comment">//指定能够处理的异常类型</span><br>    <span class="hljs-keyword">public</span> Result <span class="hljs-title function_">ex</span><span class="hljs-params">(Exception e)</span>&#123;<br>        e.printStackTrace();<span class="hljs-comment">//打印堆栈中的异常信息</span><br>        <span class="hljs-comment">//捕获到异常之后，响应一个标准的Result</span><br>        <span class="hljs-keyword">return</span> Result.error(<span class="hljs-string">&quot;对不起,操作失败,请联系管理员&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>@RestControllerAdvice &#x3D; @ControllerAdvice + @ResponseBody</p>
+<p>处理异常的方法返回值会转换为json后再响应给前端</p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/zyq.github.io/categories/%E5%90%8E%E7%AB%AF/" class="category-chain-item">后端</a>
+  
+  
+    <span>></span>
+    
+  <a href="/zyq.github.io/categories/%E5%90%8E%E7%AB%AF/%E9%A1%B9%E7%9B%AE/" class="category-chain-item">项目</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/zyq.github.io/tags/%E5%90%8E%E7%AB%AF/" class="print-no-link">#后端</a>
+      
+        <a href="/zyq.github.io/tags/SpringBoot/" class="print-no-link">#SpringBoot</a>
+      
+        <a href="/zyq.github.io/tags/Mybatis/" class="print-no-link">#Mybatis</a>
+      
+        <a href="/zyq.github.io/tags/%E9%A1%B9%E7%9B%AE/" class="print-no-link">#项目</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>JavaWeb基础实例1</div>
+      <div>https://yq2004.github.io/zyq.github.io/2026/07/07/项目/后端项目/JavaWebInstance/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zyq</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年7月7日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/zyq.github.io/2026/07/07/%E5%90%8E%E7%AB%AF/JavaWebInstance/" title="JavaWeb基础实例1">
+                        <span class="hidden-mobile">JavaWeb基础实例1</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/zyq.github.io/js/events.js" ></script>
+<script  src="/zyq.github.io/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/zyq.github.io/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/zyq.github.io/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="/zyq.github.io/js/banner-color-scheme.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/zyq.github.io/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
