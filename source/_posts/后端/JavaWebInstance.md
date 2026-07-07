@@ -480,8 +480,8 @@ mybatis:
 aliyun:
   oss:
     endpoint: https://oss-cn-hangzhou.aliyuncs.com
-    accessKeyId: LTAI4GCH1vX6DKqJWxd6nEuW
-    accessKeySecret: yBshYweHOpqDuhCArrVHwIiBKpyqSL
+    accessKeyId: <your-access-key-id>
+    accessKeySecret: <your-access-key-secret>
     bucketName: web-397
 ```
 
