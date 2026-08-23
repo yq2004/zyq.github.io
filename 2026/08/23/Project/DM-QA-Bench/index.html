@@ -16,21 +16,21 @@
   <meta name="author" content="zyq">
   <meta name="keywords" content="">
   
-    <meta name="description" content="这篇文章的核心命题 在传统 RAG 的“检索—增强—生成”流水线中加入具备自主决策能力的 Agent，使系统能够动态决定：是否检索、检索什么、调用哪些工具、是否改写查询、是否反思修正、是否继续迭代。  传统 RAG 的基本流程是： 123456789User Query   ↓Retriever   ↓Retrieved Context   ↓LLM Generation   ↓Answer  而">
+    <meta name="description" content="为什么需要溯源，因为依靠LLM生成QA Bench，最忌讳出现幻觉，编造一些Corpus中都不存在的Evidence来生成问题的设计或者信息的提供。所以“有用的信息”一定要严格来自于原始文档（溯源）。但事实就是无法完全保证LLM不出现幻觉，所以需要严格地让他输出每一段claim对应的原始文段，但这又有个问题：“对应的原始文段”不容易逐字逐句复刻，有的可能只差一两个字符对不上(LLM的逐字逐句复述能">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AgenticRAG_Note">
-<meta property="og:url" content="https://yq2004.github.io/zyq.github.io/2026/07/05/AgenticRAG-Note/index.html">
+<meta property="og:title" content="zyq">
+<meta property="og:url" content="https://yq2004.github.io/zyq.github.io/2026/08/23/Project/DM-QA-Bench/index.html">
 <meta property="og:site_name" content="zyq">
-<meta property="og:description" content="这篇文章的核心命题 在传统 RAG 的“检索—增强—生成”流水线中加入具备自主决策能力的 Agent，使系统能够动态决定：是否检索、检索什么、调用哪些工具、是否改写查询、是否反思修正、是否继续迭代。  传统 RAG 的基本流程是： 123456789User Query   ↓Retriever   ↓Retrieved Context   ↓LLM Generation   ↓Answer  而">
+<meta property="og:description" content="为什么需要溯源，因为依靠LLM生成QA Bench，最忌讳出现幻觉，编造一些Corpus中都不存在的Evidence来生成问题的设计或者信息的提供。所以“有用的信息”一定要严格来自于原始文档（溯源）。但事实就是无法完全保证LLM不出现幻觉，所以需要严格地让他输出每一段claim对应的原始文段，但这又有个问题：“对应的原始文段”不容易逐字逐句复刻，有的可能只差一两个字符对不上(LLM的逐字逐句复述能">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-07-05T09:54:23.000Z">
-<meta property="article:modified_time" content="2026-07-05T15:30:38.459Z">
+<meta property="article:published_time" content="2026-08-22T16:16:35.419Z">
+<meta property="article:modified_time" content="2026-08-23T06:24:03.606Z">
 <meta property="article:author" content="zyq">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>AgenticRAG_Note - zyq</title>
+  <title>zyq</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="AgenticRAG_Note"></span>
+            <span id="subtitle" data-typed-text=""></span>
           
         </div>
 
@@ -211,8 +211,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-07-05 17:54" pubdate>
-          2026年7月5日 下午
+        <time datetime="2026-08-23 00:16" pubdate>
+          2026年8月23日 凌晨
         </time>
       </span>
     
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.6k 字
+          450 字
         
       </span>
     
@@ -234,7 +234,7 @@
         
         
         
-          14 分钟
+          4 分钟
         
       </span>
     
@@ -271,42 +271,15 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">AgenticRAG_Note</h1>
+            <h1 id="seo-header"></h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="这篇文章的核心命题"><a href="#这篇文章的核心命题" class="headerlink" title="这篇文章的核心命题"></a>这篇文章的核心命题</h2><blockquote>
-<p>在传统 RAG 的“检索—增强—生成”流水线中加入具备自主决策能力的 Agent，使系统能够动态决定：是否检索、检索什么、调用哪些工具、是否改写查询、是否反思修正、是否继续迭代。</p>
-</blockquote>
-<p>传统 RAG 的基本流程是：</p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs crmsh"><span class="hljs-keyword">User</span> <span class="hljs-title">Query</span><br>   ↓<br>Retriever<br>   ↓<br>Retrieved Context<br>   ↓<br>LLM Generation<br>   ↓<br>Answer<br></code></pre></td></tr></table></figure>
-
-<p>而 Agentic RAG 可以理解为在这个流程上方加了一个<strong>控制层</strong>：</p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">User</span> Query<br>   ↓<br>Agent Controller / <span class="hljs-keyword">Policy</span><br>   ├─ decide whether <span class="hljs-keyword">to</span> retrieve<br>   ├─ rewrite query<br>   ├─ route <span class="hljs-keyword">to</span> vector DB / <span class="hljs-keyword">SQL</span> / web / API / KG<br>   ├─ evaluate retrieved evidence<br>   ├─ refine context<br>   ├─ <span class="hljs-keyword">call</span> tools<br>   └─ decide <span class="hljs-keyword">when</span> <span class="hljs-keyword">to</span> answer<br>   ↓<br>LLM Generation<br></code></pre></td></tr></table></figure>
-
-<p>文章明确指出，Agentic RAG 的动机来自传统 RAG 的静态、线性、难以处理多步推理和复杂任务；Agentic RAG 则通过 autonomous agents 引入动态检索、迭代上下文 refinement 和自适应 workflow orchestration。</p>
-<p>🤔每加一层路由都意味着开销和误差。我认为：有时可以适当转移一下责任，比如“decide whether to retrieve”可以让用户决定，当然，用户还是可以选择Auto模式，强行让系统来路由。</p>
-<h2 id="X-对RAG的看法"><a href="#X-对RAG的看法" class="headerlink" title="X. 对RAG的看法"></a>X. 对RAG的看法</h2><p>一年的RAG学习，我想将我对RAG的理解凝练成下面的内容。</p>
-<p>RAG （检索增强生成），就是给AI扫盲，他不懂的东西，不允许胡说，<strong>给</strong>他<strong>参考</strong>，就要考虑我们”给“的能力和他”参考“的能力。</p>
-<p>引子：给定一段信息内容，然后让AI根据这些信息内容回答问题是“检索增强生成“吗？</p>
-<p>不完全是。我认为检索可以分为两种类型，<strong>外检索</strong>和<strong>内检索</strong>。</p>
-<ul>
-<li><p>”参考” 的能力 – 内检索</p>
-<p>让AI根据<strong>给定</strong>的信息内容回答问题，属于内检索，给定的信息M，其中能够回答问题Q的部分我们称为M’，那么M’是M的子集，内检索的过程则是找到这个子集（当然，也可能M’就等于M，这样最好，说明外检索做的十分完美），那么这个过程称为后处理，包含过滤、去噪等，LLM本身具备一定的抗噪、去噪能力，但不容易量化这种“能力”。内检索关注的是LLM的检索能力或者外挂的辅助能力，后者是指加额外的Pipeline去对给定的信息进行处理，从而让LLM更容易找到M’。</p>
-</li>
-<li><p>“给”的能力 – 外检索</p>
-<p>前面说了<strong>给定</strong>的信息，从哪里得到这些信息，则是外检索的过程。最经典的有两种，</p>
-<p>外检索的核心就是用尽浑身解数去找到<strong>可能</strong>（这里做得越粗糙，内检索就越吃力。换句话说，如果你的后检索设计得十分牛逼：超强的LLM+各种后处理方法其下，你完全可以把TopK设置得无比高，从而”宁可错检1000，不可漏检一个“，反正我们的后处理可以把）有用的信息。（Embedding, WebSearch, DBSearch(Text2SQL), AskAnotherLLM, Disassembling(拆成子问题，适合处理多跳问题)…）</p>
-<p>还有哪些找信息的方法呢？(grep…)</p>
-<hr>
-<p>“给”的能力？谁来给，给什么，怎么给？我想这些思考就交给Agent吧。再进一步，“参考”的能力，Agent也可以持续跟进，Reflect一下是否足够，需要回过头来rewrite一下吗？…整个过程都自动化，我们提供方法论，Agent遵循和探索。这是AgenticRAG</p>
-<p>但是上述做法都太过冒进，我们没有考虑Latency和Cost，然而这俩其实是大头…</p>
-<blockquote>
-<p>Utility &#x3D; Answer Quality<br>        + Factuality<br>        + Completeness<br>        + Robustness<br>        - Cost<br>        - Latency<br>        - Risk</p>
-</blockquote>
-</li>
-</ul>
+                <p>为什么需要溯源，因为依靠LLM生成QA Bench，最忌讳出现幻觉，编造一些Corpus中都不存在的Evidence来生成问题的设计或者信息的提供。所以“有用的信息”一定要严格来自于原始文档（溯源）。<br>但事实就是无法完全保证LLM不出现幻觉，所以需要严格地让他输出每一段claim对应的原始文段，但这又有个问题：“对应的原始文段”不容易逐字逐句复刻，有的可能只差一两个字符对不上(LLM的逐字逐句复述能力的瑕疵，这与模型本身能力有关，也与文档复杂程度有关，原始文字越复杂（比如包含大量特殊字符等），也更容易出错)。<br>同时，还有更糟糕的，（或者说正是体现溯源步骤重要性的）现象：LLM输出的原始文档内容怎么都找不到（用了更强的模型+更宽松的匹配模式），此时认为出现幻觉。</p>
+<ol>
+<li>Claim的溯源问题。当前依靠LLM生成溯源，但是一旦有任何偏差就报错。solution：三级溯源，优先用轻量级模型快速走一遍，对于对不上的用例换成pro模型retry，pro模型也不行就采用relaxed em匹配，允许特殊符号的不匹配。</li>
+</ol>
 
                 
               </div>
@@ -324,8 +297,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>AgenticRAG_Note</div>
-      <div>https://yq2004.github.io/zyq.github.io/2026/07/05/AgenticRAG-Note/</div>
+      <div></div>
+      <div>https://yq2004.github.io/zyq.github.io/2026/08/23/Project/DM-QA-Bench/</div>
     </div>
     <div class="license-meta">
       
@@ -337,7 +310,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年7月5日</div>
+          <div>2026年8月23日</div>
         </div>
       
       
@@ -369,9 +342,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/zyq.github.io/2026/07/10/Claude-Code-Usage/" title="Claude Code Usage">
+                      <a href="/zyq.github.io/2026/08/23/Project/Seekir/" title="">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Claude Code Usage</span>
+                        <span class="hidden-mobile"></span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -379,8 +352,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/zyq.github.io/2026/07/02/leetcode150/" title="leetcode150">
-                        <span class="hidden-mobile">leetcode150</span>
+                      <a href="/zyq.github.io/2026/08/22/Project/HHC/" title="">
+                        <span class="hidden-mobile"></span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -1,0 +1,633 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head><!-- hexo injector head_begin start --><script>(function(){try{if(localStorage.getItem("fluid-font-mode")==="print"){document.documentElement.classList.add("print-font")}}catch(e){}})();</script><!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/zyq.github.io/img/icon/icon.png">
+  <link rel="icon" href="/zyq.github.io/img/icon/icon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zyq">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="为论文阅读领域还实现了垂域适配 不仅要从设计层斟酌，具体实现还要深思熟虑（既然是试验性功能，那么就不该颠覆整个代码结构设计，而是封装一层(PaperDocument)，并能在关键、合适的时机映射转换到旧代码中的设计和实现[RetrievalUnit]） 初步方案： 1234567891011121314151617181920212223242526272829303132333435363738">
+<meta property="og:type" content="article">
+<meta property="og:title" content="zyq">
+<meta property="og:url" content="https://yq2004.github.io/zyq.github.io/2026/08/23/Project/Seekir/index.html">
+<meta property="og:site_name" content="zyq">
+<meta property="og:description" content="为论文阅读领域还实现了垂域适配 不仅要从设计层斟酌，具体实现还要深思熟虑（既然是试验性功能，那么就不该颠覆整个代码结构设计，而是封装一层(PaperDocument)，并能在关键、合适的时机映射转换到旧代码中的设计和实现[RetrievalUnit]） 初步方案： 1234567891011121314151617181920212223242526272829303132333435363738">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yq2004.github.io/zyq.github.io/image.png">
+<meta property="article:published_time" content="2026-08-22T16:16:41.441Z">
+<meta property="article:modified_time" content="2026-08-23T06:54:08.151Z">
+<meta property="article:author" content="zyq">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://yq2004.github.io/zyq.github.io/image.png">
+  
+  
+  
+  <title>zyq</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/zyq.github.io/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/zyq.github.io/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/zyq.github.io/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/zyq.github.io/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"yq2004.github.io","root":"/zyq.github.io/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":50,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/zyq.github.io/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/zyq.github.io/js/utils.js" ></script>
+  <script  src="/zyq.github.io/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/zyq.github.io/">
+      <strong> </strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zyq.github.io/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zyq.github.io/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zyq.github.io/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zyq.github.io/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zyq.github.io/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/zyq.github.io/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text=""></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-08-23 00:16" pubdate>
+          2026年8月23日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          47 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header"></h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>为论文阅读领域还实现了垂域适配</p>
+<p>不仅要从设计层斟酌，具体实现还要深思熟虑（既然是试验性功能，那么就不该颠覆整个代码结构设计，而是封装一层(PaperDocument)，并能在关键、合适的时机映射转换到旧代码中的设计和实现[RetrievalUnit]）</p>
+<p>初步方案：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-section"># 论文阅读知识库：MinerU 保真解析与领域智能分块</span><br><br><span class="hljs-section">## Summary</span><br><br>新增实验性知识库类型：<br><br><span class="hljs-bullet">-</span> general：保持现有行为。<br><span class="hljs-bullet">-</span> paper<span class="hljs-emphasis">_reading：创建后不可修改，仅接受 PDF，强制使用 MinerU，不允许用户选择 Chunking Strategy。</span><br><span class="hljs-emphasis">- 现有知识库迁移后统一视为 general，不做历史数据回填。</span><br><span class="hljs-emphasis"></span><br><span class="hljs-emphasis">处理链路：</span><br><span class="hljs-emphasis"></span><br><span class="hljs-emphasis">PDF</span><br><span class="hljs-emphasis"> │</span><br><span class="hljs-emphasis"> ▼</span><br><span class="hljs-emphasis">MinerU</span><br><span class="hljs-emphasis"> ├─ Canonical Markdown ──► MinIO parsed bucket</span><br><span class="hljs-emphasis"> ├─ content_</span>list / manifest ──► MinIO audit artifact<br> └─ image/table/formula ──► MinIO visual assets<br><span class="hljs-code">            │</span><br><span class="hljs-code">            ▼</span><br><span class="hljs-code">论文结构识别</span><br><span class="hljs-code"> 规则优先 + 低置信度 LLM 兜底</span><br><span class="hljs-code">            │</span><br><span class="hljs-code">     ┌──────┴─────────────┐</span><br><span class="hljs-code">     ▼                    ▼</span><br><span class="hljs-code">论文元数据               长内容 Section</span><br><span class="hljs-code">title/team/reference/ack  abstract/body/appendix</span><br><span class="hljs-code">     │                    │</span><br><span class="hljs-code">Postgres 确定性读取       智能分块</span><br><span class="hljs-code">                          │</span><br><span class="hljs-code">              text/image/table/formula</span><br><span class="hljs-code">                 四个 Qdrant collections</span><br><span class="hljs-code"></span><br><span class="hljs-section">## Key Changes</span><br><br><span class="hljs-section">### 1. 领域模型与持久化</span><br><br><span class="hljs-bullet">-</span> KnowledgeBase 增加不可变字段 knowledge<span class="hljs-emphasis">_type: general | paper_</span>reading；创建接口和前端类型同步增加该字段。<br><span class="hljs-bullet">-</span> 不把四种内容强行塞进同一个 Chunk 表：<br><span class="hljs-bullet">    -</span> KnowledgeChunk 只表示文本检索单元。<br><span class="hljs-bullet">    -</span> KnowledgeVisualAsset 继续表示图片、表格、公式及真实 MinIO 对象。<br><span class="hljs-bullet">    -</span> 检索层增加统一 RetrievalUnit DTO，content<span class="hljs-emphasis">_kind 为 text | image | table | formula。</span><br><span class="hljs-emphasis"></span><br><span class="hljs-emphasis">- KnowledgeChunk 增加：</span><br><span class="hljs-emphasis">    - paper_</span>section<span class="hljs-emphasis">_id</span><br><span class="hljs-emphasis">    - section_</span>role<br><span class="hljs-bullet">    -</span> section<span class="hljs-emphasis">_path_</span>json<br><span class="hljs-bullet">    -</span> graph<span class="hljs-emphasis">_extractable</span><br><span class="hljs-emphasis">    - retrieval_</span>enabled<br><span class="hljs-bullet">    -</span> 页码、Markdown 字符偏移和分类置信度元数据<br><br><span class="hljs-bullet">-</span> 不单独存储 is<span class="hljs-emphasis">_metadata；由 section_</span>role 推导。metadata<span class="hljs-emphasis">_type 统一替换为可扩展的 section_</span>role。<br><span class="hljs-bullet">-</span> 新增论文领域表：<br><span class="hljs-bullet">    -</span> KnowledgePaperDocument：标题、作者、单位、联系方式、Acknowledgements、解析器/分类器版本和置信度。<br><span class="hljs-bullet">    -</span> KnowledgePaperSection：层级、标题路径、角色、顺序、Markdown/Page 偏移、分类来源。<br><span class="hljs-bullet">    -</span> KnowledgePaperReference：按顺序保存每条参考文献原文及可选结构化字段。<br><span class="hljs-bullet">    -</span> KnowledgeIndexChannel：记录 text/image/table/formula 四个 collection 的名称、状态、point count 和 embedding profile。<br><br><span class="hljs-bullet">-</span> 默认角色策略：<br><span class="hljs-bullet">    -</span> abstract、body：可检索、可构建图谱。<br><span class="hljs-bullet">    -</span> appendix、unknown：可检索、默认不构建图谱。<br><span class="hljs-bullet">    -</span> title、team、acknowledgements、references：作为结构化元数据保存，不进入向量库，不送实体关系抽取。<br><br><span class="hljs-bullet">-</span> title/team 本期不自动写入知识图谱；为后续确定性论文元数据图谱适配器保留结构化数据。<br><br><span class="hljs-section">### 2. MinerU 保真解析</span><br><br><span class="hljs-bullet">-</span> 将 MinerU 返回值从单纯 VisualScanResult 扩展为 ParsedDocumentArtifact，包含：<br><span class="hljs-bullet">    -</span> canonical Markdown<br><span class="hljs-bullet">    -</span> content list<br><span class="hljs-bullet">    -</span> 结构化 block/source map<br><span class="hljs-bullet">    -</span> visual assets<br><span class="hljs-bullet">    -</span> parser manifest<br><br><span class="hljs-bullet">-</span> 修复当前只查找 full.md 的限制：<br><span class="hljs-bullet">    -</span> 优先选择与源文件 stem 匹配的 Markdown。<br><span class="hljs-bullet">    -</span> 其次选择 MinerU 输出中最大的主 Markdown。<br><span class="hljs-bullet">    -</span> 找不到 Markdown 时，依据 content<span class="hljs-emphasis">_list.json 的 text_</span>level、list、table、equation、image 信息重建 Markdown。<br><br><span class="hljs-bullet">-</span> canonical Markdown 原样写入 MINIO<span class="hljs-emphasis">_BUCKET_</span>KB<span class="hljs-emphasis">_PARSED：</span><br><span class="hljs-emphasis">    - &#123;kb_</span>id&#125;/&#123;file<span class="hljs-emphasis">_id&#125;/&#123;source_</span>hash&#125;/document.md<br><span class="hljs-bullet">    -</span> 同目录保存 manifest.json 和 content<span class="hljs-emphasis">_list.json</span><br><span class="hljs-emphasis">    - KnowledgeFile.parsed_</span>storage<span class="hljs-emphasis">_uri 指向 document.md</span><br><span class="hljs-emphasis"></span><br><span class="hljs-emphasis">- 论文库 MinerU 采用 fail-closed：</span><br><span class="hljs-emphasis">    - MinerU 未配置、超时、输出缺失或 Markdown 无法校验时，文件进入 error。</span><br><span class="hljs-emphasis">    - 不回退到普通 PDF 文本解析。</span><br><span class="hljs-emphasis"></span><br><span class="hljs-emphasis">- 一般知识库继续使用现有解析与 fallback，不受影响。</span><br><span class="hljs-emphasis">- 分享、导入、删除和清理流程同步管理 parsed Markdown、manifest 和 visual objects 的所有权。</span><br><span class="hljs-emphasis"></span><br><span class="hljs-emphasis">### 3. 论文结构识别与智能分块</span><br><span class="hljs-emphasis"></span><br><span class="hljs-emphasis">- 使用 Markdown AST 解析标题、段落、列表、代码块、表格、公式和资源链接；引入 markdown-it-py，避免把代码块内的 # 误判为标题。</span><br><span class="hljs-emphasis">- 结构识别分两阶段：</span><br><span class="hljs-emphasis">    - 确定性规则：H1 标题、首个 H2 前 front matter、Abstract/Acknowledgements/References 同义词、编号标题、Appendix/Supplementary、A</span><br><span class="hljs-emphasis">      Implementation Details 等字母附录模式和章节位置。</span><br><span class="hljs-emphasis"></span><br><span class="hljs-emphasis">    - LLM 兜底：只传论文大纲和 front matter；仅在角色或作者—单位绑定低置信度时调用一次结构化 LLM。</span><br><span class="hljs-emphasis"></span><br><span class="hljs-emphasis">- 低置信度无法解决的章节标为 unknown：允许普通检索，但默认不进入图谱，避免错误抽取。</span><br><span class="hljs-emphasis">- 智能分块规则固定为 paper_</span>outline<span class="hljs-emphasis">_v1，用户不可修改：</span><br><span class="hljs-emphasis">    - 先按 H2/H3 叶子章节切分。</span><br><span class="hljs-emphasis">    - 超长叶子章节按 Markdown block/段落继续切分。</span><br><span class="hljs-emphasis">    - 单个不可分 block 超限时才按句子切分。</span><br><span class="hljs-emphasis">    - 不跨 section overlap；仅同一叶子章节内保留 80-token overlap。</span><br><span class="hljs-emphasis">    - 目标 800 tokens，硬上限 1200 tokens。</span><br><span class="hljs-emphasis">    - 小于 120 tokens 的相邻文本块仅在同一 section 内合并。</span><br><span class="hljs-emphasis">    - 代码块、表格、公式和资源 anchor 不从中间切断公式中的 # 被误判；引入 markdown-it-py。</span><br><span class="hljs-emphasis"></span><br><span class="hljs-emphasis">- 结构识别采用“规则优先、LLM 兜底”：</span><br><span class="hljs-emphasis">    - H1 作为论文标题；</span><br><span class="hljs-emphasis">    - H1 与第一个 H2 之间作为 team/front matter；</span><br><span class="hljs-emphasis">    - 标准 Abstract、Acknowledgements、References 走确定性规则；</span><br><span class="hljs-emphasis">    - Appendix、Supplementary、单字母章节如 A Implementation Details 结合编号和文档位置识别为 Appendix；</span><br><span class="hljs-emphasis">    - 仅低置信度大纲和作者—单位绑定调用一次结构化 LLM；</span><br><span class="hljs-emphasis">    - 无法确认的章节标为 unknown，保留检索但默认不进图谱。</span><br><span class="hljs-emphasis"></span><br><span class="hljs-emphasis">- 固定智能分块参数：</span><br><span class="hljs-emphasis">    - 目标 800 tokens，硬上限 1200 tokens；</span><br><span class="hljs-emphasis">    - 同一叶子章节内部允许 80-token overlap；</span><br><span class="hljs-emphasis">    - 不跨章节 overlap；</span><br><span class="hljs-emphasis">    - 优先按 H2/H3 和 Markdown block 分割；</span><br><span class="hljs-emphasis">    - 缺失 H3 时按段落、列表、代码块边界拆分；</span><br><span class="hljs-emphasis">    - 超大不可分 block 最后才按句子切分；</span><br><span class="hljs-emphasis">    - stored content 保持原文，embedding text 额外加入论文标题和 section path。</span><br><span class="hljs-emphasis"></span><br><span class="hljs-emphasis">- 默认策略：</span><br><span class="hljs-emphasis">    - abstract/body: retrieval_</span>enabled=true、graph<span class="hljs-emphasis">_extractable=true；</span><br><span class="hljs-emphasis">    - appendix: retrieval_</span>enabled=true、graph<span class="hljs-emphasis">_extractable=false；</span><br><span class="hljs-emphasis">    - unknown: retrieval_</span>enabled=true、graph<span class="hljs-emphasis">_extractable=false；</span><br><span class="hljs-emphasis">    - title/team/acknowledgements/references 不生成向量 Chunk，保存为确定性论文元数据。</span><br><span class="hljs-emphasis"></span><br><span class="hljs-emphasis">- References 按条结构化保存；Acknowledgements 保存完整文本。未来问答路由到具体论文后直接读取，不经过向量召回。</span><br><span class="hljs-emphasis">- Appendix 仍是长内容，按章节分块进入 text collection；未来可限定 file_</span>id + section<span class="hljs-emphasis">_role=appendix 做论文内检索。</span><br><span class="hljs-emphasis">- 图谱构建只加载 graph_</span>extractable=true 的 Chunk；现有 Span 内容路由继续作为第二层安全过滤。<br><br><span class="hljs-section">## Indexing And APIs</span><br><br><span class="hljs-bullet">-</span> 论文索引创建四个 Collection：<br><span class="hljs-bullet">    -</span> <span class="hljs-emphasis">_text：Abstract、正文、Appendix、unknown；</span><br><span class="hljs-emphasis">    - _</span>image：caption、VLM description、附近标题的文本代理；<br><span class="hljs-bullet">    -</span> <span class="hljs-emphasis">_table：caption、标准化表格文本和附近标题；</span><br><span class="hljs-emphasis">    - _</span>formula：caption、LaTeX 和附近标题。<br><br><span class="hljs-bullet">-</span> 四个 Collection 初期可共用当前 embedding profile，但独立保存 profile 和构建版本，允许后续按模态替换。<br><span class="hljs-bullet">-</span> Qdrant payload 包含 file<span class="hljs-emphasis">_id、section_</span>role、section<span class="hljs-emphasis">_path、页码及资产 ID；不直接暴露 MinIO URI。</span><br><span class="hljs-emphasis">- 检索层优先读取 KnowledgeIndexChannel；普通旧索引回退到现有 text + unified visual 指针。</span><br><span class="hljs-emphasis">- 新增/调整公共接口：</span><br><span class="hljs-emphasis">    - 创建知识库增加 knowledge_</span>type；<br><span class="hljs-bullet">    -</span> 知识库响应返回类型和有效智能分块策略；<br><span class="hljs-bullet">    -</span> 论文库上传接口忽略客户端分块参数并强制 PDF；<br><span class="hljs-bullet">    -</span> 提供鉴权后的 canonical Markdown 查看/下载接口；<br><span class="hljs-bullet">    -</span> 提供论文元数据接口，支持 title/team/acknowledgements/references；<br><span class="hljs-bullet">    -</span> References 接口分页返回；<br><span class="hljs-bullet">    -</span> 文件响应返回论文标题、作者数、参考文献数、结构识别状态和警告；<br><span class="hljs-bullet">    -</span> 索引响应返回四个 channel 的状态与点数。<br><br><span class="hljs-bullet">-</span> 创建页面增加“论文阅读 / 其他”选择；论文阅读模式：<br><span class="hljs-bullet">    -</span> 显示“实验性、仅 PDF、依赖 MinerU”提示；<br><span class="hljs-bullet">    -</span> 隐藏语言、Chunk Strategy、大小、overlap 等控件；<br><span class="hljs-bullet">    -</span> 上传控件只接受 PDF；<br><span class="hljs-bullet">    -</span> 文件详情可查看论文元数据和 canonical Markdown；<br><span class="hljs-bullet">    -</span> 索引 UI 展示四个 channel 的构建状态。<br><br><span class="hljs-bullet">-</span> 分享、导入和删除流程同步处理 parsed Markdown、manifest、论文元数据、Section、Reference 和四个 Collection。<br><br><span class="hljs-section">## Test Plan</span><br><br><span class="hljs-bullet">-</span> 使用 mineru<span class="hljs-emphasis">_example/extract_</span>define<span class="hljs-emphasis">_canonicalize 作为核心 fixture，验证：</span><br><span class="hljs-emphasis">    - 能发现非 full.md 命名的 Markdown；</span><br><span class="hljs-emphasis">    - Markdown 原样写入 MinIO 并可校验哈希；</span><br><span class="hljs-emphasis">    - 正确识别标题、作者、单位、联系方式；</span><br><span class="hljs-emphasis">    - 正确分类 Abstract、正文、Acknowledgements、References；</span><br><span class="hljs-emphasis">    - A 到 G 的二级标题识别为 Appendix；</span><br><span class="hljs-emphasis">    - 缺失三级标题时仍按 block 和 token 上限稳定拆分。</span><br><span class="hljs-emphasis"></span><br><span class="hljs-emphasis">- 验证 References 逐条保存、Acknowledgements 确定性读取，二者不进入 Qdrant。</span><br><span class="hljs-emphasis">- 验证 Appendix 进入 text collection，但不进入图谱抽取。</span><br><span class="hljs-emphasis">- 验证 unknown 章节保留检索、默认不进图谱，并记录低置信度审计。</span><br><span class="hljs-emphasis">- 验证四个 Collection 独立命名、点数、所有权、删除与重建。</span><br><span class="hljs-emphasis">- 验证图片、表格、公式通过资产 ID 二次获取真实内容。</span><br><span class="hljs-emphasis">- 验证论文库拒绝伪 PDF、MinerU 不可用时 fail-closed，不回退普通解析。</span><br><span class="hljs-emphasis">- 验证普通知识库和旧索引行为不变。</span><br><span class="hljs-emphasis">- 前端验证类型选择、论文模式控件隐藏、PDF 限制、元数据展示和四 channel 状态。</span><br><span class="hljs-emphasis">- 完成后运行相关后端测试、完整前端生产构建及一次真实样例端到端摄取审计。</span><br><span class="hljs-emphasis"></span><br><span class="hljs-emphasis">## Assumptions</span><br><span class="hljs-emphasis"></span><br><span class="hljs-emphasis">- 该版本不实现未来的问答路由算法，只提供确定性论文元数据接口和 Appendix 限域检索基础</span><br><span class="hljs-emphasis"></span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/zyq.github.io/image.png" srcset="/zyq.github.io/img/loading.gif" lazyload alt="alt text"></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div></div>
+      <div>https://yq2004.github.io/zyq.github.io/2026/08/23/Project/Seekir/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zyq</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年8月23日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/zyq.github.io/2026/08/23/Project/DM-KG-Building/" title="">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/zyq.github.io/2026/08/23/Project/DM-QA-Bench/" title="">
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/zyq.github.io/js/events.js" ></script>
+<script  src="/zyq.github.io/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/zyq.github.io/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/zyq.github.io/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="/zyq.github.io/js/banner-color-scheme.js"></script>
+<script src="/zyq.github.io/js/font-toggle.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/zyq.github.io/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
