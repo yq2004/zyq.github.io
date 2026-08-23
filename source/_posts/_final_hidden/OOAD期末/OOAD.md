@@ -1,6 +1,7 @@
 ---
 title: OOAD期末复习
 date: 2023-12-12
+hidden: true
 tag:
 - OOAD
 - 软件工程

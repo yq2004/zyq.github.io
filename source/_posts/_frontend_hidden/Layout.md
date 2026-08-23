@@ -1,6 +1,7 @@
 ---
 title: ElementPlus布局
 date: {{date}}
+hidden: true
 tags:
 - 前端
 - vue

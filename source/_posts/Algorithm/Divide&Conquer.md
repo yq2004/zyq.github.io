@@ -1,6 +1,7 @@
 ---
 title: Divide&Conquer
 date: {{date}}
+hidden: true
 tag:
 - 算法基础
 - 分治

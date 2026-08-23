@@ -1,6 +1,7 @@
 ---
 title: 经典算法问题
 date: {{date}}
+hidden: true
 tag:
 - 算法
 - 算法基础

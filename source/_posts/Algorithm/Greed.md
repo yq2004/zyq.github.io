@@ -1,6 +1,7 @@
 ---
 title: Greedy Algorithm
 date: {{date}}
+hidden: true
 tags:
 - 算法基础
 - 贪心

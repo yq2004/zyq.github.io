@@ -1,6 +1,7 @@
 ---
 title: Backtrack
 date: {{date}}
+hidden: true
 tags:
 - 算法基础
 - 回溯

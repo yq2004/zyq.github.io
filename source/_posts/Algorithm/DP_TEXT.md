@@ -1,6 +1,7 @@
 ---
 title: Dynamic Programming
 date: {{date}}
+hidden: true
 tags:
 - 算法基础
 - 动态规划

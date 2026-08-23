@@ -1,6 +1,7 @@
 ---
 title: Branch&Bound
 date: {{date}}
+hidden: true
 tag:
 - 算法
 - 分支限界

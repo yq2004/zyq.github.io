@@ -1,6 +1,7 @@
 ---
 title: ElementPlus复习
 date: {{date}}
+hidden: true
 tags:
 - 前端
 - vue

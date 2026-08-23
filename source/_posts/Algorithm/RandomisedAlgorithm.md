@@ -1,6 +1,7 @@
 ---
 title: Randomised Algorithm
 date: {{date}}
+hidden: true
 tag:
 - 算法基础
 - 随机算法
