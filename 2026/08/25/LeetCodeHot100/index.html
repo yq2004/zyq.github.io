@@ -1,0 +1,1261 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head><!-- hexo injector head_begin start --><script>(function(){try{if(localStorage.getItem("fluid-font-mode")==="print"){document.documentElement.classList.add("print-font")}}catch(e){}})();</script><!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/zyq.github.io/img/icon/icon.png">
+  <link rel="icon" href="/zyq.github.io/img/icon/icon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zyq">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="🟩 🟨 🟥 笔记模板说明每道题按以下结构整理：   I &#x2F; O &#x2F; Cons：输入、输出、约束条件。审题阶段写，Cons 决定了解法的边界。 核心思路：一句话说清本质，面试时先讲这个。 一题多解：从暴力到最优，标注时间&#x2F;空间复杂度对比。 易错点：自己踩过的坑，复习时最值钱的部分。 深度思考：为什么这样做是对的（正确性论证 &#x2F; 模型抽象）。 类似题：同一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCodeHot100">
+<meta property="og:url" content="https://yq2004.github.io/zyq.github.io/2026/08/25/LeetCodeHot100/index.html">
+<meta property="og:site_name" content="zyq">
+<meta property="og:description" content="🟩 🟨 🟥 笔记模板说明每道题按以下结构整理：   I &#x2F; O &#x2F; Cons：输入、输出、约束条件。审题阶段写，Cons 决定了解法的边界。 核心思路：一句话说清本质，面试时先讲这个。 一题多解：从暴力到最优，标注时间&#x2F;空间复杂度对比。 易错点：自己踩过的坑，复习时最值钱的部分。 深度思考：为什么这样做是对的（正确性论证 &#x2F; 模型抽象）。 类似题：同一">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-08-25T02:17:15.000Z">
+<meta property="article:modified_time" content="2026-08-25T09:24:04.583Z">
+<meta property="article:author" content="zyq">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>LeetCodeHot100 - zyq</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/zyq.github.io/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/zyq.github.io/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/zyq.github.io/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/zyq.github.io/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"yq2004.github.io","root":"/zyq.github.io/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":50,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/zyq.github.io/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/zyq.github.io/js/utils.js" ></script>
+  <script  src="/zyq.github.io/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/zyq.github.io/">
+      <strong> </strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zyq.github.io/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zyq.github.io/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zyq.github.io/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zyq.github.io/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zyq.github.io/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/zyq.github.io/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="LeetCodeHot100"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-08-25 10:17" pubdate>
+          2026年8月25日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          17k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          145 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">LeetCodeHot100</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>🟩 🟨 🟥</p>
+<h2 id="笔记模板说明"><a href="#笔记模板说明" class="headerlink" title="笔记模板说明"></a>笔记模板说明</h2><p>每道题按以下结构整理：</p>
+<blockquote>
+<ul>
+<li><strong>I &#x2F; O &#x2F; Cons</strong>：输入、输出、约束条件。审题阶段写，Cons 决定了解法的边界。</li>
+<li><strong>核心思路</strong>：一句话说清本质，面试时先讲这个。</li>
+<li><strong>一题多解</strong>：从暴力到最优，标注时间&#x2F;空间复杂度对比。</li>
+<li><strong>易错点</strong>：自己踩过的坑，复习时最值钱的部分。</li>
+<li><strong>深度思考</strong>：为什么这样做是对的（正确性论证 &#x2F; 模型抽象）。</li>
+<li><strong>类似题</strong>：同一模型 &#x2F; 同一技巧的题目，横向串联成网。</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="Day1"><a href="#Day1" class="headerlink" title="Day1"></a>Day1</h2><blockquote>
+<p>共12道题： 1. 两数之和； 49. 字母异位词分组； 128.最长连续序列 283. 移动零； 11. 盛最多水的容器； 15. 三数之和； 42. 接雨水； 3. 无重复字符的最长子串； 438. 找到字符串中所有字母异位词； 560. 和为K的子数组； 239. 滑动窗口最大值； 76. 最小覆盖子串。</p>
+</blockquote>
+<h3 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h3><h4 id="1-两数之和-🟩"><a href="#1-两数之和-🟩" class="headerlink" title="1. 两数之和 🟩"></a>1. 两数之和 🟩</h4><blockquote>
+<p><strong>I</strong>: nums: List[int]; target: int</p>
+<p><strong>O</strong>: index: List[int]（长度为2的下标数组）</p>
+<p><strong>Cons</strong>: <code>nums[index[0]] + nums[index[1]] == target</code>；恰好存在一个有效答案；同一元素不能使用两次；<code>2 &lt;= len(nums)</code>。</p>
+</blockquote>
+<p><strong>核心思路</strong>：遍历每个数 x 时，问题转化为”x 之前是否出现过 target-x”，即 **查找 → 用哈希表把 O(n) 查找降为 O(1)**。</p>
+<p><strong>一题多解</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>解法</th>
+<th>时间</th>
+<th>空间</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>暴力枚举</td>
+<td>O(n²)</td>
+<td>O(1)</td>
+<td>双重循环</td>
+</tr>
+<tr>
+<td>两遍哈希</td>
+<td>O(n)</td>
+<td>O(n)</td>
+<td>先全建表再查，注意重复元素覆盖问题</td>
+</tr>
+<tr>
+<td>一遍哈希 ✅</td>
+<td>O(n)</td>
+<td>O(n)</td>
+<td>边查边存，天然避免用自己</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python3">def twoSum(self, nums: List[int], target: int) -&gt; List[int]:<br>    m = &#123;&#125;<br>    for i,num in enumerate(nums):<br>        if (target - num) in m:<br>            return i,m[target-num]<br>        m[num] = i<br>    return []<br></code></pre></td></tr></table></figure>
+
+<p><strong>易错点</strong>：</p>
+<ol>
+<li>一遍哈希必须<strong>先查后存</strong>。若先存再查，当 <code>target = 2*x</code> 时会匹配到自己。</li>
+<li>返回的是<strong>下标</strong>不是值；且题目保证有解，末尾 <code>return []</code> 只是语法兜底。</li>
+</ol>
+<p><strong>深度思考</strong>：一遍哈希的正确性在于：当遍历到 i 时，哈希表里恰好是 <code>[0, i-1]</code> 的所有元素——这正是”另一个数只能出现在别处”的完整搜索空间。这是<strong>用空间换时间的查找类问题的通用范式</strong>。</p>
+<h2 id="类似题：-167-两数之和-II-输入有序数组（有序版-→-双指针-O-1-空间）-15-三数之和-560-和为-K-的子数组（前缀和-哈希，同一个”查补数”思想）"><a href="#类似题：-167-两数之和-II-输入有序数组（有序版-→-双指针-O-1-空间）-15-三数之和-560-和为-K-的子数组（前缀和-哈希，同一个”查补数”思想）" class="headerlink" title="类似题：- 167. 两数之和 II - 输入有序数组（有序版 → 双指针 O(1) 空间）- 15. 三数之和- 560. 和为 K 的子数组（前缀和 + 哈希，同一个”查补数”思想）"></a><strong>类似题</strong>：<br>- <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/two-sum-ii-input-array-is-sorted/">167. 两数之和 II - 输入有序数组</a>（有序版 → 双指针 O(1) 空间）<br>- <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/3sum/">15. 三数之和</a><br>- <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/subarray-sum-equals-k/">560. 和为 K 的子数组</a>（前缀和 + 哈希，同一个”查补数”思想）</h2><h4 id="49-字母异位词分组-🟨"><a href="#49-字母异位词分组-🟨" class="headerlink" title="49. 字母异位词分组 🟨"></a>49. 字母异位词分组 🟨</h4><blockquote>
+<p><strong>I</strong>: strs: List[str]</p>
+<p><strong>O</strong>: List[List[str]]，外层 List 的每个元素是一组互为异位词的 str</p>
+<p><strong>Cons</strong>: <code>0 &lt;= len(strs[i]) &lt;= 50</code>，均为小写字母；异位词：字母相同但排列可能不同的词。</p>
+</blockquote>
+<p><strong>核心思路</strong>：互为异位词 ⟺ 存在相同的”规范签名”。<strong>分组问题 &#x3D; 找一个可哈希的等价类签名</strong>。</p>
+<p>理解异位词：1. 排序后相同；<strong>2. 各个字母出现的次数相同的词。</strong><br>前者约束更强（排序签名 O(klogk)，计数签名 O(k)）。</p>
+<p><strong>一题多解</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>签名方式</th>
+<th>单词处理</th>
+<th>时间</th>
+<th>空间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>排序签名 <code>tuple(sorted(s))</code></td>
+<td>O(klogk)</td>
+<td>O(nk·logk)</td>
+<td>代码最短，面试先说</td>
+</tr>
+<tr>
+<td>计数签名 ✅</td>
+<td>O(k)</td>
+<td>O(nk)</td>
+<td>26 维计数向量转 tuple 作 key</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python3">def groupAnagrams(self, strs: List[str]) -&gt; List[List[str]]:<br>    d = defaultdict(list)<br><br>    for s in strs:<br>        count = [0]*26<br>        for c in s:<br>            count[ord(c)-ord(&#x27;a&#x27;)] += 1<br>        d[tuple(count)].append(s)<br>    return list(d.values())<br></code></pre></td></tr></table></figure>
+
+<p><strong>易错点</strong>：</p>
+<ol>
+<li>强转 <code>tuple()</code>：list 可变、不可哈希，无法作为 hash key；tuple 不可变所以可以。（延伸：frozenset 也可哈希，但会丢失计数信息，不能用于本题）</li>
+<li><code>defaultdict</code> 常用接口：<code>d[key]</code> 不存在时自动创建默认值；<code>append</code> 配 <code>list</code>、<code>int</code> 配计数、<code>set</code> 去重收集。</li>
+</ol>
+<p><strong>深度思考</strong>：本题的本质是<strong>等价类划分</strong>。凡是”按某种不变量分组”的题，套路都是：① 定义不变量（签名）；② 保证签名相等 ⟺ 同组（双向蕴含）；③ 哈希聚合。排序签名和计数签名只是两种不同的不变量选取。</p>
+<p><strong>类似题</strong>：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/valid-anagram/">242. 有效的字母异位词</a>（判断两个词是否互为异位词）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-all-anagrams-in-a-string/">438. 找到字符串中所有字母异位词</a>（滑动窗口版）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/intersection-of-two-arrays/">349&#x2F;350. 两个数组的交集</a>（哈希聚合）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/word-pattern/">290. 单词规律</a>（双射映射）</li>
+</ul>
+<hr>
+<h4 id="128-最长连续序列-🟨"><a href="#128-最长连续序列-🟨" class="headerlink" title="128. 最长连续序列 🟨"></a>128. 最长连续序列 🟨</h4><blockquote>
+<p><strong>I</strong>: nums: List[int]</p>
+<p><strong>O</strong>: int，最长连续数字序列的长度</p>
+<p><strong>Cons</strong>: 要求 <strong>O(n)</strong> 时间复杂度（这是本题的灵魂约束，排解法直接否决）；序列元素在原数组中不必相邻；数值可达 ±10⁹ 且可能有重复。</p>
+</blockquote>
+<p><strong>核心思路</strong>：O(n) 排除了排序 → 只能用 set 做 O(1) 查找。关键洞察：<strong>只从连续段的起点开始向右探测</strong>，每个数最多被访问两次，整体 O(n)。永遠只从 <em>最底层</em> 开始做起：看到 num 就探测有没有 num-1，直到不存在 x-1，这才是最底层（段起点）。</p>
+<p><strong>一题多解</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>解法</th>
+<th>时间</th>
+<th>空间</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>排序后线性扫</td>
+<td>O(nlogn)</td>
+<td>O(1)</td>
+<td>不满足 Cons，面试中可作为引子被否决</td>
+</tr>
+<tr>
+<td>HashSet + 起点探测 ✅</td>
+<td>O(n)</td>
+<td>O(n)</td>
+<td>正确性依赖”跳过非起点”</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python3">def longestConsecutive(self, nums: List[int]) -&gt; int:<br>    # 永远只从 *最底* 层开始做起。比如现在看到了4.就探测一下有没有3...直到不存在x-1，这就是最底层。<br>    nums_set = set(nums)<br>    ans = 0<br>    for num in nums_set:<br>        if (num-1) in nums_set:<br>            continue<br>        temp_ans = 1<br>        while num+1 in nums_set: <br>            temp_ans += 1<br>            num += 1<br>        ans = max(temp_ans,ans)<br>    return ans<br></code></pre></td></tr></table></figure>
+
+<p><strong>易错点</strong>：</p>
+<ol>
+<li>忘记去重（应遍历 <code>nums_set</code> 而不是 <code>nums</code>），重复元素会让内层 while 重复跑，最坏退化 O(n²)。</li>
+<li>空数组要返回 0（本代码天然正确，因为循环不执行）。</li>
+<li><code>if (num-1) in nums_set: continue</code> 是复杂度的全部来源，漏掉就超时。</li>
+</ol>
+<p><strong>深度思考</strong>：为什么是 O(n)？内层 while 只在一个连续段的<strong>起点</strong>被触发，而所有段的起点探测的总步数 ≤ n。即：<strong>看似双重循环，实则均摊</strong>。这与”并查集路径压缩””KMP 均摊分析”是同一类复杂度论证方式。</p>
+<p><strong>类似题</strong>：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-continuous-increasing-subsequence/">674. 最长连续递增序列</a>（要求原数组中相邻）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-tree-longest-consecutive-sequence/">298. 二叉树最长连续序列</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/contiguous-array/">525. 连续数组</a>（前缀和 + 哈希）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/contains-duplicate-iii/">220. 存在重复元素 III</a>（set &#x2F; 桶维护近邻关系）</li>
+</ul>
+<hr>
+<h3 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h3><h4 id="283-移动零-🟩"><a href="#283-移动零-🟩" class="headerlink" title="283. 移动零 🟩"></a>283. 移动零 🟩</h4><blockquote>
+<p><strong>I</strong>: nums: List[int]</p>
+<p><strong>O</strong>: 无返回值，原地修改（in-place），使所有 0 移到末尾，非零元素保持原有相对顺序</p>
+<p><strong>Cons</strong>: 必须原地，尽量少操作次数；不开辟额外数组。</p>
+</blockquote>
+<p><strong>核心思路</strong>：快慢指针 —— l 指向”下一个非零元素应放的位置”，r 扫描全数组；r 遇到非零就和 l 交换。l 左边永远是已处理的非零前缀。</p>
+<p><strong>一题多解</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>解法</th>
+<th>时间</th>
+<th>操作次数</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>新开数组</td>
+<td>O(n)</td>
+<td>—</td>
+<td>违反 Cons</td>
+</tr>
+<tr>
+<td>先删零再补零（两次遍历）✅</td>
+<td>O(n)</td>
+<td>写次数更少</td>
+<td>非”交换”而是”覆盖”，赋值次数更优</td>
+</tr>
+<tr>
+<td>快慢指针原地交换 ✅</td>
+<td>O(n)</td>
+<td>最多 n 次交换</td>
+<td>见下方代码</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python3">def moveZeroes(self, nums: List[int]) -&gt; None:<br>    &quot;&quot;&quot;<br>    Do not return anything, modify nums in-place instead.<br>    &quot;&quot;&quot;<br>    l = r = 0<br>    n = len(nums)<br>    while r &lt; n:<br>        if nums[r]!=0:<br>            nums[r],nums[l] = nums[l],nums[r]<br>            l += 1<br>        r += 1<br></code></pre></td></tr></table></figure>
+
+<p><strong>易错点 &#x2F; 思考记录</strong>：</p>
+<ol>
+<li>如果所有非零元素都是大于零，且不要求保持元素相对位置，可以用冒泡排序，而且效率也不高（排序的条件太强）。</li>
+<li>要保持原有元素的相对位置…双指针，两个指针都不断向前，只在特定时候更新。</li>
+<li>2.中的双指针属于<strong>快慢指针</strong>，双指针可以建模为双端指针（l&#x3D;0,r&#x3D;n-1 快速收敛）和快慢指针（l&#x3D;r&#x3D;0，有一方更快）。更快一般是：r 不断向前遍历，l 只在特定时机移动几下；或者 r 一次移动多步，l 每次移动 1 步，但本质是一样的。</li>
+</ol>
+<p><strong>深度思考</strong>：交换法中 l≤r 恒成立，且 <code>[0,l)</code> 全非零、<code>[l,r)</code> 全零是循环不变式——<strong>用循环不变式证明双指针正确性</strong>是通用方法论。另注：”覆盖+补零”版本交换次数更少，若面试官追问优化点可答。</p>
+<p><strong>类似题</strong>：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-element/">27. 移除元素</a>（同款快慢指针）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-duplicates-from-sorted-array/">26. 删除有序数组中的重复项</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-duplicates-from-sorted-array-ii/">80. 删除有序数组中的重复项 II</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/sort-colors/">75. 颜色分类</a>（三指针 &#x2F; 荷兰国旗）</li>
+</ul>
+<hr>
+<h4 id="11-盛最多水的容器-🟨"><a href="#11-盛最多水的容器-🟨" class="headerlink" title="11. 盛最多水的容器 🟨"></a>11. 盛最多水的容器 🟨</h4><blockquote>
+<p><strong>I</strong>: height: List[int]，height[i] 是第 i 条垂线的高度</p>
+<p><strong>O</strong>: int，容器可容纳的最大水量</p>
+<p><strong>Cons</strong>: <code>area = min(h[l], h[r]) * (r-l)</code>；<code>n &gt;= 2</code>；不能倾斜容器。</p>
+</blockquote>
+<p><strong>核心思路</strong>：面积由短板和宽度共同决定。<strong>对撞双指针 + 贪心</strong>：每次移动较短的一侧——因为保留短板、缩小宽度不可能更优，只有换掉短板才有机会变大。</p>
+<p><strong>一题多解</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>解法</th>
+<th>时间</th>
+<th>空间</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>暴力枚举所有 pair</td>
+<td>O(n²)</td>
+<td>O(1)</td>
+<td>会 TLE，但面试先口述它体现思维过程</td>
+</tr>
+<tr>
+<td>对撞指针 + 贪心 ✅</td>
+<td>O(n)</td>
+<td>O(1)</td>
+<td>核心是证明移动短边的正确性</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python3">def maxArea(self, height: List[int]) -&gt; int:<br>    l = 0<br>    r = len(height) - 1<br>    ans = 0<br><br>    # 每次都会往中间靠，往中间靠，r-l必然会慢慢变小。<br>    # 那么怎样才可以贪呢？如果后续min(he_l,he_r)能变大。那么就可以贪。想要这个变大，移动min(he_l,he_r)中的更小的对应的下标才行：<br>    while r &gt; l:<br>        ans = max(min(height[l],height[r]) * (r-l),ans)<br>        if min(height[l],height[r]) == height[l]:<br>            l+=1<br>        else:<br>            r-=1<br>    return ans<br></code></pre></td></tr></table></figure>
+
+<p><strong>易错点</strong>：</p>
+<ol>
+<li>移动的是<strong>较短</strong>一边；两边相等时任移一边均可（可证明不丢最优解）。</li>
+<li>别写成移动较长的一边——那样 min 可能变小且宽度必变小，严格更差。</li>
+</ol>
+<p><strong>深度思考</strong>（贪心的正确性）：设当前 <code>(l, r)</code>，短板为 <code>h[l]</code>。若固定 <code>l</code> 不动、让 <code>r</code> 左移，则宽度减小且高度仍被 <code>h[l]</code> 封顶，面积必然不增 → 所有含 <code>l</code> 的其他组合都被当前解支配，可以安全丢弃 <code>l</code>。<strong>每一次移动都在排除一批被支配的状态</strong>，这就是对撞指针贪心的一般论证模板。</p>
+<p><strong>类似题</strong>：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/trapping-rain-water/">42. 接雨水</a>（同为”短板效应”，但求总量而非单次面积）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/valid-triangle-number/">611. 有效三角形的个数</a>（排序+对撞指针）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/two-sum-ii-input-array-is-sorted/">167. 两数之和 II</a>（对撞指针入门）</li>
+</ul>
+<hr>
+<h4 id="15-三数之和-🟨"><a href="#15-三数之和-🟨" class="headerlink" title="15. 三数之和 🟨"></a>15. 三数之和 🟨</h4><blockquote>
+<p><strong>I</strong>: nums: List[int]</p>
+<p><strong>O</strong>: ans: List[List[int]]，所有和为 0 的不重复三元组</p>
+<p><strong>Cons</strong>: 三元组内三个下标互不相同；<strong>答案不能包含重复的三元组</strong>（去重是最大难点）；<code>n &lt;= 3000</code>，暗示 O(n²) 可过。</p>
+</blockquote>
+<p><strong>核心思路</strong>：a+b+c&#x3D;0 枚举一个数 a 后退化为 two-sum。排序后固定 i，对 <code>[i+1, n-1]</code> 区间用<strong>对撞双指针</strong>找两数之和 <code>-nums[i]</code>，O(n²) 总体。</p>
+<p><strong>一题多解</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>解法</th>
+<th>时间</th>
+<th>空间</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>哈希表两数之和套一层</td>
+<td>O(n²)</td>
+<td>O(n)</td>
+<td>去重极其麻烦，不推荐</td>
+</tr>
+<tr>
+<td>排序 + 双指针 ✅</td>
+<td>O(n²)</td>
+<td>O(logn)（排序栈）</td>
+<td>去重自然：排序后跳过相邻重复值</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs python3">def threeSum(self, nums: list[int]) -&gt; list[list[int]]:<br>    ans = []<br>    n = len(nums)<br>    nums.sort()<br>    if nums[0] &gt; 0:<br>        return []<br>    i = 0<br>    while i&lt;n:<br>        if i&gt;0 and nums[i] == nums[i-1]:<br>            i+=1<br>            continue<br>        j = i+1<br>        k = n-1<br>        while j&lt;k:<br>            if nums[i]+nums[j]+nums[k] == 0:<br>                ans.append([nums[i],nums[j],nums[k]])<br>                while j&lt;k and nums[j]==nums[j+1]:<br>                    j+=1<br>                while j&lt;k and nums[k]==nums[k-1]:<br>                    k-=1<br>                j+=1<br>                k-=1<br>            elif nums[i]+nums[j]+nums[k] &lt; 0:<br>                j+=1<br>            else:<br>                k-=1<br>        i+=1<br>    return ans<br></code></pre></td></tr></table></figure>
+
+<p><strong>易错点</strong>：</p>
+<ol>
+<li>三处去重缺一不可：i 层跳过重复、命中后 j&#x2F;k 各自跳过重复段。</li>
+<li>命中后先去重再同时 <code>j++; k--</code>，顺序错了会漏解或重解。</li>
+<li>提前剪枝 <code>nums[0] &gt; 0</code> 可选但能加速。</li>
+</ol>
+<p><strong>深度思考</strong>：为什么排序后双指针不会漏解？排序保证了”两数之和偏小→右移 j、偏大→左移 k”的单调性，每次移动都能安全排除一类状态（同 11 题的被支配状态论证）。**”排序 + 固定一个 + 对撞找两个”是所有 NSum 问题的母题**，NSum 可递归化。</p>
+<p><strong>类似题</strong>：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/two-sum/">1. 两数之和</a>（无序哈希版 &#x2F; 有序双指针版）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/3sum-closest/">16. 最接近的三数之和</a>（双指针逼近 + 维护差值）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/4sum/">18. 四数之和</a>（NSum 递归模板）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/valid-triangle-number/">611. 有效三角形的个数</a></li>
+</ul>
+<hr>
+<h4 id="42-接雨水-🟥"><a href="#42-接雨水-🟥" class="headerlink" title="42. 接雨水 🟥"></a>42. 接雨水 🟥</h4><blockquote>
+<p><strong>I</strong>: height: List[int]，柱子高度</p>
+<p><strong>O</strong>: int，能接住的雨水总量</p>
+<p><strong>Cons</strong>: <code>water[i] = min(max_left[i], max_right[i]) - height[i]</code>（≥0 时才积水）；<code>n &lt;= 2*10⁴</code>，O(n)&#x2F;O(n²) 都可能过，但面试要求 O(n)。</p>
+</blockquote>
+<p><strong>核心思路</strong>：每个位置的水位 &#x3D; 两侧最大高度的较小者减去自身高度。<strong>按列算，而不是按行算</strong>。</p>
+<p><strong>一题多解</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>解法</th>
+<th>时间</th>
+<th>空间</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>按行暴力</td>
+<td>O(n·maxH)</td>
+<td>O(1)</td>
+<td>直觉解，TLE 风险</td>
+</tr>
+<tr>
+<td>按列暴力（每列扫两侧 max）</td>
+<td>O(n²)</td>
+<td>O(1)</td>
+<td>引出预计算</td>
+</tr>
+<tr>
+<td>前后缀预处理 ✅（当前代码）</td>
+<td>O(n)</td>
+<td>O(n)</td>
+<td>空间换时间的经典</td>
+</tr>
+<tr>
+<td>双指针 O(1) 空间 ✅</td>
+<td>O(n)</td>
+<td>O(1)</td>
+<td>面试加分项，见下</td>
+</tr>
+<tr>
+<td>单调栈</td>
+<td>O(n)</td>
+<td>O(n)</td>
+<td>按”横向层”结算，视角不同</td>
+</tr>
+</tbody></table>
+<p>当前实现（前后缀预处理）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs python3">def trap(self, height: List[int]) -&gt; int:<br>    n = len(height)<br>    max_left = [0]*n<br>    max_right = [0]*n<br>    rain_per_actual = [0]*n<br>    <br>    max_left[0] = height[0]<br>    max_right[n-1] = height[n-1]<br><br>    i = 1<br>    while i&lt;n:<br>        max_left[i] = max(max_left[i-1],height[i])<br>        i+=1<br><br>    i = n-2<br>    while i&gt;=0:<br>        max_right[i] = max(max_right[i+1],height[i])<br>        i-=1<br><br>    i = 0<br>    while i&lt;n:<br>        rain_per_actual[i] = max(min(max_left[i],max_right[i]) - height[i],0)<br>        i+=1<br><br>    rain_total = 0<br>    for rain in rain_per_actual:<br>        rain_total+=rain<br>    return rain_total<br></code></pre></td></tr></table></figure>
+
+<p>进阶：双指针 O(1) 空间版本：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python3">def trap(self, height: List[int]) -&gt; int:<br>    l = r = water = 0          # l,r 是待结算的左右边界<br>    left_max = right_max = 0   # 已扫过部分的最大值<br>    n = len(height)<br>    r = n - 1<br>    while l &lt; r:<br>        left_max = max(left_max, height[l])<br>        right_max = max(right_max, height[r])<br>        if left_max &lt; right_max:      # 左边最大值更小 → 该列水位由 left_max 决定<br>            water += left_max - height[l]<br>            l += 1<br>        else:<br>            water += right_max - height[r]<br>            r -= 1<br>    return water<br></code></pre></td></tr></table></figure>
+
+<p><strong>易错点</strong>：</p>
+<ol>
+<li><code>max(... , 0)</code> 不能省：柱子高于水位时不积水。</li>
+<li>双指针版本中，比较的是 <code>left_max</code> 与 <code>right_max</code>（已扫过的最大值），而不是 <code>height[l]</code> 与 <code>height[r]</code>。</li>
+</ol>
+<p><strong>深度思考</strong>：双指针版本的正确性：若 <code>left_max &lt; right_max</code>，则位置 l 的水位只取决于 left_max（右侧一定有 ≥ right_max &gt; left_max 的屏障）→ 可以放心结算 l 并右移。<strong>本质是把前后缀数组压缩成了两个标量，靠”较小一侧决定水位”的不对称性消除了一侧信息</strong>。单调栈解法则换了视角：按行横向结算，弹出栈时雨水 &#x3D; (宽) × (两侧较矮者 - 当前高)。</p>
+<p><strong>类似题</strong>：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/container-with-most-water/">11. 盛最多水的容器</a>（姊妹题：短板定面积 vs 短板定水位）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/largest-rectangle-in-histogram/">84. 柱状图中最大的矩形</a>（单调栈，接雨水的下一关）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/trapping-rain-water-ii/">407. 接雨水 II</a>（二维版，BFS + 优先队列）</li>
+</ul>
+<hr>
+<h3 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h3><h4 id="3-无重复字符的最长子串-🟨"><a href="#3-无重复字符的最长子串-🟨" class="headerlink" title="3. 无重复字符的最长子串 🟨"></a>3. 无重复字符的最长子串 🟨</h4><blockquote>
+<p><strong>I</strong>: s: str</p>
+<p><strong>O</strong>: int，不含重复字符的最长子串长度</p>
+<p><strong>Cons</strong>: 子串必须<strong>连续</strong>；字符含字母、数字、符号、空格；<code>len(s) &lt;= 5*10⁴</code>，O(n) 目标。</p>
+</blockquote>
+<p><strong>核心思路</strong>：子串 + 约束随窗口变化 → 滑动窗口。右指针扩张，出现重复时收缩左边界直到无重复，用哈希集合维护窗口内容。</p>
+<p><strong>一题多解</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>解法</th>
+<th>时间</th>
+<th>空间</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>暴力检查所有子串</td>
+<td>O(n³) 或 O(n²)+set</td>
+<td>O(min(n,c))</td>
+<td>被否决的起点</td>
+</tr>
+<tr>
+<td>滑动窗口 + set ✅</td>
+<td>O(n)（每字符进出各一次）</td>
+<td>O(min(n, c))</td>
+<td>通用模板写法</td>
+</tr>
+<tr>
+<td>窗口 + last-position 直接跳跃 ✅</td>
+<td>O(n)</td>
+<td>O(c)</td>
+<td>左指针一步到位，不用逐格收缩</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python3"># 写法一：滑动窗口模板（收缩式，最通用）<br>def lengthOfLongestSubstring(self, s: str) -&gt; int:<br>    window = set()<br>    l = ans = 0<br>    for r, c in enumerate(s):<br>        while c in window:      # 有重复 → 收缩左端<br>            window.remove(s[l])<br>            l += 1<br>        window.add(c)<br>        ans = max(ans, r - l + 1)<br>    return ans<br><br># 写法二：记录每个字符最后出现的位置，左指针直接跳跃<br>def lengthOfLongestSubstring(self, s: str) -&gt; int:<br>    last = &#123;&#125;<br>    l = ans = 0<br>    for r, c in enumerate(s):<br>        if c in last and last[c] &gt;= l:<br>            l = last[c] + 1     # 直接跳过上一个 c<br>        last[c] = r<br>        ans = max(ans, r - l + 1)<br>    return ans<br></code></pre></td></tr></table></figure>
+
+<p><strong>易错点</strong>：</p>
+<ol>
+<li>写法二中必须判断 <code>last[c] &gt;= l</code>：上一次出现的 c 若已在窗口外，不能回跳左指针（例 <code>&quot;abba&quot;</code>，第二个 <code>a</code> 时 <code>last[a]=0 &lt; l=2</code>）。</li>
+<li>收缩条件是 <code>while</code> 不是 <code>if</code>：可能需要连续移出多个字符。</li>
+<li><code>ans</code> 在窗口合法时更新，别放在收缩之前。</li>
+</ol>
+<p><strong>深度思考</strong>：滑动窗口可行的前提是<strong>单调性</strong>：右指针右移只会让约束”更紧”，左指针不需要回退。整个算法中 l 和 r 各自单调前进 → 均摊 O(n)。滑动窗口三问：① 什么时候扩（for r）；② 什么时候缩（违反约束 while）；③ 在哪更新答案（通常窗口合法时）。这套模板可直接迁移到 438 &#x2F; 76 &#x2F; 209。</p>
+<p><strong>类似题</strong>：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-all-anagrams-in-a-string/">438. 找到字符串中所有字母异位词</a>（定长窗口）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-window-substring/">76. 最小覆盖子串</a>（求最小窗口，模板变体）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-size-subarray-sum/">209. 长度最小的子数组</a>（正数数组，可双指针&#x2F;二分）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/fruit-into-baskets/">904. 水果成篮</a>（至多 2 种元素的窗口）</li>
+</ul>
+<p>— Agent Resume Here —</p>
+<h4 id="438-找到字符串中所有字母异位词-🟨"><a href="#438-找到字符串中所有字母异位词-🟨" class="headerlink" title="438. 找到字符串中所有字母异位词 🟨"></a>438. 找到字符串中所有字母异位词 🟨</h4><blockquote>
+<p><strong>I</strong>: s: str, p: str</p>
+<p><strong>O</strong>: List[int]，p 的所有异位词在 s 中的起始索引</p>
+<p><strong>Cons</strong>: s、p 均为小写字母；窗口<strong>定长</strong> <code>len(p)</code>；<code>len(s), len(p) &lt;= 3*10⁴</code>，暴力 O(n·m·26) 会被卡，目标 O(n)。判据：窗口内字母计数 &#x3D;&#x3D; p 的字母计数。</p>
+</blockquote>
+<p><strong>核心思路</strong>：定长滑动窗口 + 字母计数。相邻窗口只有一出一进两个字符变化 → <strong>增量更新</strong>计数数组，而不是每个窗口重新统计。</p>
+<p><strong>一题多解</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>解法</th>
+<th>时间</th>
+<th>空间</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>解法一：暴力枚举起点 + 校验</td>
+<td>O(n·m·26)</td>
+<td>O(26)</td>
+<td>直觉解</td>
+</tr>
+<tr>
+<td>解法二：滑动窗口 + 计数数组比较</td>
+<td>O(26n)</td>
+<td>O(26)</td>
+<td>只更新出入的两个字符</td>
+</tr>
+<tr>
+<td>解法三：match_count 标量聚合 ✅</td>
+<td>O(n)</td>
+<td>O(26)</td>
+<td>判等降到 O(1)</td>
+</tr>
+</tbody></table>
+<p>方法一：最直观最容易想到的暴力遍历并校验是否为“异位词”</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs python3">def is_anagram(self,s1:str,s2:str):<br>    count_s1 = [0]*26<br>    count_s2 = [0]*26<br><br>    for c1 in s1:<br>        count_s1[ord(c1)-ord(&#x27;a&#x27;)] += 1<br>    for c2 in s2:<br>        count_s2[ord(c2)-ord(&#x27;a&#x27;)] += 1<br>    return count_s1 == count_s2<br><br>def findAnagrams(self, s: str, p: str) -&gt; List[int]:<br>    # 解法1 暴力法<br>    len_p = len(p)<br>    len_s = len(s)<br>    if len_p &gt; len_s:<br>        return []<br>    ans = []<br>    for i in range(len_s-len_p+1):<br>        if self.is_anagram(p,s[i:i+len_p]):<br>            ans.append(i)<br>    return ans<br></code></pre></td></tr></table></figure>
+<p>但是，方法一很不智能，其优化的点在于，如果跳过一些显而易见的“校验”过程。<br>关键观察：相邻两个窗口之间，只发生了两件事：<br>最左边的字符滑出去了（c 离开）<br>最右边的新字符滑进来了（e 进入）<br>中间重叠的部分（b a &#x2F; a e）完全没变，却被反复统计了。如果每次只更新”变化了的 2 个字符”，而不是重新数全部 26 个，就能从 O(m) 降到 O(1) 每次。</p>
+<p>既然只变两个字符，那我们就维护一个正在运行的计数数组，每次窗口右移时：<br>窗口从 [i, i+len_p) 滑到 [i+1, i+len_p+1)：</p>
+<ol>
+<li>s[i]       的计数 -1   （左边字符滑出）</li>
+<li>s[i+len_p] 的计数 +1   （右边字符滑入）</li>
+<li>比较当前计数数组 和 p 的计数数组<br>这就是滑动窗口的全部精髓——增量更新，避免重复计算。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs python3">def findAnagrams(self, s: str, p: str) -&gt; List[int]:<br>    len_p, len_s = len(p), len(s)<br>    if len_p &gt; len_s:<br>        return []<br><br>    # 1. 建 p 的目标计数数组（只需要建一次）<br>    p_count = [0] * 26<br>    for c in p:<br>        p_count[ord(c) - ord(&#x27;a&#x27;)] += 1<br><br>    # 2. 建第一个窗口的计数数组<br>    window_count = [0] * 26<br>    for i in range(len_p):<br>        window_count[ord(s[i]) - ord(&#x27;a&#x27;)] += 1<br><br>    ans = []<br>    # 3. 检查第一个窗口<br>    if window_count == p_count:<br>        ans.append(0)<br><br>    # 4. 滑动窗口：每次只更新&quot;出去的&quot;和&quot;进来的&quot;<br>    for i in range(len_p, len_s):<br>        # 左边滑出的字符：计数 -1<br>        left_char = s[i - len_p]<br>        window_count[ord(left_char) - ord(&#x27;a&#x27;)] -= 1<br><br>        # 右边滑入的字符：计数 +1<br>        right_char = s[i]<br>        window_count[ord(right_char) - ord(&#x27;a&#x27;)] += 1<br><br>        # 比较（O(26) 的常数比较，可以再优化，但已经很快了）<br>        if window_count == p_count:<br>            ans.append(i - len_p + 1)<br><br>    return ans<br></code></pre></td></tr></table></figure></li>
+</ol>
+<p>O(26) –&gt; O(1)的进一步优化：match_count代表“&lt;字母数量&gt;相同的&lt;数量&gt;”，异位词就是:两个词的每个字母的数量都相同，因此异位词的match_count是26。那么在窗口滑动的过程中，我们之前是比较p_match和s_match这两个[]*26的，现在我们只需要更新p_match，并最后验证是否为26就能判断是否是异位词了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs python3">def findAnagrams(self, s: str, p: str) -&gt; List[int]:<br>    len_p, len_s = len(p), len(s)<br>    if len_p &gt; len_s:<br>        return []<br><br>    # 1. 目标计数数组（只需要建一次）<br>    p_count = [0] * 26<br>    for c in p:<br>        p_count[ord(c) - ord(&#x27;a&#x27;)] += 1<br><br>    # 2. 窗口计数数组 + match_count<br>    window_count = [0] * 26<br>    match_count = 0  # 记录&quot;计数恰好等于 p&quot;的字母有多少种<br><br>    # 3. 初始化第一个窗口<br>    for i in range(len_p):<br>        idx = ord(s[i]) - ord(&#x27;a&#x27;)<br>        window_count[idx] += 1<br>    <br>    # 计算初始的 match_count<br>    for i in range(26):<br>        if window_count[i] == p_count[i]:<br>            match_count += 1<br><br>    ans = []<br>    if match_count == 26:<br>        ans.append(0)<br><br>    # 4. 滑动窗口（每次 O(1) 更新）<br>    for right in range(len_p, len_s):<br>        # --- 右边滑入 ---<br>        idx_in = ord(s[right]) - ord(&#x27;a&#x27;)<br>        if window_count[idx_in] == p_count[idx_in]:<br>            match_count -= 1   # 滑入前刚好相等，加1后就会超，所以先减<br>        window_count[idx_in] += 1<br>        if window_count[idx_in] == p_count[idx_in]:<br>            match_count += 1   # 加完后刚好相等，加回来<br><br>        # --- 左边滑出 ---<br>        idx_out = ord(s[right - len_p]) - ord(&#x27;a&#x27;)<br>        if window_count[idx_out] == p_count[idx_out]:<br>            match_count -= 1   # 滑出前刚好相等，减1后就会少，所以先减<br>        window_count[idx_out] -= 1<br>        if window_count[idx_out] == p_count[idx_out]:<br>            match_count += 1   # 减完后刚好相等，加回来<br><br>        # --- O(1) 判断 ---<br>        if match_count == 26:<br>            ans.append(right - len_p + 1)<br><br>    return ans<br></code></pre></td></tr></table></figure>
+
+<p><strong>易错点</strong>：</p>
+<ol>
+<li>match_count 的维护必须<strong>先减后加</strong>：滑入&#x2F;滑出前若该字母计数刚好相等，先 <code>match_count -= 1</code>，变动后再判断加回——顺序反了会漏记状态翻转（作者已在代码注释中标明”先减”的原因）。</li>
+<li><code>window_count == p_count</code> 是 O(26) 的常数比较，别误当 O(1)——解法二整体是 O(26n) 而非 O(n)。</li>
+<li>解法二中出窗口的下标是 <code>i - len_p</code>，别写成 <code>i</code>；窗口是定长的。</li>
+</ol>
+<p><strong>深度思考</strong>：本题是作者总结的”增量更新，避免重复计算”的标准范本：相邻窗口重叠部分完全没变却被反复统计，只更新变化的 2 个字符即可。match_count 则是更进一步的抽象：把”两个 26 维向量是否相等”的 O(26) 判等，替换为维护一个<strong>标量聚合指标</strong>（计数恰好相等的字母种类数），判等降为 O(1)。这与 76 题的 valid 变量同源——<strong>当需要反复比较高维状态时，提炼一个可随单点更新 O(1) 维护的全局量</strong>。</p>
+<p><strong>类似题</strong>：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/permutation-in-string/">567. 字符串的排列</a>（同一模型换输出：是否存在 → bool）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-window-substring/">76. 最小覆盖子串</a>（窗口长度不定版，match_count 思想直接迁移）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/substring-with-concatenation-of-all-words/">30. 串联所有单词的子串</a>（窗口单位从字符升级为单词）</li>
+</ul>
+<hr>
+<h3 id="子串"><a href="#子串" class="headerlink" title="子串"></a>子串</h3><h4 id="560-和为K的子数组-🟨"><a href="#560-和为K的子数组-🟨" class="headerlink" title="560. 和为K的子数组 🟨"></a>560. 和为K的子数组 🟨</h4><blockquote>
+<p><strong>I</strong>: nums: List[int]; k: int</p>
+<p><strong>O</strong>: int，和为 k 的<strong>连续</strong>子数组的个数</p>
+<p><strong>Cons</strong>: 数组含<strong>负数</strong> → 滑动窗口失去单调性、不可用；只需计数不要求枚举子数组；目标 O(n)。核心恒等式：<code>pre_sum[j] - pre_sum[i] == k ⟺ 子数组 (i, j] 的和为 k</code>。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python3">def subarraySum(self, nums: List[int], k: int) -&gt; int:<br>    # 无法确定子数组的长度，所以暴力法需要先遍历子数组的长度<br>    # 然后在每种长度下去考虑这种长度的子数组是否有一些是满足sum为k的。想一下必然超时。<br><br>    # 解题的核心关键是知道：**任何长度和任意位置**的连续子数组，必然可以通过**两段前缀数组作差**得到。<br><br>    <br>    # key是前缀和，value是这种 前缀和 的 前缀数组的**数量**<br>    # 前缀和为0的 前缀数组 默认有一个<br>    count = &#123;0:1&#125;<br>    ans = 0<br><br>    # 考虑**当前遍历途中**的 前缀数组 的前缀和。那么任意满足要求的子串都可以快速根据**以往的前缀数组的前缀和**和**当前遍历途中**的前缀数组的前缀和确定：current_pre_sum - target == k。target就是**以往的前缀数组的前缀和**，而满足这种前缀和的，不一定只出现一次，这就是前面count的作用。<br>    current_pre_sum = 0<br>    for num in nums:<br>        current_pre_sum+=num<br>        target = current_pre_sum-k<br>        if target in count:<br>            ans += count[target]<br>        <br>        count[current_pre_sum] = count.get(current_pre_sum,0)+1<br>    return ans<br></code></pre></td></tr></table></figure>
+<ol>
+<li>除了<map>.get(key,default_value)外，python中map数据结构的常见函数和使用方法还有:…</li>
+</ol>
+<p><strong>易错点</strong>：</p>
+<ol>
+<li><code>count = &#123;0:1&#125;</code> 不能漏：空前缀的前缀和为 0，它让”从头开始的子数组”也能被差分出来。</li>
+<li>必须<strong>先查 target、再把当前前缀和入表</strong>：若先入表，当 <code>k=0</code> 时会把当前前缀和自己配对，算出长度为 0 的假子数组。（对照第 1 题的”先查后存”，同一个坑）</li>
+<li><code>count.get(current_pre_sum,0)+1</code>：前缀和会重复出现，value 存的是<strong>数量</strong>不是下标——这是本题与第 1 题哈希表的第二个差异。</li>
+</ol>
+<p><strong>深度思考</strong>：作者已点破核心：任何连续子数组之和 &#x3D; 两段前缀之差，于是”找和为 k 的子数组”退化为”历史前缀和中 <code>current_pre_sum - k</code> 出现过几次”。与第 1 题（查补数）是同一个”哈希查补”母题，只是把”值”升级为”前缀和”、把”存在性”升级为”计数”。另一个关键：<strong>为什么不能用滑动窗口？</strong> 负数破坏了”窗口扩张、区间和必然增大”的单调性，收缩判定失效。凡是看到”子数组 + 含负数 + 区间和”三件套，直接想前缀和 + 哈希。</p>
+<p><strong>类似题</strong>：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-subarrays-with-sum/">930. 和相同的二元子数组</a>（0&#x2F;1 数组版，前缀和与双指针均可）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/subarray-sums-divisible-by-k/">974. 和可被 K 整除的子数组</a>（把”和为 k”换成”和 mod k &#x3D;&#x3D; 0”，注意负数取模）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/continuous-subarray-sum/">523. 连续的子数组和</a>（前缀和 + 取模 + 下标距离约束）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/count-number-of-nice-subarrays/">1248. 统计「优美子数组」</a>（前缀和换成”奇数个数”的前缀计数）</li>
+</ul>
+<h4 id="239-滑动窗口最大值-🟥"><a href="#239-滑动窗口最大值-🟥" class="headerlink" title="239. 滑动窗口最大值 🟥"></a>239. 滑动窗口最大值 🟥</h4><blockquote>
+<p><strong>I</strong>: nums: List[int]; k: int</p>
+<p><strong>O</strong>: List[int]，每个大小为 k 的滑动窗口中的最大值</p>
+<p><strong>Cons</strong>: 窗口<strong>定长</strong> k，从左到右滑动；<code>1 &lt;= k &lt;= n &lt;= 10⁵</code>，暴力 O(nk) 必超时；目标 O(n)。本质是”动态集合的最值查询”问题。</p>
+</blockquote>
+<ol>
+<li>暴力法，但是超时：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python3">def max_of(self,nums:List[int]):<br>    ans = nums[0]<br>    for num in nums:<br>        if num &gt; ans:<br>            ans = num<br>    return ans<br><br>def maxSlidingWindow(self, nums: List[int], k: int) -&gt; List[int]:<br>    # 最直观的方法，记录每次能看见的最大值，然后不断max就行。<br>    n = len(nums)<br>    ans = []<br>    for i in range(n-k+1):<br>        current_ans = self.max_of(nums[i:i+k])<br>        ans.append(current_ans)<br>    return ans<br></code></pre></td></tr></table></figure></li>
+</ol>
+<p><strong>一题多解</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>解法</th>
+<th>时间</th>
+<th>空间</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>解法一：暴力逐窗口取 max ✅（下方代码，超时）</td>
+<td>O(nk)</td>
+<td>O(1)</td>
+<td>直觉解，被 Cons 否决</td>
+</tr>
+<tr>
+<td>堆 &#x2F; 优先队列（懒删除）</td>
+<td>O(nlogn)</td>
+<td>O(n)</td>
+<td>只关心冠军不关心排名，见扩展2第4条</td>
+</tr>
+<tr>
+<td>单调队列 ✅</td>
+<td>O(n)</td>
+<td>O(k)</td>
+<td>每元素至多进出队各一次</td>
+</tr>
+</tbody></table>
+<p><strong>优化推导</strong>：</p>
+<p>从哪里着手优化？和之前异位词一样的思考路径：相邻窗口之间，什么变了？什么没变？哪些计算是白做的？<br>窗口1: [1, 3, -1]  → 遍历3次，找到最大值 3<br>窗口2: [3, -1, -3] → 又遍历3次，找到最大值 3<br>窗口3: [-1, -3, 5] → 又遍历3次，找到最大值 5<br>问题：<br>3在窗口1是最大值，滑到窗口2时它还在，而且没有比它更大的进来，那它肯定还是最大值。但我们又重新遍历了一遍。<br>更糟糕的是：-1 和 -3 这种<strong>又老又小的元素，永远不可能成为任何后续窗口的最大值</strong>（因为 5 比它们大，而且 5 比它们晚离开窗口），但每次都在参与比较。<br><strong>核心洞察</strong><br>如果一个元素又老又小，它永远不可能”翻盘”成为最大值，可以直接扔掉。<br>比如窗口里依次进来：[5, 2, 1, 8]<br>5 进来，当前最大是 5<br>2 进来，它比 5 小，而且 5 比它晚离开（index 更小），所以 2 永远没机会当最大<br>1 同理<br>8 进来，它比 5、2、1 都大，而且更晚离开 —— 之前所有的全都可以扔掉了</p>
+<p>引出「单调队列」<br>维护一个递减的双端队列，队列里存的是索引（不是值），保证：<br>队首永远是当前窗口最大值的索引<br>队列里的索引对应的值是严格递减的<br>每次窗口滑动时：<br>移除队首：如果队首索引已经滑出窗口，弹出<br>清理队尾：从队尾开始，把所有 &lt; nums[right] 的索引弹出（它们永远没机会了）<br>加入新元素：把当前索引从队尾加入<br>队首就是答案<br>这就是”智能跳过”——提前淘汰所有不可能成为最大值的元素。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python3">def maxSlidingWindow(self, nums: List[int], k: int) -&gt; List[int]:<br>        dq = deque() # 存索引，对应的值递减<br>        ans = []<br><br>        for i in range(len(nums)):<br>            if dq and dq[0]&lt;i-k+1:<br>                # 你固然很大，但假如你不在窗口中了，也得离队<br>                dq.popleft()<br>            # 细节：注意上面的是if，下面的是while，每次判断是否“过时”肯定是只需要看一次的。（因为每次就移动一次）<br><br>            # 但是移动一次会带来一个新的值，这个值可不一定只比一个旧值大，这个又new又big的新成员会扼杀所有比他小的老成员<br>            while dq and nums[dq[-1]]&lt;nums[i]:<br>                dq.pop()<br><br>            dq.append(i)<br><br>            # 窗口开始形成了，此后都需要记录 &#x27;这个时代的王&#x27;<br>            if i&gt;= k-1:<br>                ans.append(nums[dq[0]])<br>        return ans<br></code></pre></td></tr></table></figure>
+
+<p><strong>易错点</strong>：</p>
+<ol>
+<li>队首”过时”判断用 <code>if</code> 即可（每次窗口只移动一步，最多一个队首过期）；但队尾清理必须 <code>while</code>——新来的大值可能一口气淘汰多个旧候选（作者已在代码注释中标明 if&#x2F;while 的区别）。</li>
+<li>队列存<strong>索引</strong>而不是值：只有索引才能判断”是否已滑出窗口”（<code>dq[0] &lt; i-k+1</code>），存值就丢了这个信息。</li>
+<li>收录答案的条件是 <code>i &gt;= k-1</code>：第一个窗口凑满后才开始记录。</li>
+</ol>
+<p><strong>深度思考</strong>：作者的”核心洞察”值得背下来——<strong>又老又小的元素永远不可能翻盘成为最大值，可以直接扔掉</strong>。单调队列的正确性建立在这条支配关系上：若 <code>i &lt; j</code> 且 <code>nums[i] &lt;= nums[j]</code>，则 i 在 j 离开窗口前就已失去价值，即 <strong>i 被 j 支配</strong>。每次入队淘汰全部被支配者，队列内保持严格递减 → 每个元素至多进出队各一次，均摊 O(n)。这与 11 题、42 题的”被支配状态排除法”是同一套论证语言。另见下方扩展2：算法思想先于数据结构名词，单调队列只是这条淘汰规则的”标准化封装”。</p>
+<p><strong>类似题</strong>：</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/daily-temperatures/">739. 每日温度</a>（单调栈孪生题，作者扩展2第3条有直觉对应）</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/largest-rectangle-in-histogram/">84. 柱状图中最大的矩形</a>（单调栈进阶，42 接雨水系列的下一关）</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/">1438. 绝对差不超过限制的最长子数组</a>（同时维护递增+递减两个单调队列）</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/dui-lie-de-zui-da-zhi-lcof/">剑指 Offer 59 - II. 队列的最大值</a>（把单调队列封装成一个数据结构类）</p>
+</li>
+<li><p>扩展1：单调队列的有用的函数有：…</p>
+</li>
+<li><p>扩展2：《数据结构》与《算法》的微妙关系：<br>本题中，直接根据<strong>如果一个元素又老又小，它永远不可能”翻盘”成为最大值，可以直接扔掉。</strong>这一核心论断（算法）去解题，完全又很多种实现手段，需要手写很多额外的判断、循环逻辑。但这里我们开箱即用了一个<strong>单调队列</strong>（数据结构）。</p>
+</li>
+</ul>
+<p>很烦那些一上来就对新手灌输一堆专业术语的人，人家刚入门解题，你告诉别人这题要用单调队列，要用前缀和，本质像是在倒果为因。你要做的更应该是告诉解题的算法和思路，然后告诉这种算法和思路太有用、太通用了，所以我们抽象化、模板化成了可复用，易recall的术语或者说数据结构。比如本地的<strong>单调队列</strong>。那么还有哪些经典的呢？</p>
+<ol>
+<li>前缀和数组（Prefix Sum）</li>
+</ol>
+<ul>
+<li>核心思想​: 空间换时间，把”区间求和”从 O(n) 变成 O(1)</li>
+<li>解题场景​: 频繁查询数组某段区间的和</li>
+<li>吻合点​: 暴力法是每次重新加一遍；前缀和是提前把中间结果缓存下来​</li>
+<li>不用前缀和：每次 sum(nums[i:j+1]) → O(n)</li>
+<li>用前缀和：pre_sum[j+1] - pre_sum[i] → O(1)</li>
+<li>💡 直觉对应：”我上次已经算过前 5 个数的和了，为什么每次都从 0 开始加？”</li>
+</ul>
+<ol start="2">
+<li>哈希表（Hash Map &#x2F; Dict）</li>
+</ol>
+<ul>
+<li>核心思想​: O(1) 随机访问，用空间换时间</li>
+<li>解题场景​: 两数之和、异位词分组、LRU Cache</li>
+<li>吻合点​: 暴力法是两层循环枚举；哈希表是把”找人”变成”叫名字”​</li>
+<li>暴力：for i, for j, if nums[i]+nums[j]&#x3D;&#x3D;target → O(n²)</li>
+<li>哈希：for i, if target-nums[i] in seen → O(n)</li>
+<li>💡 直觉对应：”我需要一个东西，不用翻遍全班，直接喊名字就能找到他。”</li>
+</ul>
+<ol start="3">
+<li>单调栈（Monotonic Stack）</li>
+</ol>
+<ul>
+<li>核心思想​: 维护递增&#x2F;递减栈，找”下一个更大&#x2F;更小”的元素</li>
+<li>解题场景​: 每日温度、柱状图最大矩形、下一个更大元素</li>
+<li>吻合点​: 和单调队列是亲兄弟——都是”淘汰没用的候选者”</li>
+</ul>
+<p>&lt;找每个温度之后第一个更暖和的一天&gt;</p>
+<ul>
+<li>暴力：每个元素往后扫 → O(n²)</li>
+<li>单调栈：维护递减栈，遇到更大的就”结算”栈里所有比它小的 → O(n)</li>
+<li>💡 直觉对应：”如果今天 30 度，那之前所有 25 度的日子，它们的’下一个更暖日’就是今天——直接结案，不用再等了。”</li>
+</ul>
+<ol start="4">
+<li>堆 &#x2F; 优先队列（Heap &#x2F; Priority Queue）	<br>核心思想​: 动态维护一个集合中的最大值&#x2F;最小值<br>解题场景​: Top K 问题、数据流中位数、合并 K 个有序链表<br>吻合点​: 暴力法是每次排序找极值；堆是只关心冠军，不关心排名​</li>
+</ol>
+<p>&lt;找第 K 大的元素&gt;</p>
+<ul>
+<li>暴力：排序 → O(n log n)</li>
+<li>堆：维护大小为 K 的小顶堆，遍历完堆顶就是答案 → O(n log K)</li>
+<li>💡 直觉对应：”我不需要知道全班排名，我只需要知道前 3 名是谁。”</li>
+</ul>
+<ol start="5">
+<li>并查集（Union-Find &#x2F; Disjoint Set）<br>核心思想​: 动态连通性 + 路径压缩，把”找老大”的代价摊平到 O(α(n))<br>解题场景​: 岛屿数量、账户合并、冗余连接<br>吻合点​: 暴力法是每次 BFS&#x2F;DFS 查连通；并查集是把”查关系”变成”认祖宗”​</li>
+</ol>
+<p>&lt;判断两个节点是否连通&gt;</p>
+<ul>
+<li>暴力：每次 BFS&#x2F;DFS 遍历 → O(V+E)</li>
+<li>并查集：find(a) &#x3D;&#x3D; find(b) → O(1) 均摊</li>
+<li>💡 直觉对应：”不用问中间人，直接问最终老板——而且问一次就记住了，下次直接答。”</li>
+</ul>
+<ol start="6">
+<li>Trie（前缀树）<br>核心思想​: 共享公共前缀，把字符串查找变成树的路径遍历<br>解题场景​: 单词搜索、自动补全、前缀匹配<br>吻合点​: 暴力法是每个单词单独存；Trie 是把重复的前缀只存一次​</li>
+</ol>
+<p>&lt;在 10 万个单词里查有没有以 “pre” 开头的&gt;</p>
+<ul>
+<li>暴力：遍历所有单词，每个检查前缀 → O(total_chars)</li>
+<li>Trie：从根走 3 步到 ‘e’ 节点，看子树是否为空 → O(prefix_len)</li>
+<li>💡 直觉对应：”‘apple’ 和 ‘apply’ 前面 4 个字母一模一样，为什么要存两遍？”</li>
+</ul>
+<ol start="7">
+<li>双指针 &#x2F; 快慢指针<br>核心思想​: 利用单调性，用两个指针替代一层循环<br>解题场景​: 有序数组两数之和、链表环检测、移动零<br>吻合点​ :暴力法是两层循环；双指针是一个管扩张，一个管收缩​</li>
+</ol>
+<p>&lt;有序数组找两数之和&gt;</p>
+<ul>
+<li>暴力：两层 for → O(n²)</li>
+<li>双指针：left&#x3D;0, right&#x3D;n-1, 根据 sum 大小移动 → O(n)</li>
+<li>💡 直觉对应：”既然已经排好序了，大了就往小挪，小了就往大挪，不用瞎猜。”</li>
+</ul>
+<blockquote>
+<p>数据结构不是魔法，它们只是人类聪明直觉的”标准化封装”。</p>
+</blockquote>
+<h4 id="76-最小覆盖子串-🟥"><a href="#76-最小覆盖子串-🟥" class="headerlink" title="76. 最小覆盖子串 🟥"></a>76. 最小覆盖子串 🟥</h4><p>给定字符串 s 和 t，在 s 中找出包含 t 所有字符的最短子串。</p>
+<blockquote>
+<p><strong>I</strong>: s: str, t: str</p>
+<p><strong>O</strong>: str，包含 t 所有字符（含重复，按次数计）的最短子串；不存在返回 “”</p>
+<p><strong>Cons</strong>: 窗口长度<strong>不定</strong>且求最小 → 收缩时机与 3&#x2F;438 相反（先扩到满足、再收到极限、记录最优）；t 可能有重复字符需按数量覆盖；<code>len(s), len(t) &lt;= 10⁵</code>，目标 O(n)。</p>
+</blockquote>
+<p>TODO 待补齐：提示——438 题的 match_count&#x2F;valid 思想直接迁移；need&#x2F;window 双计数器 + valid 变量；”求最小窗口”时答案更新放在收缩阶段。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>LeetCodeHot100</div>
+      <div>https://yq2004.github.io/zyq.github.io/2026/08/25/LeetCodeHot100/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zyq</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年8月25日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/zyq.github.io/2026/08/23/Project/DM-KG-Building/" title="">
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/zyq.github.io/js/events.js" ></script>
+<script  src="/zyq.github.io/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/zyq.github.io/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/zyq.github.io/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="/zyq.github.io/js/banner-color-scheme.js"></script>
+<script src="/zyq.github.io/js/font-toggle.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/zyq.github.io/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

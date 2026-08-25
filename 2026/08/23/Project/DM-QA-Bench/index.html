@@ -24,7 +24,7 @@
 <meta property="og:description" content="为什么需要溯源，因为依靠LLM生成QA Bench，最忌讳出现幻觉，编造一些Corpus中都不存在的Evidence来生成问题的设计或者信息的提供。所以“有用的信息”一定要严格来自于原始文档（溯源）。但事实就是无法完全保证LLM不出现幻觉，所以需要严格地让他输出每一段claim对应的原始文段，但这又有个问题：“对应的原始文段”不容易逐字逐句复刻，有的可能只差一两个字符对不上(LLM的逐字逐句复述能">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-08-22T16:16:35.419Z">
-<meta property="article:modified_time" content="2026-08-23T06:24:03.606Z">
+<meta property="article:modified_time" content="2026-08-24T00:39:35.190Z">
 <meta property="article:author" content="zyq">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          450 字
+          538 字
         
       </span>
     
@@ -234,7 +234,7 @@
         
         
         
-          4 分钟
+          5 分钟
         
       </span>
     
@@ -280,6 +280,7 @@
 <ol>
 <li>Claim的溯源问题。当前依靠LLM生成溯源，但是一旦有任何偏差就报错。solution：三级溯源，优先用轻量级模型快速走一遍，对于对不上的用例换成pro模型retry，pro模型也不行就采用relaxed em匹配，允许特殊符号的不匹配。</li>
 </ol>
+<p>baseline（611） – pro重试（229） – pro重试 （88）+3*maxToken（因为很多情况是思维链太长，maxToken预算不够导致回答截断）<br>611-229-88</p>
 
                 
               </div>
