@@ -24,7 +24,7 @@
 <meta property="og:description" content="🟩 🟨 🟥 笔记模板说明每道题按以下结构整理：   I &#x2F; O &#x2F; Cons：输入、输出、约束条件。审题阶段写，Cons 决定了解法的边界。 核心思路：一句话说清本质，面试时先讲这个。 一题多解：从暴力到最优，标注时间&#x2F;空间复杂度对比。 易错点：自己踩过的坑，复习时最值钱的部分。 深度思考：为什么这样做是对的（正确性论证 &#x2F; 模型抽象）。 类似题：同一">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-08-25T02:17:15.000Z">
-<meta property="article:modified_time" content="2026-08-25T09:24:04.583Z">
+<meta property="article:modified_time" content="2026-08-26T09:25:14.962Z">
 <meta property="article:author" content="zyq">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          17k 字
+          45k 字
         
       </span>
     
@@ -234,7 +234,7 @@
         
         
         
-          145 分钟
+          379 分钟
         
       </span>
     
@@ -327,7 +327,7 @@
 <td>边查边存，天然避免用自己</td>
 </tr>
 </tbody></table>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python3">def twoSum(self, nums: List[int], target: int) -&gt; List[int]:<br>    m = &#123;&#125;<br>    for i,num in enumerate(nums):<br>        if (target - num) in m:<br>            return i,m[target-num]<br>        m[num] = i<br>    return []<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">twoSum</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>], target: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]:<br>    m = &#123;&#125;<br>    <span class="hljs-keyword">for</span> i,num <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(nums):<br>        <span class="hljs-keyword">if</span> (target - num) <span class="hljs-keyword">in</span> m:<br>            <span class="hljs-keyword">return</span> i,m[target-num]<br>        m[num] = i<br>    <span class="hljs-keyword">return</span> []<br></code></pre></td></tr></table></figure>
 
 <p><strong>易错点</strong>：</p>
 <ol>
@@ -365,7 +365,7 @@
 <td>26 维计数向量转 tuple 作 key</td>
 </tr>
 </tbody></table>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python3">def groupAnagrams(self, strs: List[str]) -&gt; List[List[str]]:<br>    d = defaultdict(list)<br><br>    for s in strs:<br>        count = [0]*26<br>        for c in s:<br>            count[ord(c)-ord(&#x27;a&#x27;)] += 1<br>        d[tuple(count)].append(s)<br>    return list(d.values())<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">groupAnagrams</span>(<span class="hljs-params">self, strs: <span class="hljs-type">List</span>[<span class="hljs-built_in">str</span>]</span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">str</span>]]:<br>    d = defaultdict(<span class="hljs-built_in">list</span>)<br><br>    <span class="hljs-keyword">for</span> s <span class="hljs-keyword">in</span> strs:<br>        count = [<span class="hljs-number">0</span>]*<span class="hljs-number">26</span><br>        <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> s:<br>            count[<span class="hljs-built_in">ord</span>(c)-<span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;a&#x27;</span>)] += <span class="hljs-number">1</span><br>        d[<span class="hljs-built_in">tuple</span>(count)].append(s)<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">list</span>(d.values())<br></code></pre></td></tr></table></figure>
 
 <p><strong>易错点</strong>：</p>
 <ol>
@@ -410,7 +410,7 @@
 <td>正确性依赖”跳过非起点”</td>
 </tr>
 </tbody></table>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python3">def longestConsecutive(self, nums: List[int]) -&gt; int:<br>    # 永远只从 *最底* 层开始做起。比如现在看到了4.就探测一下有没有3...直到不存在x-1，这就是最底层。<br>    nums_set = set(nums)<br>    ans = 0<br>    for num in nums_set:<br>        if (num-1) in nums_set:<br>            continue<br>        temp_ans = 1<br>        while num+1 in nums_set: <br>            temp_ans += 1<br>            num += 1<br>        ans = max(temp_ans,ans)<br>    return ans<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">longestConsecutive</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:<br>    <span class="hljs-comment"># 永远只从 *最底* 层开始做起。比如现在看到了4.就探测一下有没有3...直到不存在x-1，这就是最底层。</span><br>    nums_set = <span class="hljs-built_in">set</span>(nums)<br>    ans = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> num <span class="hljs-keyword">in</span> nums_set:<br>        <span class="hljs-keyword">if</span> (num-<span class="hljs-number">1</span>) <span class="hljs-keyword">in</span> nums_set:<br>            <span class="hljs-keyword">continue</span><br>        temp_ans = <span class="hljs-number">1</span><br>        <span class="hljs-keyword">while</span> num+<span class="hljs-number">1</span> <span class="hljs-keyword">in</span> nums_set: <br>            temp_ans += <span class="hljs-number">1</span><br>            num += <span class="hljs-number">1</span><br>        ans = <span class="hljs-built_in">max</span>(temp_ans,ans)<br>    <span class="hljs-keyword">return</span> ans<br></code></pre></td></tr></table></figure>
 
 <p><strong>易错点</strong>：</p>
 <ol>
@@ -462,7 +462,7 @@
 <td>见下方代码</td>
 </tr>
 </tbody></table>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python3">def moveZeroes(self, nums: List[int]) -&gt; None:<br>    &quot;&quot;&quot;<br>    Do not return anything, modify nums in-place instead.<br>    &quot;&quot;&quot;<br>    l = r = 0<br>    n = len(nums)<br>    while r &lt; n:<br>        if nums[r]!=0:<br>            nums[r],nums[l] = nums[l],nums[r]<br>            l += 1<br>        r += 1<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">moveZeroes</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-literal">None</span>:<br>    <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">    Do not return anything, modify nums in-place instead.</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    l = r = <span class="hljs-number">0</span><br>    n = <span class="hljs-built_in">len</span>(nums)<br>    <span class="hljs-keyword">while</span> r &lt; n:<br>        <span class="hljs-keyword">if</span> nums[r]!=<span class="hljs-number">0</span>:<br>            nums[r],nums[l] = nums[l],nums[r]<br>            l += <span class="hljs-number">1</span><br>        r += <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
 
 <p><strong>易错点 &#x2F; 思考记录</strong>：</p>
 <ol>
@@ -508,7 +508,7 @@
 <td>核心是证明移动短边的正确性</td>
 </tr>
 </tbody></table>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python3">def maxArea(self, height: List[int]) -&gt; int:<br>    l = 0<br>    r = len(height) - 1<br>    ans = 0<br><br>    # 每次都会往中间靠，往中间靠，r-l必然会慢慢变小。<br>    # 那么怎样才可以贪呢？如果后续min(he_l,he_r)能变大。那么就可以贪。想要这个变大，移动min(he_l,he_r)中的更小的对应的下标才行：<br>    while r &gt; l:<br>        ans = max(min(height[l],height[r]) * (r-l),ans)<br>        if min(height[l],height[r]) == height[l]:<br>            l+=1<br>        else:<br>            r-=1<br>    return ans<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">maxArea</span>(<span class="hljs-params">self, height: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:<br>    l = <span class="hljs-number">0</span><br>    r = <span class="hljs-built_in">len</span>(height) - <span class="hljs-number">1</span><br>    ans = <span class="hljs-number">0</span><br><br>    <span class="hljs-comment"># 每次都会往中间靠，往中间靠，r-l必然会慢慢变小。</span><br>    <span class="hljs-comment"># 那么怎样才可以贪呢？如果后续min(he_l,he_r)能变大。那么就可以贪。想要这个变大，移动min(he_l,he_r)中的更小的对应的下标才行：</span><br>    <span class="hljs-keyword">while</span> r &gt; l:<br>        ans = <span class="hljs-built_in">max</span>(<span class="hljs-built_in">min</span>(height[l],height[r]) * (r-l),ans)<br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">min</span>(height[l],height[r]) == height[l]:<br>            l+=<span class="hljs-number">1</span><br>        <span class="hljs-keyword">else</span>:<br>            r-=<span class="hljs-number">1</span><br>    <span class="hljs-keyword">return</span> ans<br></code></pre></td></tr></table></figure>
 
 <p><strong>易错点</strong>：</p>
 <ol>
@@ -552,7 +552,7 @@
 <td>去重自然：排序后跳过相邻重复值</td>
 </tr>
 </tbody></table>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs python3">def threeSum(self, nums: list[int]) -&gt; list[list[int]]:<br>    ans = []<br>    n = len(nums)<br>    nums.sort()<br>    if nums[0] &gt; 0:<br>        return []<br>    i = 0<br>    while i&lt;n:<br>        if i&gt;0 and nums[i] == nums[i-1]:<br>            i+=1<br>            continue<br>        j = i+1<br>        k = n-1<br>        while j&lt;k:<br>            if nums[i]+nums[j]+nums[k] == 0:<br>                ans.append([nums[i],nums[j],nums[k]])<br>                while j&lt;k and nums[j]==nums[j+1]:<br>                    j+=1<br>                while j&lt;k and nums[k]==nums[k-1]:<br>                    k-=1<br>                j+=1<br>                k-=1<br>            elif nums[i]+nums[j]+nums[k] &lt; 0:<br>                j+=1<br>            else:<br>                k-=1<br>        i+=1<br>    return ans<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">threeSum</span>(<span class="hljs-params">self, nums: <span class="hljs-built_in">list</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">list</span>[<span class="hljs-built_in">list</span>[<span class="hljs-built_in">int</span>]]:<br>    ans = []<br>    n = <span class="hljs-built_in">len</span>(nums)<br>    nums.sort()<br>    <span class="hljs-keyword">if</span> nums[<span class="hljs-number">0</span>] &gt; <span class="hljs-number">0</span>:<br>        <span class="hljs-keyword">return</span> []<br>    i = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">while</span> i&lt;n:<br>        <span class="hljs-keyword">if</span> i&gt;<span class="hljs-number">0</span> <span class="hljs-keyword">and</span> nums[i] == nums[i-<span class="hljs-number">1</span>]:<br>            i+=<span class="hljs-number">1</span><br>            <span class="hljs-keyword">continue</span><br>        j = i+<span class="hljs-number">1</span><br>        k = n-<span class="hljs-number">1</span><br>        <span class="hljs-keyword">while</span> j&lt;k:<br>            <span class="hljs-keyword">if</span> nums[i]+nums[j]+nums[k] == <span class="hljs-number">0</span>:<br>                ans.append([nums[i],nums[j],nums[k]])<br>                <span class="hljs-keyword">while</span> j&lt;k <span class="hljs-keyword">and</span> nums[j]==nums[j+<span class="hljs-number">1</span>]:<br>                    j+=<span class="hljs-number">1</span><br>                <span class="hljs-keyword">while</span> j&lt;k <span class="hljs-keyword">and</span> nums[k]==nums[k-<span class="hljs-number">1</span>]:<br>                    k-=<span class="hljs-number">1</span><br>                j+=<span class="hljs-number">1</span><br>                k-=<span class="hljs-number">1</span><br>            <span class="hljs-keyword">elif</span> nums[i]+nums[j]+nums[k] &lt; <span class="hljs-number">0</span>:<br>                j+=<span class="hljs-number">1</span><br>            <span class="hljs-keyword">else</span>:<br>                k-=<span class="hljs-number">1</span><br>        i+=<span class="hljs-number">1</span><br>    <span class="hljs-keyword">return</span> ans<br></code></pre></td></tr></table></figure>
 
 <p><strong>易错点</strong>：</p>
 <ol>
@@ -617,10 +617,10 @@
 </tr>
 </tbody></table>
 <p>当前实现（前后缀预处理）：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs python3">def trap(self, height: List[int]) -&gt; int:<br>    n = len(height)<br>    max_left = [0]*n<br>    max_right = [0]*n<br>    rain_per_actual = [0]*n<br>    <br>    max_left[0] = height[0]<br>    max_right[n-1] = height[n-1]<br><br>    i = 1<br>    while i&lt;n:<br>        max_left[i] = max(max_left[i-1],height[i])<br>        i+=1<br><br>    i = n-2<br>    while i&gt;=0:<br>        max_right[i] = max(max_right[i+1],height[i])<br>        i-=1<br><br>    i = 0<br>    while i&lt;n:<br>        rain_per_actual[i] = max(min(max_left[i],max_right[i]) - height[i],0)<br>        i+=1<br><br>    rain_total = 0<br>    for rain in rain_per_actual:<br>        rain_total+=rain<br>    return rain_total<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">trap</span>(<span class="hljs-params">self, height: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:<br>    n = <span class="hljs-built_in">len</span>(height)<br>    max_left = [<span class="hljs-number">0</span>]*n<br>    max_right = [<span class="hljs-number">0</span>]*n<br>    rain_per_actual = [<span class="hljs-number">0</span>]*n<br>    <br>    max_left[<span class="hljs-number">0</span>] = height[<span class="hljs-number">0</span>]<br>    max_right[n-<span class="hljs-number">1</span>] = height[n-<span class="hljs-number">1</span>]<br><br>    i = <span class="hljs-number">1</span><br>    <span class="hljs-keyword">while</span> i&lt;n:<br>        max_left[i] = <span class="hljs-built_in">max</span>(max_left[i-<span class="hljs-number">1</span>],height[i])<br>        i+=<span class="hljs-number">1</span><br><br>    i = n-<span class="hljs-number">2</span><br>    <span class="hljs-keyword">while</span> i&gt;=<span class="hljs-number">0</span>:<br>        max_right[i] = <span class="hljs-built_in">max</span>(max_right[i+<span class="hljs-number">1</span>],height[i])<br>        i-=<span class="hljs-number">1</span><br><br>    i = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">while</span> i&lt;n:<br>        rain_per_actual[i] = <span class="hljs-built_in">max</span>(<span class="hljs-built_in">min</span>(max_left[i],max_right[i]) - height[i],<span class="hljs-number">0</span>)<br>        i+=<span class="hljs-number">1</span><br><br>    rain_total = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> rain <span class="hljs-keyword">in</span> rain_per_actual:<br>        rain_total+=rain<br>    <span class="hljs-keyword">return</span> rain_total<br></code></pre></td></tr></table></figure>
 
 <p>进阶：双指针 O(1) 空间版本：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python3">def trap(self, height: List[int]) -&gt; int:<br>    l = r = water = 0          # l,r 是待结算的左右边界<br>    left_max = right_max = 0   # 已扫过部分的最大值<br>    n = len(height)<br>    r = n - 1<br>    while l &lt; r:<br>        left_max = max(left_max, height[l])<br>        right_max = max(right_max, height[r])<br>        if left_max &lt; right_max:      # 左边最大值更小 → 该列水位由 left_max 决定<br>            water += left_max - height[l]<br>            l += 1<br>        else:<br>            water += right_max - height[r]<br>            r -= 1<br>    return water<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">trap</span>(<span class="hljs-params">self, height: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:<br>    l = r = water = <span class="hljs-number">0</span>          <span class="hljs-comment"># l,r 是待结算的左右边界</span><br>    left_max = right_max = <span class="hljs-number">0</span>   <span class="hljs-comment"># 已扫过部分的最大值</span><br>    n = <span class="hljs-built_in">len</span>(height)<br>    r = n - <span class="hljs-number">1</span><br>    <span class="hljs-keyword">while</span> l &lt; r:<br>        left_max = <span class="hljs-built_in">max</span>(left_max, height[l])<br>        right_max = <span class="hljs-built_in">max</span>(right_max, height[r])<br>        <span class="hljs-keyword">if</span> left_max &lt; right_max:      <span class="hljs-comment"># 左边最大值更小 → 该列水位由 left_max 决定</span><br>            water += left_max - height[l]<br>            l += <span class="hljs-number">1</span><br>        <span class="hljs-keyword">else</span>:<br>            water += right_max - height[r]<br>            r -= <span class="hljs-number">1</span><br>    <span class="hljs-keyword">return</span> water<br></code></pre></td></tr></table></figure>
 
 <p><strong>易错点</strong>：</p>
 <ol>
@@ -670,7 +670,7 @@
 <td>左指针一步到位，不用逐格收缩</td>
 </tr>
 </tbody></table>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python3"># 写法一：滑动窗口模板（收缩式，最通用）<br>def lengthOfLongestSubstring(self, s: str) -&gt; int:<br>    window = set()<br>    l = ans = 0<br>    for r, c in enumerate(s):<br>        while c in window:      # 有重复 → 收缩左端<br>            window.remove(s[l])<br>            l += 1<br>        window.add(c)<br>        ans = max(ans, r - l + 1)<br>    return ans<br><br># 写法二：记录每个字符最后出现的位置，左指针直接跳跃<br>def lengthOfLongestSubstring(self, s: str) -&gt; int:<br>    last = &#123;&#125;<br>    l = ans = 0<br>    for r, c in enumerate(s):<br>        if c in last and last[c] &gt;= l:<br>            l = last[c] + 1     # 直接跳过上一个 c<br>        last[c] = r<br>        ans = max(ans, r - l + 1)<br>    return ans<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 写法一：滑动窗口模板（收缩式，最通用）</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">lengthOfLongestSubstring</span>(<span class="hljs-params">self, s: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    window = <span class="hljs-built_in">set</span>()<br>    l = ans = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> r, c <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(s):<br>        <span class="hljs-keyword">while</span> c <span class="hljs-keyword">in</span> window:      <span class="hljs-comment"># 有重复 → 收缩左端</span><br>            window.remove(s[l])<br>            l += <span class="hljs-number">1</span><br>        window.add(c)<br>        ans = <span class="hljs-built_in">max</span>(ans, r - l + <span class="hljs-number">1</span>)<br>    <span class="hljs-keyword">return</span> ans<br><br><span class="hljs-comment"># 写法二：记录每个字符最后出现的位置，左指针直接跳跃</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">lengthOfLongestSubstring</span>(<span class="hljs-params">self, s: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    last = &#123;&#125;<br>    l = ans = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> r, c <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(s):<br>        <span class="hljs-keyword">if</span> c <span class="hljs-keyword">in</span> last <span class="hljs-keyword">and</span> last[c] &gt;= l:<br>            l = last[c] + <span class="hljs-number">1</span>     <span class="hljs-comment"># 直接跳过上一个 c</span><br>        last[c] = r<br>        ans = <span class="hljs-built_in">max</span>(ans, r - l + <span class="hljs-number">1</span>)<br>    <span class="hljs-keyword">return</span> ans<br></code></pre></td></tr></table></figure>
 
 <p><strong>易错点</strong>：</p>
 <ol>
@@ -686,7 +686,6 @@
 <li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-size-subarray-sum/">209. 长度最小的子数组</a>（正数数组，可双指针&#x2F;二分）</li>
 <li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/fruit-into-baskets/">904. 水果成篮</a>（至多 2 种元素的窗口）</li>
 </ul>
-<p>— Agent Resume Here —</p>
 <h4 id="438-找到字符串中所有字母异位词-🟨"><a href="#438-找到字符串中所有字母异位词-🟨" class="headerlink" title="438. 找到字符串中所有字母异位词 🟨"></a>438. 找到字符串中所有字母异位词 🟨</h4><blockquote>
 <p><strong>I</strong>: s: str, p: str</p>
 <p><strong>O</strong>: List[int]，p 的所有异位词在 s 中的起始索引</p>
@@ -723,16 +722,16 @@
 </tr>
 </tbody></table>
 <p>方法一：最直观最容易想到的暴力遍历并校验是否为“异位词”</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs python3">def is_anagram(self,s1:str,s2:str):<br>    count_s1 = [0]*26<br>    count_s2 = [0]*26<br><br>    for c1 in s1:<br>        count_s1[ord(c1)-ord(&#x27;a&#x27;)] += 1<br>    for c2 in s2:<br>        count_s2[ord(c2)-ord(&#x27;a&#x27;)] += 1<br>    return count_s1 == count_s2<br><br>def findAnagrams(self, s: str, p: str) -&gt; List[int]:<br>    # 解法1 暴力法<br>    len_p = len(p)<br>    len_s = len(s)<br>    if len_p &gt; len_s:<br>        return []<br>    ans = []<br>    for i in range(len_s-len_p+1):<br>        if self.is_anagram(p,s[i:i+len_p]):<br>            ans.append(i)<br>    return ans<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">is_anagram</span>(<span class="hljs-params">self,s1:<span class="hljs-built_in">str</span>,s2:<span class="hljs-built_in">str</span></span>):<br>    count_s1 = [<span class="hljs-number">0</span>]*<span class="hljs-number">26</span><br>    count_s2 = [<span class="hljs-number">0</span>]*<span class="hljs-number">26</span><br><br>    <span class="hljs-keyword">for</span> c1 <span class="hljs-keyword">in</span> s1:<br>        count_s1[<span class="hljs-built_in">ord</span>(c1)-<span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;a&#x27;</span>)] += <span class="hljs-number">1</span><br>    <span class="hljs-keyword">for</span> c2 <span class="hljs-keyword">in</span> s2:<br>        count_s2[<span class="hljs-built_in">ord</span>(c2)-<span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;a&#x27;</span>)] += <span class="hljs-number">1</span><br>    <span class="hljs-keyword">return</span> count_s1 == count_s2<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">findAnagrams</span>(<span class="hljs-params">self, s: <span class="hljs-built_in">str</span>, p: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]:<br>    <span class="hljs-comment"># 解法1 暴力法</span><br>    len_p = <span class="hljs-built_in">len</span>(p)<br>    len_s = <span class="hljs-built_in">len</span>(s)<br>    <span class="hljs-keyword">if</span> len_p &gt; len_s:<br>        <span class="hljs-keyword">return</span> []<br>    ans = []<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(len_s-len_p+<span class="hljs-number">1</span>):<br>        <span class="hljs-keyword">if</span> self.is_anagram(p,s[i:i+len_p]):<br>            ans.append(i)<br>    <span class="hljs-keyword">return</span> ans<br></code></pre></td></tr></table></figure>
 <p>但是，方法一很不智能，其优化的点在于，如果跳过一些显而易见的“校验”过程。<br>关键观察：相邻两个窗口之间，只发生了两件事：<br>最左边的字符滑出去了（c 离开）<br>最右边的新字符滑进来了（e 进入）<br>中间重叠的部分（b a &#x2F; a e）完全没变，却被反复统计了。如果每次只更新”变化了的 2 个字符”，而不是重新数全部 26 个，就能从 O(m) 降到 O(1) 每次。</p>
 <p>既然只变两个字符，那我们就维护一个正在运行的计数数组，每次窗口右移时：<br>窗口从 [i, i+len_p) 滑到 [i+1, i+len_p+1)：</p>
 <ol>
 <li>s[i]       的计数 -1   （左边字符滑出）</li>
 <li>s[i+len_p] 的计数 +1   （右边字符滑入）</li>
-<li>比较当前计数数组 和 p 的计数数组<br>这就是滑动窗口的全部精髓——增量更新，避免重复计算。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs python3">def findAnagrams(self, s: str, p: str) -&gt; List[int]:<br>    len_p, len_s = len(p), len(s)<br>    if len_p &gt; len_s:<br>        return []<br><br>    # 1. 建 p 的目标计数数组（只需要建一次）<br>    p_count = [0] * 26<br>    for c in p:<br>        p_count[ord(c) - ord(&#x27;a&#x27;)] += 1<br><br>    # 2. 建第一个窗口的计数数组<br>    window_count = [0] * 26<br>    for i in range(len_p):<br>        window_count[ord(s[i]) - ord(&#x27;a&#x27;)] += 1<br><br>    ans = []<br>    # 3. 检查第一个窗口<br>    if window_count == p_count:<br>        ans.append(0)<br><br>    # 4. 滑动窗口：每次只更新&quot;出去的&quot;和&quot;进来的&quot;<br>    for i in range(len_p, len_s):<br>        # 左边滑出的字符：计数 -1<br>        left_char = s[i - len_p]<br>        window_count[ord(left_char) - ord(&#x27;a&#x27;)] -= 1<br><br>        # 右边滑入的字符：计数 +1<br>        right_char = s[i]<br>        window_count[ord(right_char) - ord(&#x27;a&#x27;)] += 1<br><br>        # 比较（O(26) 的常数比较，可以再优化，但已经很快了）<br>        if window_count == p_count:<br>            ans.append(i - len_p + 1)<br><br>    return ans<br></code></pre></td></tr></table></figure></li>
+<li>比较当前计数数组 和 p 的计数数组<br>这就是滑动窗口的全部精髓——增量更新，避免重复计算。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">findAnagrams</span>(<span class="hljs-params">self, s: <span class="hljs-built_in">str</span>, p: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]:<br>    len_p, len_s = <span class="hljs-built_in">len</span>(p), <span class="hljs-built_in">len</span>(s)<br>    <span class="hljs-keyword">if</span> len_p &gt; len_s:<br>        <span class="hljs-keyword">return</span> []<br><br>    <span class="hljs-comment"># 1. 建 p 的目标计数数组（只需要建一次）</span><br>    p_count = [<span class="hljs-number">0</span>] * <span class="hljs-number">26</span><br>    <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> p:<br>        p_count[<span class="hljs-built_in">ord</span>(c) - <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;a&#x27;</span>)] += <span class="hljs-number">1</span><br><br>    <span class="hljs-comment"># 2. 建第一个窗口的计数数组</span><br>    window_count = [<span class="hljs-number">0</span>] * <span class="hljs-number">26</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(len_p):<br>        window_count[<span class="hljs-built_in">ord</span>(s[i]) - <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;a&#x27;</span>)] += <span class="hljs-number">1</span><br><br>    ans = []<br>    <span class="hljs-comment"># 3. 检查第一个窗口</span><br>    <span class="hljs-keyword">if</span> window_count == p_count:<br>        ans.append(<span class="hljs-number">0</span>)<br><br>    <span class="hljs-comment"># 4. 滑动窗口：每次只更新&quot;出去的&quot;和&quot;进来的&quot;</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(len_p, len_s):<br>        <span class="hljs-comment"># 左边滑出的字符：计数 -1</span><br>        left_char = s[i - len_p]<br>        window_count[<span class="hljs-built_in">ord</span>(left_char) - <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;a&#x27;</span>)] -= <span class="hljs-number">1</span><br><br>        <span class="hljs-comment"># 右边滑入的字符：计数 +1</span><br>        right_char = s[i]<br>        window_count[<span class="hljs-built_in">ord</span>(right_char) - <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;a&#x27;</span>)] += <span class="hljs-number">1</span><br><br>        <span class="hljs-comment"># 比较（O(26) 的常数比较，可以再优化，但已经很快了）</span><br>        <span class="hljs-keyword">if</span> window_count == p_count:<br>            ans.append(i - len_p + <span class="hljs-number">1</span>)<br><br>    <span class="hljs-keyword">return</span> ans<br></code></pre></td></tr></table></figure></li>
 </ol>
 <p>O(26) –&gt; O(1)的进一步优化：match_count代表“&lt;字母数量&gt;相同的&lt;数量&gt;”，异位词就是:两个词的每个字母的数量都相同，因此异位词的match_count是26。那么在窗口滑动的过程中，我们之前是比较p_match和s_match这两个[]*26的，现在我们只需要更新p_match，并最后验证是否为26就能判断是否是异位词了。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs python3">def findAnagrams(self, s: str, p: str) -&gt; List[int]:<br>    len_p, len_s = len(p), len(s)<br>    if len_p &gt; len_s:<br>        return []<br><br>    # 1. 目标计数数组（只需要建一次）<br>    p_count = [0] * 26<br>    for c in p:<br>        p_count[ord(c) - ord(&#x27;a&#x27;)] += 1<br><br>    # 2. 窗口计数数组 + match_count<br>    window_count = [0] * 26<br>    match_count = 0  # 记录&quot;计数恰好等于 p&quot;的字母有多少种<br><br>    # 3. 初始化第一个窗口<br>    for i in range(len_p):<br>        idx = ord(s[i]) - ord(&#x27;a&#x27;)<br>        window_count[idx] += 1<br>    <br>    # 计算初始的 match_count<br>    for i in range(26):<br>        if window_count[i] == p_count[i]:<br>            match_count += 1<br><br>    ans = []<br>    if match_count == 26:<br>        ans.append(0)<br><br>    # 4. 滑动窗口（每次 O(1) 更新）<br>    for right in range(len_p, len_s):<br>        # --- 右边滑入 ---<br>        idx_in = ord(s[right]) - ord(&#x27;a&#x27;)<br>        if window_count[idx_in] == p_count[idx_in]:<br>            match_count -= 1   # 滑入前刚好相等，加1后就会超，所以先减<br>        window_count[idx_in] += 1<br>        if window_count[idx_in] == p_count[idx_in]:<br>            match_count += 1   # 加完后刚好相等，加回来<br><br>        # --- 左边滑出 ---<br>        idx_out = ord(s[right - len_p]) - ord(&#x27;a&#x27;)<br>        if window_count[idx_out] == p_count[idx_out]:<br>            match_count -= 1   # 滑出前刚好相等，减1后就会少，所以先减<br>        window_count[idx_out] -= 1<br>        if window_count[idx_out] == p_count[idx_out]:<br>            match_count += 1   # 减完后刚好相等，加回来<br><br>        # --- O(1) 判断 ---<br>        if match_count == 26:<br>            ans.append(right - len_p + 1)<br><br>    return ans<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">findAnagrams</span>(<span class="hljs-params">self, s: <span class="hljs-built_in">str</span>, p: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]:<br>    len_p, len_s = <span class="hljs-built_in">len</span>(p), <span class="hljs-built_in">len</span>(s)<br>    <span class="hljs-keyword">if</span> len_p &gt; len_s:<br>        <span class="hljs-keyword">return</span> []<br><br>    <span class="hljs-comment"># 1. 目标计数数组（只需要建一次）</span><br>    p_count = [<span class="hljs-number">0</span>] * <span class="hljs-number">26</span><br>    <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> p:<br>        p_count[<span class="hljs-built_in">ord</span>(c) - <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;a&#x27;</span>)] += <span class="hljs-number">1</span><br><br>    <span class="hljs-comment"># 2. 窗口计数数组 + match_count</span><br>    window_count = [<span class="hljs-number">0</span>] * <span class="hljs-number">26</span><br>    match_count = <span class="hljs-number">0</span>  <span class="hljs-comment"># 记录&quot;计数恰好等于 p&quot;的字母有多少种</span><br><br>    <span class="hljs-comment"># 3. 初始化第一个窗口</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(len_p):<br>        idx = <span class="hljs-built_in">ord</span>(s[i]) - <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;a&#x27;</span>)<br>        window_count[idx] += <span class="hljs-number">1</span><br>    <br>    <span class="hljs-comment"># 计算初始的 match_count</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">26</span>):<br>        <span class="hljs-keyword">if</span> window_count[i] == p_count[i]:<br>            match_count += <span class="hljs-number">1</span><br><br>    ans = []<br>    <span class="hljs-keyword">if</span> match_count == <span class="hljs-number">26</span>:<br>        ans.append(<span class="hljs-number">0</span>)<br><br>    <span class="hljs-comment"># 4. 滑动窗口（每次 O(1) 更新）</span><br>    <span class="hljs-keyword">for</span> right <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(len_p, len_s):<br>        <span class="hljs-comment"># --- 右边滑入 ---</span><br>        idx_in = <span class="hljs-built_in">ord</span>(s[right]) - <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;a&#x27;</span>)<br>        <span class="hljs-keyword">if</span> window_count[idx_in] == p_count[idx_in]:<br>            match_count -= <span class="hljs-number">1</span>   <span class="hljs-comment"># 滑入前刚好相等，加1后就会超，所以先减</span><br>        window_count[idx_in] += <span class="hljs-number">1</span><br>        <span class="hljs-keyword">if</span> window_count[idx_in] == p_count[idx_in]:<br>            match_count += <span class="hljs-number">1</span>   <span class="hljs-comment"># 加完后刚好相等，加回来</span><br><br>        <span class="hljs-comment"># --- 左边滑出 ---</span><br>        idx_out = <span class="hljs-built_in">ord</span>(s[right - len_p]) - <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;a&#x27;</span>)<br>        <span class="hljs-keyword">if</span> window_count[idx_out] == p_count[idx_out]:<br>            match_count -= <span class="hljs-number">1</span>   <span class="hljs-comment"># 滑出前刚好相等，减1后就会少，所以先减</span><br>        window_count[idx_out] -= <span class="hljs-number">1</span><br>        <span class="hljs-keyword">if</span> window_count[idx_out] == p_count[idx_out]:<br>            match_count += <span class="hljs-number">1</span>   <span class="hljs-comment"># 减完后刚好相等，加回来</span><br><br>        <span class="hljs-comment"># --- O(1) 判断 ---</span><br>        <span class="hljs-keyword">if</span> match_count == <span class="hljs-number">26</span>:<br>            ans.append(right - len_p + <span class="hljs-number">1</span>)<br><br>    <span class="hljs-keyword">return</span> ans<br></code></pre></td></tr></table></figure>
 
 <p><strong>易错点</strong>：</p>
 <ol>
@@ -753,7 +752,7 @@
 <p><strong>O</strong>: int，和为 k 的<strong>连续</strong>子数组的个数</p>
 <p><strong>Cons</strong>: 数组含<strong>负数</strong> → 滑动窗口失去单调性、不可用；只需计数不要求枚举子数组；目标 O(n)。核心恒等式：<code>pre_sum[j] - pre_sum[i] == k ⟺ 子数组 (i, j] 的和为 k</code>。</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python3">def subarraySum(self, nums: List[int], k: int) -&gt; int:<br>    # 无法确定子数组的长度，所以暴力法需要先遍历子数组的长度<br>    # 然后在每种长度下去考虑这种长度的子数组是否有一些是满足sum为k的。想一下必然超时。<br><br>    # 解题的核心关键是知道：**任何长度和任意位置**的连续子数组，必然可以通过**两段前缀数组作差**得到。<br><br>    <br>    # key是前缀和，value是这种 前缀和 的 前缀数组的**数量**<br>    # 前缀和为0的 前缀数组 默认有一个<br>    count = &#123;0:1&#125;<br>    ans = 0<br><br>    # 考虑**当前遍历途中**的 前缀数组 的前缀和。那么任意满足要求的子串都可以快速根据**以往的前缀数组的前缀和**和**当前遍历途中**的前缀数组的前缀和确定：current_pre_sum - target == k。target就是**以往的前缀数组的前缀和**，而满足这种前缀和的，不一定只出现一次，这就是前面count的作用。<br>    current_pre_sum = 0<br>    for num in nums:<br>        current_pre_sum+=num<br>        target = current_pre_sum-k<br>        if target in count:<br>            ans += count[target]<br>        <br>        count[current_pre_sum] = count.get(current_pre_sum,0)+1<br>    return ans<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">subarraySum</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>], k: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    <span class="hljs-comment"># 无法确定子数组的长度，所以暴力法需要先遍历子数组的长度</span><br>    <span class="hljs-comment"># 然后在每种长度下去考虑这种长度的子数组是否有一些是满足sum为k的。想一下必然超时。</span><br><br>    <span class="hljs-comment"># 解题的核心关键是知道：**任何长度和任意位置**的连续子数组，必然可以通过**两段前缀数组作差**得到。</span><br><br>    <br>    <span class="hljs-comment"># key是前缀和，value是这种 前缀和 的 前缀数组的**数量**</span><br>    <span class="hljs-comment"># 前缀和为0的 前缀数组 默认有一个</span><br>    count = &#123;<span class="hljs-number">0</span>:<span class="hljs-number">1</span>&#125;<br>    ans = <span class="hljs-number">0</span><br><br>    <span class="hljs-comment"># 考虑**当前遍历途中**的 前缀数组 的前缀和。那么任意满足要求的子串都可以快速根据**以往的前缀数组的前缀和**和**当前遍历途中**的前缀数组的前缀和确定：current_pre_sum - target == k。target就是**以往的前缀数组的前缀和**，而满足这种前缀和的，不一定只出现一次，这就是前面count的作用。</span><br>    current_pre_sum = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> num <span class="hljs-keyword">in</span> nums:<br>        current_pre_sum+=num<br>        target = current_pre_sum-k<br>        <span class="hljs-keyword">if</span> target <span class="hljs-keyword">in</span> count:<br>            ans += count[target]<br>        <br>        count[current_pre_sum] = count.get(current_pre_sum,<span class="hljs-number">0</span>)+<span class="hljs-number">1</span><br>    <span class="hljs-keyword">return</span> ans<br></code></pre></td></tr></table></figure>
 <ol>
 <li>除了<map>.get(key,default_value)外，python中map数据结构的常见函数和使用方法还有:…</li>
 </ol>
@@ -777,7 +776,7 @@
 <p><strong>Cons</strong>: 窗口<strong>定长</strong> k，从左到右滑动；<code>1 &lt;= k &lt;= n &lt;= 10⁵</code>，暴力 O(nk) 必超时；目标 O(n)。本质是”动态集合的最值查询”问题。</p>
 </blockquote>
 <ol>
-<li>暴力法，但是超时：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python3">def max_of(self,nums:List[int]):<br>    ans = nums[0]<br>    for num in nums:<br>        if num &gt; ans:<br>            ans = num<br>    return ans<br><br>def maxSlidingWindow(self, nums: List[int], k: int) -&gt; List[int]:<br>    # 最直观的方法，记录每次能看见的最大值，然后不断max就行。<br>    n = len(nums)<br>    ans = []<br>    for i in range(n-k+1):<br>        current_ans = self.max_of(nums[i:i+k])<br>        ans.append(current_ans)<br>    return ans<br></code></pre></td></tr></table></figure></li>
+<li>暴力法，但是超时：<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">max_of</span>(<span class="hljs-params">self,nums:<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>):<br>    ans = nums[<span class="hljs-number">0</span>]<br>    <span class="hljs-keyword">for</span> num <span class="hljs-keyword">in</span> nums:<br>        <span class="hljs-keyword">if</span> num &gt; ans:<br>            ans = num<br>    <span class="hljs-keyword">return</span> ans<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">maxSlidingWindow</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>], k: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]:<br>    <span class="hljs-comment"># 最直观的方法，记录每次能看见的最大值，然后不断max就行。</span><br>    n = <span class="hljs-built_in">len</span>(nums)<br>    ans = []<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n-k+<span class="hljs-number">1</span>):<br>        current_ans = self.max_of(nums[i:i+k])<br>        ans.append(current_ans)<br>    <span class="hljs-keyword">return</span> ans<br></code></pre></td></tr></table></figure></li>
 </ol>
 <p><strong>一题多解</strong>：</p>
 <table>
@@ -811,7 +810,7 @@
 <p><strong>优化推导</strong>：</p>
 <p>从哪里着手优化？和之前异位词一样的思考路径：相邻窗口之间，什么变了？什么没变？哪些计算是白做的？<br>窗口1: [1, 3, -1]  → 遍历3次，找到最大值 3<br>窗口2: [3, -1, -3] → 又遍历3次，找到最大值 3<br>窗口3: [-1, -3, 5] → 又遍历3次，找到最大值 5<br>问题：<br>3在窗口1是最大值，滑到窗口2时它还在，而且没有比它更大的进来，那它肯定还是最大值。但我们又重新遍历了一遍。<br>更糟糕的是：-1 和 -3 这种<strong>又老又小的元素，永远不可能成为任何后续窗口的最大值</strong>（因为 5 比它们大，而且 5 比它们晚离开窗口），但每次都在参与比较。<br><strong>核心洞察</strong><br>如果一个元素又老又小，它永远不可能”翻盘”成为最大值，可以直接扔掉。<br>比如窗口里依次进来：[5, 2, 1, 8]<br>5 进来，当前最大是 5<br>2 进来，它比 5 小，而且 5 比它晚离开（index 更小），所以 2 永远没机会当最大<br>1 同理<br>8 进来，它比 5、2、1 都大，而且更晚离开 —— 之前所有的全都可以扔掉了</p>
 <p>引出「单调队列」<br>维护一个递减的双端队列，队列里存的是索引（不是值），保证：<br>队首永远是当前窗口最大值的索引<br>队列里的索引对应的值是严格递减的<br>每次窗口滑动时：<br>移除队首：如果队首索引已经滑出窗口，弹出<br>清理队尾：从队尾开始，把所有 &lt; nums[right] 的索引弹出（它们永远没机会了）<br>加入新元素：把当前索引从队尾加入<br>队首就是答案<br>这就是”智能跳过”——提前淘汰所有不可能成为最大值的元素。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python3">def maxSlidingWindow(self, nums: List[int], k: int) -&gt; List[int]:<br>        dq = deque() # 存索引，对应的值递减<br>        ans = []<br><br>        for i in range(len(nums)):<br>            if dq and dq[0]&lt;i-k+1:<br>                # 你固然很大，但假如你不在窗口中了，也得离队<br>                dq.popleft()<br>            # 细节：注意上面的是if，下面的是while，每次判断是否“过时”肯定是只需要看一次的。（因为每次就移动一次）<br><br>            # 但是移动一次会带来一个新的值，这个值可不一定只比一个旧值大，这个又new又big的新成员会扼杀所有比他小的老成员<br>            while dq and nums[dq[-1]]&lt;nums[i]:<br>                dq.pop()<br><br>            dq.append(i)<br><br>            # 窗口开始形成了，此后都需要记录 &#x27;这个时代的王&#x27;<br>            if i&gt;= k-1:<br>                ans.append(nums[dq[0]])<br>        return ans<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">maxSlidingWindow</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>], k: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]:<br>        dq = deque() <span class="hljs-comment"># 存索引，对应的值递减</span><br>        ans = []<br><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(nums)):<br>            <span class="hljs-keyword">if</span> dq <span class="hljs-keyword">and</span> dq[<span class="hljs-number">0</span>]&lt;i-k+<span class="hljs-number">1</span>:<br>                <span class="hljs-comment"># 你固然很大，但假如你不在窗口中了，也得离队</span><br>                dq.popleft()<br>            <span class="hljs-comment"># 细节：注意上面的是if，下面的是while，每次判断是否“过时”肯定是只需要看一次的。（因为每次就移动一次）</span><br><br>            <span class="hljs-comment"># 但是移动一次会带来一个新的值，这个值可不一定只比一个旧值大，这个又new又big的新成员会扼杀所有比他小的老成员</span><br>            <span class="hljs-keyword">while</span> dq <span class="hljs-keyword">and</span> nums[dq[-<span class="hljs-number">1</span>]]&lt;nums[i]:<br>                dq.pop()<br><br>            dq.append(i)<br><br>            <span class="hljs-comment"># 窗口开始形成了，此后都需要记录 &#x27;这个时代的王&#x27;</span><br>            <span class="hljs-keyword">if</span> i&gt;= k-<span class="hljs-number">1</span>:<br>                ans.append(nums[dq[<span class="hljs-number">0</span>]])<br>        <span class="hljs-keyword">return</span> ans<br></code></pre></td></tr></table></figure>
 
 <p><strong>易错点</strong>：</p>
 <ol>
@@ -918,6 +917,829 @@
 <p><strong>Cons</strong>: 窗口长度<strong>不定</strong>且求最小 → 收缩时机与 3&#x2F;438 相反（先扩到满足、再收到极限、记录最优）；t 可能有重复字符需按数量覆盖；<code>len(s), len(t) &lt;= 10⁵</code>，目标 O(n)。</p>
 </blockquote>
 <p>TODO 待补齐：提示——438 题的 match_count&#x2F;valid 思想直接迁移；need&#x2F;window 双计数器 + valid 变量；”求最小窗口”时答案更新放在收缩阶段。</p>
+<h2 id="Day2"><a href="#Day2" class="headerlink" title="Day2"></a>Day2</h2><blockquote>
+<p>共12道题： 53. 最大子数组和； 56. 合并区间； 189. 轮转数组； 238. 除了自身以外数组的乘积； 41. 缺失的第一个正数； 73. 矩阵置零； 54. 螺旋矩阵； 48. 旋转图像； 240. 搜索二维矩阵II； 215. 数组中的第K个最大元素； 347. 前K个高频元素； 295. 数据流的中位数</p>
+</blockquote>
+<h3 id="普通数组"><a href="#普通数组" class="headerlink" title="普通数组"></a>普通数组</h3><h4 id="53-最大子数组和-🟨"><a href="#53-最大子数组和-🟨" class="headerlink" title="53. 最大子数组和 🟨"></a>53. 最大子数组和 🟨</h4><blockquote>
+<p><strong>I</strong>: nums: List[int]</p>
+<p><strong>O</strong>: int，最大连续子数组的和</p>
+<p><strong>Cons</strong>: 子数组必须<strong>连续</strong>且至少包含一个元素；数组含负数（否则答案就是全量和）；<code>n &lt;= 10⁵</code>，暗示 O(n)。</p>
+</blockquote>
+<p><strong>核心思路</strong>：固定<strong>终点</strong>建模：<code>dp[i]</code> &#x3D; 以 i 结尾的最大子数组和，<code>dp[i] = max&#123;nums[i], dp[i-1]+nums[i]&#125;</code>——当某《段和》为负数的时候直接丢掉，因为它只会拖累后面的。</p>
+<p><strong>一题多解</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>解法</th>
+<th>时间</th>
+<th>空间</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>暴力枚举所有子数组求和</td>
+<td>O(n²)（配合前缀和）&#x2F; O(n³)</td>
+<td>O(1)</td>
+<td>直觉解</td>
+</tr>
+<tr>
+<td>分治（线段树式四元组）</td>
+<td>O(nlogn)</td>
+<td>O(logn)</td>
+<td>能扩展到区间询问，单次求解非最优</td>
+</tr>
+<tr>
+<td>DP &#x2F; Kadane ✅</td>
+<td>O(n)</td>
+<td>O(n)，滚动压缩后 O(1)</td>
+<td>见下方代码</td>
+</tr>
+</tbody></table>
+<p>（作者解法一：DP，思考过程完整保留在注释中）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">maxSubArray</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:<br>    <span class="hljs-comment"># 当某《段和》为负数的时候，直接丢掉。因为这只会拖累后面的。</span><br><br>    <span class="hljs-comment"># 观察用例-2 1 -3 4 -1 2 1 -5 4</span><br><br>    <span class="hljs-comment"># -2 1 -3 4 这个局部</span><br>    <span class="hljs-comment"># 最好方案是只选4</span><br>    <span class="hljs-comment"># 选了4就要考虑是否继续往前扩</span><br>    <span class="hljs-comment"># 4 作为本段起点，我们考虑后续是否会出现sum&gt;0的段。</span><br><br>    <span class="hljs-comment"># 这样建模还是很复杂，这样想会更简单：</span><br>    <span class="hljs-comment"># 首先建模方式能够穷尽所有《连续子数组》的组合。</span><br>    <span class="hljs-comment"># 连续子数组，我们可以：固定一端，上述建模法其实是固定的起点，能否固定终点？</span><br>    <span class="hljs-comment"># 考虑以idx为终点的一个段，起点在哪里不关心，但是这里容易有idx和idx-1之间的关系。假如dp[idx-1]为**以idx-1为终点**的最大子数组和，那么dp[idx] = max&#123;nums[idx],dp[idx-1]+nums[idx]&#125;</span><br>    n = <span class="hljs-built_in">len</span>(nums)<br>    dp = [<span class="hljs-number">0</span>] * n<br>    ans = dp[<span class="hljs-number">0</span>] = nums[<span class="hljs-number">0</span>]<br>    <span class="hljs-keyword">for</span> i,v <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(nums):<br>        <span class="hljs-keyword">if</span> i == <span class="hljs-number">0</span>:<br>            <span class="hljs-keyword">continue</span><br>        dp[i] = <span class="hljs-built_in">max</span>(dp[i-<span class="hljs-number">1</span>]+nums[i],nums[i])<br>        ans = <span class="hljs-built_in">max</span>(ans, dp[i])<br>    <span class="hljs-keyword">return</span> ans<br></code></pre></td></tr></table></figure>
+
+<p>方法二（补充解法，作者本人思路——即 DP 的空间压缩版）：<br>方法一的思考过程中，我们曾经考虑过固定起点的做法，下面是具体实现，通俗地说就是不断更新起点，更新的原则在于：<br>如果把前面所有数加起来的 current_sum 已经 &lt; 0 了，它再往后加只会<strong>拖累</strong>后面的数（因为 x+负数&lt;x）。<br>更新的方法也没想的那么复杂，直接变成当前这个数就行</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">maxSubArray</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:<br>    ans = current_sum = nums[<span class="hljs-number">0</span>]<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-built_in">len</span>(nums)):<br>        <span class="hljs-keyword">if</span> current_sum &lt; <span class="hljs-number">0</span>:<br>            current_sum = nums[i]<br>        <span class="hljs-keyword">else</span>:<br>            current_sum+=nums[i]<br>        ans = <span class="hljs-built_in">max</span>(ans,current_sum)<br>    <span class="hljs-keyword">return</span> ans<br></code></pre></td></tr></table></figure>
+
+<p><strong>易错点</strong>：</p>
+<ol>
+<li>建模前先确认能<strong>穷尽所有连续子数组</strong>：固定起点枚举是 O(n²)；改为固定终点后，”以 i 为终点”的子数组恰好被 <code>dp[i]</code> 全覆盖，才能放心递推。</li>
+<li><code>ans</code> 初值必须是 <code>nums[0]</code> 而不是 0：全负数组（如 <code>[-3,-1]</code>）的最大和为负，初值 0 会返回错误答案。</li>
+</ol>
+<p><strong>深度思考</strong>：为什么”负段直接丢”是对的？<code>dp[i-1] &lt; 0</code> 时 <code>dp[i-1]+nums[i] &lt; nums[i]</code>，接上前缀严格更差 → 取 <code>nums[i]</code> 相当于重新开段。”以 i 为结尾”这个状态定义保证了每个子数组都有唯一终点、不重不漏——这是从”枚举组合”跃迁到”递推状态”的关键抽象。方法二的 <code>current_sum</code> 就是滚动压缩后的 <code>dp[i]</code>，空间降到 O(1)，与爬楼梯的滚动变量是同一类优化。</p>
+<p><strong>类似题</strong>：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-product-subarray/">152. 乘积最大子数组</a>（负×负会翻正，需同时维护最大&#x2F;最小两个状态）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-sum-circular-subarray/">918. 环形子数组的最大和</a>（环形 &#x3D; max(普通 Kadane, 总和−最小子数组和)）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/">121. 买卖股票的最佳时机</a>（差分数组上的 Kadane）</li>
+</ul>
+<h4 id="56-合并区间-🟨"><a href="#56-合并区间-🟨" class="headerlink" title="56. 合并区间 🟨"></a>56. 合并区间 🟨</h4><blockquote>
+<p><strong>I</strong>: intervals: List[List[int]]</p>
+<p><strong>O</strong>: List[List[int]]，合并所有重叠区间后、不重叠的区间数组</p>
+<p><strong>Cons</strong>: 端点相触（如 <code>[1,4]</code> 与 <code>[4,5]</code>）也算重叠需合并；输入顺序任意 → 必须先排序。</p>
+</blockquote>
+<p><strong>核心思路</strong>：按左端点排序后，重叠只可能发生在<strong>相邻</strong>区间之间——线性扫描，能并入就扩右端，不能并入就开新区间。</p>
+<p><strong>一题多解</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>解法</th>
+<th>时间</th>
+<th>空间</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>暴力两两检查合并，直到不再变化</td>
+<td>O(n²) 及以上</td>
+<td>O(1)</td>
+<td>合并会引发连锁反应，需反复重扫</td>
+</tr>
+<tr>
+<td>排序 + 线性扫描 ✅</td>
+<td>O(nlogn)</td>
+<td>O(logn)（排序栈）</td>
+<td>排序把全局问题降为局部判断</td>
+</tr>
+</tbody></table>
+<p>（作者解法）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">merge</span>(<span class="hljs-params">self, intervals: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]]</span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]]:<br>    <span class="hljs-comment"># 按区间左侧（即子数组第一个元素）排序，然后写一堆判断逻辑。。。</span><br>    intervals.sort(key=<span class="hljs-keyword">lambda</span> p:p[<span class="hljs-number">0</span>])<br>    ans = []<br>    <span class="hljs-keyword">for</span> p <span class="hljs-keyword">in</span> intervals:<br>        <span class="hljs-keyword">if</span> ans <span class="hljs-keyword">and</span> p[<span class="hljs-number">0</span>] &lt;= ans[-<span class="hljs-number">1</span>][<span class="hljs-number">1</span>]:<br>            ans[-<span class="hljs-number">1</span>][<span class="hljs-number">1</span>] = <span class="hljs-built_in">max</span>(ans[-<span class="hljs-number">1</span>][<span class="hljs-number">1</span>], p[<span class="hljs-number">1</span>])<br>        <span class="hljs-keyword">else</span>:<br>            ans.append(p)<br>    <span class="hljs-keyword">return</span> ans<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>扩展：<br>python的Lambda表达式用法…</li>
+</ul>
+<p><strong>易错点</strong>：</p>
+<ol>
+<li>并入时右端要取 <code>max(ans[-1][1], p[1])</code>，不能直接赋 <code>p[1]</code>——存在被包含区间（如 <code>[1,10]</code> 后跟 <code>[2,3]</code>），直接赋值会把大区间截短。</li>
+<li>判断条件是 <code>p[0] &lt;= ans[-1][1]</code> 而非 <code>&lt;</code>：端点相触也算重叠。</li>
+</ol>
+<p><strong>深度思考</strong>：排序的价值在于建立”左端点单调”的顺序：新区间只需与<strong>最后一个</strong>已合并区间判交，更早的区间必然已与之分离。”排序预处理 → 把需要全局比较的问题降为相邻局部比较”是区间类问题的母题，NSum 的排序去重也是同一思想。</p>
+<p><strong>类似题</strong>：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/insert-interval/">57. 插入区间</a>（本题变体：插入一个新区间再合并）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/non-overlapping-intervals/">435. 无重叠区间</a>（反向提问：最少移除几个区间使其互不重叠）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-number-of-arrows-to-burst-balloons/">452. 用最少数量的箭引爆气球</a>（相交区间的贪心计数）</li>
+</ul>
+<h4 id="189-轮转数组-🟨"><a href="#189-轮转数组-🟨" class="headerlink" title="189. 轮转数组 🟨"></a>189. 轮转数组 🟨</h4><blockquote>
+<p><strong>I</strong>: nums: List[int]; k: int</p>
+<p><strong>O</strong>: 无返回值，原地修改：数组元素向右轮转 k 位</p>
+<p><strong>Cons</strong>: 必须<strong>原地</strong>修改（进阶要求 O(1) 空间）；<code>k</code> 可能大于 <code>n</code>，需先 <code>k %= n</code>。</p>
+</blockquote>
+<p><strong>核心思路</strong>：条件给定时就已能确定每个元素的归宿：下标 i 的元素最终落到 <code>(i+k)%n</code>——这是一个置换，沿环换位即可；也可以利用”整体反转 + 局部反转”的对称性。</p>
+<p><strong>一题多解</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>解法</th>
+<th>时间</th>
+<th>空间</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>方法一：环状替换（gcd 定轮数）✅</td>
+<td>O(n)</td>
+<td>O(1)</td>
+<td>数学味最浓</td>
+</tr>
+<tr>
+<td>方法二：三次反转 ✅</td>
+<td>O(n)</td>
+<td>O(1)</td>
+<td>最简洁的原地写法</td>
+</tr>
+<tr>
+<td>方法三：切片拼接</td>
+<td>O(n)</td>
+<td>O(n)</td>
+<td><code>nums[:] =</code> 原地赋值，但中间产生了新列表</td>
+</tr>
+</tbody></table>
+<p>方法一（环状替换，作者推导注释完整保留）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">rotate</span>(<span class="hljs-params">self, nums: <span class="hljs-built_in">list</span>[<span class="hljs-built_in">int</span>], k: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-literal">None</span>:<br>    <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">    Do not return anything, modify nums in-place instead.</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    <span class="hljs-comment"># 但是是存在数学规律的，条件给定的时候就已经能确定每个元素最终的归宿了。</span><br>    <span class="hljs-comment"># 对于例子中的[1,2,3,4,5,6,7] (n=7.k=3)</span><br>    <span class="hljs-comment"># index为0的最后落到了3（0+3）</span><br>    <span class="hljs-comment"># index为1的最后落到了4（1+3）...</span><br><br>    <span class="hljs-comment"># index为4的最后落到了0（（4+3）%7=0 ）</span><br>    <span class="hljs-comment"># index为5的最后落到了1（（5+3）%7=1 ）</span><br><br>    <span class="hljs-comment"># 所以从i开始，把i处元素换到(i+k)%n处，直到重新回到i。</span><br>    <span class="hljs-comment"># 但是问题还在于，重新回到i（一轮），并不能弄完所有元素。</span><br>    n = <span class="hljs-built_in">len</span>(nums)<br>    k = k % n<br>    <span class="hljs-keyword">if</span> k == <span class="hljs-number">0</span>:<br>        <span class="hljs-keyword">return</span><br><br>    <span class="hljs-keyword">import</span> math<br>    cycles = math.gcd(n, k) <span class="hljs-comment"># 轮数</span><br>    <span class="hljs-keyword">for</span> start <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(cycles):<br>        current = start<br>        prev = nums[start]  <span class="hljs-comment"># 保存起始位置的元素</span><br>        <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>            next_idx = (current + k) % n<br>            <span class="hljs-comment"># 把 prev 放到新位置，同时把新位置原来的元素存进 prev</span><br>            nums[next_idx], prev = prev, nums[next_idx]<br>            current = next_idx<br>            <br>            <span class="hljs-keyword">if</span> current == start:  <span class="hljs-comment"># 回到起点，这个环走完了</span><br>                <span class="hljs-keyword">break</span><br></code></pre></td></tr></table></figure>
+
+<p>方法二（三次反转）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">rotate</span>(<span class="hljs-params">self, nums: <span class="hljs-built_in">list</span>[<span class="hljs-built_in">int</span>], k: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-literal">None</span>:<br>    n = <span class="hljs-built_in">len</span>(nums)<br>    k = k % n  <span class="hljs-comment"># ⚠️ 别忘了处理 k &gt; n 的情况</span><br>    nums.reverse()<br>    nums[:k] = nums[:k][::-<span class="hljs-number">1</span>]<br>    nums[k:] = nums[k:][::-<span class="hljs-number">1</span>]<br></code></pre></td></tr></table></figure>
+
+<p>方法三（切片）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">rotate</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>], k: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-literal">None</span>:<br>    n = <span class="hljs-built_in">len</span>(nums)<br>    k = k%n <br>    nums[:] = nums[n-k:]+nums[:n-k]<br></code></pre></td></tr></table></figure>
+
+<p><strong>易错点</strong>：</p>
+<ol>
+<li><code>k %= n</code> 不能漏：<code>k &gt; n</code> 时会越界或白转整圈。</li>
+<li>环状替换中回到起点（一轮）并不能弄完所有元素：循环个数是 <code>gcd(n,k)</code>，外层必须从 0 遍历到 <code>gcd(n,k)-1</code>。</li>
+<li>方法三的 <code>nums[n-k:] + nums[:n-k]</code> 会新建临时列表，严格说空间是 O(n)；被追问 O(1) 时应切换到方法二。</li>
+</ol>
+<p><strong>深度思考</strong>：环状替换的正确性：映射 <code>i → (i+k)%n</code> 是一个置换，可分解为 <code>gcd(n,k)</code> 个互不相交的轮换，每个轮换长 <code>n/gcd(n,k)</code>，总步数恰为 n → O(n)、O(1) 额外空间。三次反转则利用了置换的另一面：<code>(AB)^R = B^R · A^R</code>，把”平移”转化为两次”局部倒序”，完全避开下标运算。同一道题，一个是代数视角（模运算置换），一个是几何视角（镜像对称），值得对照记忆。</p>
+<p><strong>类似题</strong>：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/rotate-list/">61. 旋转链表</a>（链表版：找断点重接，<code>k %= len</code> 同样必要）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/reverse-words-in-a-string/">151. 反转字符串中的单词</a>（”局部反转”技巧在字符串上的应用）</li>
+</ul>
+<h4 id="238-除了自身以外数组的乘积-🟨"><a href="#238-除了自身以外数组的乘积-🟨" class="headerlink" title="238. 除了自身以外数组的乘积 🟨"></a>238. 除了自身以外数组的乘积 🟨</h4><blockquote>
+<p><strong>I</strong>: nums: List[int]</p>
+<p><strong>O</strong>: List[int]，answer[i] 为除 nums[i] 外其余所有元素的乘积</p>
+<p><strong>Cons</strong>: <strong>不许使用除法</strong>（否则除以全积即可，且 0 元素还需特判）；目标 O(n) 时间，且除输出数组外 O(1) 额外空间。</p>
+</blockquote>
+<p><strong>核心思路</strong>：<code>answer[i] = (i 左侧全部元素的积) × (i 右侧全部元素的积)</code>——前后缀分解。先用输出数组存前缀积，再用一个标量滚动乘上后缀积。</p>
+<p><strong>一题多解</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>解法</th>
+<th>时间</th>
+<th>空间（额外）</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>暴力：对每个 i 乘遍其余元素</td>
+<td>O(n²)</td>
+<td>O(1)</td>
+<td>直觉解，超时</td>
+</tr>
+<tr>
+<td>除法 trick</td>
+<td>O(n)</td>
+<td>O(1)</td>
+<td>违反 Cons</td>
+</tr>
+<tr>
+<td>前缀积 + 后缀积双数组</td>
+<td>O(n)</td>
+<td>O(n)</td>
+<td>作者注释中保留的第一版</td>
+</tr>
+<tr>
+<td>输出数组当 prefix + 标量后缀 ✅</td>
+<td>O(n)</td>
+<td>O(1)</td>
+<td>见下方代码</td>
+</tr>
+</tbody></table>
+<p>（作者最终解法；注释里保留了双数组版本的完整推导）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">productExceptSelf</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]:<br>        <span class="hljs-comment"># # 前缀积 和 后缀积</span><br>        <span class="hljs-comment"># n = len(nums)</span><br>        <span class="hljs-comment"># pre_accu = [1] * n</span><br>        <span class="hljs-comment"># post_accu = [1] * n</span><br><br>        <span class="hljs-comment"># for i in range(1,n):</span><br>        <span class="hljs-comment">#     pre_accu[i] = pre_accu[i-1] * nums[i-1]</span><br>        <span class="hljs-comment"># # print(pre_accu)</span><br>        <span class="hljs-comment"># for i in range(n-2,-1,-1):</span><br>        <span class="hljs-comment">#     post_accu[i] = post_accu[i+1] * nums[i+1]</span><br>        <span class="hljs-comment"># # print(post_accu)</span><br>        <span class="hljs-comment"># ans = [0]*n</span><br>        <span class="hljs-comment"># for i in range(n):</span><br>        <span class="hljs-comment">#     ans[i] = pre_accu[i]*post_accu[i]</span><br>        <span class="hljs-comment"># return ans</span><br><br>        n = <span class="hljs-built_in">len</span>(nums)<br>        ans = [<span class="hljs-number">1</span>] * n<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,n):<br>            ans[i] = ans[i-<span class="hljs-number">1</span>] * nums[i-<span class="hljs-number">1</span>]<br>        <span class="hljs-comment"># 以上已经做了前缀积， 下面做另一半后缀积</span><br>        post_accu = <span class="hljs-number">1</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">reversed</span>(<span class="hljs-built_in">range</span>(n)):<br>            ans[i] = ans[i]  * post_accu<br>            post_accu *= nums[i]<br>        <span class="hljs-keyword">return</span> ans<br></code></pre></td></tr></table></figure>
+
+<p><strong>易错点</strong>：</p>
+<ol>
+<li>第二遍从右往左时，<code>ans[i]</code> 要**先乘入当前的 post_accu、再更新 <code>post_accu *= nums[i]</code>**——顺序反了会把 nums[i] 自己也乘进去。（对照第 1 题”先查后存”、560 题”先查后入表”：都是”用之前别污染”同一个母题）</li>
+<li>边界：<code>ans[0]</code> 左侧没有元素应为 1，由初始化 <code>[1]*n</code> 天然保证。</li>
+</ol>
+<p><strong>深度思考</strong>：本题与 42. 接雨水是同一套方法论的两处应用：答案都形如 f(左侧聚合) ⊕ g(右侧聚合)。标准做法是开两个前后缀数组；而只要聚合满足”可滚动”（max &#x2F; 累乘），就能把其中一侧压成一个标量，空间从 O(n) 降到 O(1)。**”前后缀分解 → 单侧标量压缩”是可以背下来的优化路径**。</p>
+<p><strong>类似题</strong>：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/trapping-rain-water/">42. 接雨水</a>（前后缀分解 + 压缩成双指针的同款优化）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/candy/">135. 分发糖果</a>（双向遍历的前后缀思想）</li>
+</ul>
+<h4 id="41-缺失的第一个正数-🟥"><a href="#41-缺失的第一个正数-🟥" class="headerlink" title="41. 缺失的第一个正数 🟥"></a>41. 缺失的第一个正数 🟥</h4><blockquote>
+<p><strong>I</strong>: nums: List[int]</p>
+<p><strong>O</strong>: int，未出现在数组中的最小正整数</p>
+<p><strong>Cons</strong>: 时间 <strong>O(n)</strong> 且空间 **O(1)**（双重灵魂约束，直接否决 set 方案）；数组无序，含负数、0、重复；<code>n &lt;= 10⁵</code>。</p>
+</blockquote>
+<p><strong>核心思路</strong>：抽屉原理 → 答案必在 <code>[1, n+1]</code>。把数组自己当哈希表：值 <code>x ∈ [1,n]</code> 应坐在下标 <code>x-1</code>，置换归位后再扫一遍，第一个”座位不对”处即答案。</p>
+<p><strong>一题多解</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>解法</th>
+<th>时间</th>
+<th>空间</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>暴力：从 1 到 n+1 逐个查</td>
+<td>O(n²)</td>
+<td>O(1)</td>
+<td>被 Cons 否决</td>
+</tr>
+<tr>
+<td>set 记录见过的正数</td>
+<td>O(n)</td>
+<td>O(n)</td>
+<td>违反 O(1) 空间</td>
+</tr>
+<tr>
+<td>原地哈希（置换归位）✅</td>
+<td>O(n)</td>
+<td>O(1)</td>
+<td>见下方代码</td>
+</tr>
+</tbody></table>
+<p>作者思考过程（原样保留）：</p>
+<ol>
+<li>暴力法是从1枚举到n+1，或者说枚举到n就行了，但本质一样 O(n^2)复杂度.不满足O(n)复杂度要求。</li>
+<li>最容易想到的优化思路是，从开始考虑1的过程中就可以不断更新记忆了，维护一个set()存储见过的正整数，那么set里的数字就不可能是答案，但是空间复杂度又变成了O(n).</li>
+<li>我只能想到，如果是常数级空间复杂度，也许要用到原地算法？数组的index和value如果能形成某种特定规律的映射</li>
+</ol>
+<p>关键思路：</p>
+<ol>
+<li>数组长度是 n，答案一定在 [1, n+1] 之间（如果 1~n 都出现了，答案就是 n+1）。</li>
+<li>如果数字 x 出现在数组里，且 1 ≤ x ≤ n，那它理应坐在下标 x-1 的位置上。<br>x &#x3D; 1  → 应该放在 nums[0]<br>x &#x3D; 2  → 应该放在 nums[1]<br>x &#x3D; 5  → 应该放在 nums[4]<br>这就把”这个数出没出现过”的问题，转化成了”这个座位上坐的是不是正确的客人”。</li>
+</ol>
+<p>具体步骤：</p>
+<ol>
+<li>数字归位<br>遍历数组，对于每个位置 i：<br>如果 nums[i] 是 1~n 之间的数，且它没坐在正确的位置上（nums[i] !&#x3D; nums[nums[i]-1]），就把它交换到正确位置去。<br>用 while 循环而不是 if，因为换完之后 nums[i] 又变成了一个新的数，需要继续判断。</li>
+<li>找答案<br>再遍历一遍，第一个 nums[i] !&#x3D; i + 1 的位置，i + 1 就是答案。若全都对得上，则返回n+1</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">firstMissingPositive</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:<br>    <span class="hljs-comment"># 暴力法是从1枚举到n+1，或者说枚举到n就行了，但本质一样 O(n^2)复杂度.不满足O(n)复杂度要求。</span><br><br>    <span class="hljs-comment"># 最容易想到的优化思路是，从开始考虑1的过程中就可以不断更新记忆了，维护一个set()存储见过的正整数，那么set里的数字就不可能是答案，但是空间复杂度又变成了O(n).</span><br><br>    <span class="hljs-comment"># 这么严苛的时空复杂度，或许要用到原地hash</span><br><br>    n = <span class="hljs-built_in">len</span>(nums)<br><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):<br>        <span class="hljs-comment"># 注意while不是if</span><br>        <span class="hljs-keyword">while</span> <span class="hljs-number">1</span>&lt;=nums[i]&lt;=n <span class="hljs-keyword">and</span> nums[i]!=nums[nums[i]-<span class="hljs-number">1</span>]:<br>            j = nums[i] - <span class="hljs-number">1</span><br>            nums[i],nums[j] = nums[j],nums[i]<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):<br>        <span class="hljs-keyword">if</span> nums[i] != i+<span class="hljs-number">1</span>:<br>            <span class="hljs-keyword">return</span> i+<span class="hljs-number">1</span><br>    <span class="hljs-keyword">return</span> n+<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>易错点</strong>（作者踩坑实录，原样保留）：</p>
+<p>j &#x3D; nums[i] - 1<br>nums[i], nums[j] &#x3D; nums[j], nums[i]<br>这里如果换成：<br>nums[i], nums[nums[i]-1] &#x3D; nums[nums[i]-1], nums[i]<br>就会超时<br>原因：Python 的多重赋值（tuple unpacking）是从左到右依次赋值的，而左边的 nums[nums[i]-1] 里的 nums[i] 会在第一次赋值后被改变，导致下标算错了。</p>
+<p>假设 nums &#x3D; [3, 2, 1]，i &#x3D; 0，我们想交换 nums[0] 和 nums[2]。<br>第一步：计算右边（没问题）<br>nums[nums[i]-1] &#x3D; nums[3-1] &#x3D; nums[2] &#x3D; 1<br>nums[i] &#x3D; nums[0] &#x3D; 3<br>右边打包成元组：(1, 3)<br>第二步：从左到右赋值（出事了）<br>左边第一个赋值：<br>nums[i] &#x3D; 1<br>执行完这一行，nums 变成了 [1, 2, 1]。<br>注意！nums[0] 已经从 3 变成了 1！<br>左边第二个赋值：<br>nums[nums[i]-1] &#x3D; 3<br>此时 Python 需要计算 nums[i]-1 作为下标：<br>nums[i] 现在是 1（刚被改过的！）<br>nums[i] - 1 &#x3D; 0<br>所以实际执行的是：nums[0] &#x3D; 3<br>最终 nums 变成了 [3, 2, 1] —— 等于什么都没换！​ 🤯<br>然后 while 循环一看条件还满足，继续跑，又来一遍……无限循环，直接超时。</p>
+<p>总结： 在 Python 的多重赋值中，如果左边的下标表达式依赖会被同时修改的变量，就会因为”从左到右赋值”的顺序而出错。用临时变量把下标固定住是最安全的写法。</p>
+<p><strong>深度思考</strong>：两条正确性支柱：① 抽屉原理保证答案 ∈ [1, n+1]，于是有效”乘客”只有 n 个，数组下标天然是一张现成的哈希表——这是 O(1) 空间的来源；② 复杂度的均摊论证：每次交换至少让一个元素<strong>永久归位</strong>（之后不再移动），故交换总数 ≤ n，看似 while 套 for 实则 O(n)——与 128 题的均摊分析同类。while 条件中的 <code>nums[i] != nums[nums[i]-1]</code> 还顺带防住了重复元素互为目标时的死循环。</p>
+<p><strong>类似题</strong>：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-all-numbers-disappeared-in-an-array/">448. 找到所有数组中消失的数字</a>（同款原地标记，问的是谁缺席）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-all-duplicates-in-an-array/">442. 数组中重复的数据</a>（同款标记，问的是谁重复）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/missing-number/">268. 丢失的数字</a>（值域 [0,n] 的简化版）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-the-duplicate-number/">287. 寻找重复数</a>（Floyd 判圈版）</li>
+</ul>
+<h3 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h3><h4 id="73-矩阵置零-🟨"><a href="#73-矩阵置零-🟨" class="headerlink" title="73. 矩阵置零 🟨"></a>73. 矩阵置零 🟨</h4><blockquote>
+<p><strong>I</strong>: matrix: List[List[int]]</p>
+<p><strong>O</strong>: 无返回值，原地修改：元素为 0 的行、列全部置 0</p>
+<p><strong>Cons</strong>: 进阶要求 <strong>O(1)</strong> 额外空间（否则两个 set 记零行零列即可）；必须基于”原生 0”的快照计算，不能边改边判。</p>
+</blockquote>
+<p><strong>核心思路</strong>：需要记住 m 行 n 列中谁该清零。方法一把这份信息放外部 set（O(m+n) 空间）；方法二把它<strong>编码进矩阵自身的首行首列</strong>，只用两个 bool 保护首行列的原始信息。</p>
+<p><strong>一题多解</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>解法</th>
+<th>时间</th>
+<th>空间</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>方法一：set 记录零行零列</td>
+<td>O(mn)</td>
+<td>O(m+n)</td>
+<td>直觉解</td>
+</tr>
+<tr>
+<td>方法二：首行首列做标志位 ✅</td>
+<td>O(mn)</td>
+<td>O(1)</td>
+<td>见下方代码</td>
+</tr>
+</tbody></table>
+<p>（方法一）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">setZeroes</span>(<span class="hljs-params">self, matrix: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]]</span>) -&gt; <span class="hljs-literal">None</span>:<br>    <span class="hljs-comment"># 两个想法：</span><br>    <span class="hljs-comment"># 第一个做法可以是：动态计算，遍历每个元素，一看到0就把所在行和列全变成0，但是这样要进行一种处理：区分“原生0”和“改变0”，只有原生0才可以把行列的元素变成0</span><br><br>    <span class="hljs-comment"># 第二个做法是：静态计算，给定一个矩阵，找出所有的0，那么其实找出这一刻就能计算好所有其他应该变成0的元素了</span><br>    <br>    <span class="hljs-comment"># 但是题目要求原地算法，上面的行为似乎都需要记录。比如做法二需要记录哪些行、列需要变成0：</span><br>    row_zero = <span class="hljs-built_in">set</span>()<br>    col_zero = <span class="hljs-built_in">set</span>()<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(matrix)):<br>        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(matrix[<span class="hljs-number">0</span>])):<br>            <span class="hljs-keyword">if</span> matrix[i][j] == <span class="hljs-number">0</span>:<br>                row_zero.add(i)<br>                col_zero.add(j)<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> row_zero:<br>        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(matrix[<span class="hljs-number">0</span>])):<br>            matrix[i][j]=<span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> col_zero:<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(matrix)):<br>            matrix[i][j]=<span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
+
+<p>（方法二：自洽且无损的首行列标志）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">setZeroes</span>(<span class="hljs-params">self, matrix: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]]</span>) -&gt; <span class="hljs-literal">None</span>:<br>    m, n = <span class="hljs-built_in">len</span>(matrix), <span class="hljs-built_in">len</span>(matrix[<span class="hljs-number">0</span>])<br>    first_row_zero = <span class="hljs-built_in">any</span>(matrix[<span class="hljs-number">0</span>][j] == <span class="hljs-number">0</span> <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n))<br>    first_col_zero = <span class="hljs-built_in">any</span>(matrix[i][<span class="hljs-number">0</span>] == <span class="hljs-number">0</span> <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(m))<br>    <br>    <span class="hljs-comment"># 用首行首列作为标记</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, m):<br>        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n):<br>            <span class="hljs-keyword">if</span> matrix[i][j] == <span class="hljs-number">0</span>:<br>                matrix[i][<span class="hljs-number">0</span>] = <span class="hljs-number">0</span><br>                matrix[<span class="hljs-number">0</span>][j] = <span class="hljs-number">0</span><br>    <br>    <span class="hljs-comment"># 根据标记置零（跳过首行首列）</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, m):<br>        <span class="hljs-keyword">if</span> matrix[i][<span class="hljs-number">0</span>] == <span class="hljs-number">0</span>:<br>            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n):<br>                matrix[i][j] = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n):<br>        <span class="hljs-keyword">if</span> matrix[<span class="hljs-number">0</span>][j] == <span class="hljs-number">0</span>:<br>            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, m):<br>                matrix[i][j] = <span class="hljs-number">0</span><br>    <br>    <span class="hljs-comment"># 处理首行首列</span><br>    <span class="hljs-keyword">if</span> first_row_zero:<br>        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):<br>            matrix[<span class="hljs-number">0</span>][j] = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">if</span> first_col_zero:<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(m):<br>            matrix[i][<span class="hljs-number">0</span>] = <span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>易错点 &#x2F; 思考记录</strong>（作者原文保留）：<br>用首行列当做标志位，是否要担心首行列的元素本身被覆盖？<br>不必担心，因为如果被写成0，那它本身终究是要为0的，只是这里提前到来而已，如果不被写成0，那它就不会被改变。<br>唯一的常数空间：判断首行列本身是否存在0的两个bool：first_row_zero，first_col_zero</p>
+<p>python语法糖：<br>any() 是 Python 内置函数，接收一个可迭代对象（列表、生成器等），规则很简单：里面有任意一个是 True，则为True，全都是False才为False，空的为False<br>all()是与any()相对的：意思是全部满足才为 True</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 第一行是不是全都是 0？</span><br>is_all_zero = <span class="hljs-built_in">all</span>(matrix[<span class="hljs-number">0</span>][j] == <span class="hljs-number">0</span> <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n))   <span class="hljs-comment"># 有一个不是 0 就返回 False</span><br><span class="hljs-comment"># 矩阵里有没有负数？</span><br>has_minus = <span class="hljs-built_in">any</span>(num &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> matrix <span class="hljs-keyword">for</span> num <span class="hljs-keyword">in</span> row)<br></code></pre></td></tr></table></figure>
+<p>还有哪些语法糖？</p>
+<ol>
+<li><p>zip()<br>zip() 就像拉链：把两条（或多条）序列按位置一一配对，第 1 个配第 1 个，第 2 个配第 2 个……</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python">names = [<span class="hljs-string">&quot;Alice&quot;</span>, <span class="hljs-string">&quot;Bob&quot;</span>, <span class="hljs-string">&quot;Charlie&quot;</span>]<br>scores = [<span class="hljs-number">90</span>, <span class="hljs-number">85</span>, <span class="hljs-number">92</span>]<br><span class="hljs-keyword">for</span> name, score <span class="hljs-keyword">in</span> <span class="hljs-built_in">zip</span>(names, scores):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;<span class="hljs-subst">&#123;name&#125;</span>: <span class="hljs-subst">&#123;score&#125;</span>&quot;</span>)<br><br><span class="hljs-comment"># 等价于：</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(names)):<br>    name = names[i]<br>    score = scores[i]<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;<span class="hljs-subst">&#123;name&#125;</span>: <span class="hljs-subst">&#123;score&#125;</span>&quot;</span>)<br></code></pre></td></tr></table></figure>
+<p>长度不一致默认丢弃多余的，若希望不要丢弃，而是为短的赋default值：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> itertools <span class="hljs-keyword">import</span> zip_longest<br><span class="hljs-built_in">list</span>(zip_longest(a, b, fillvalue=<span class="hljs-number">0</span>))  <span class="hljs-comment"># [(1, 4), (2, 5), (3, 0)]</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>海象表达式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 经典场景 1：避免重复调用函数</span><br><span class="hljs-comment"># 不用海象（重复计算）：</span><br>length = <span class="hljs-built_in">len</span>(some_list)<br><span class="hljs-keyword">if</span> length &gt; <span class="hljs-number">10</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;太长了，有 <span class="hljs-subst">&#123;length&#125;</span> 个元素&quot;</span>)<br><span class="hljs-comment"># 用海象（一次搞定）：</span><br><span class="hljs-keyword">if</span> (n := <span class="hljs-built_in">len</span>(some_list)) &gt; <span class="hljs-number">10</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;太长了，有 <span class="hljs-subst">&#123;n&#125;</span> 个元素&quot;</span>)<br><span class="hljs-comment"># n := len(some_list) 做了两件事：① 算出长度赋值给 n；② 整个表达式的值就是 n。所以 &gt; 10 判断的是 n 本身。</span><br><br><span class="hljs-comment"># 经典场景 2：while 循环读数据（最常用！）</span><br><span class="hljs-comment"># 不用海象：</span><br>line = f.readline()<br><span class="hljs-keyword">while</span> line:<br>    process(line)<br>    line = f.readline()  <span class="hljs-comment"># 重复写了一遍，容易漏</span><br><span class="hljs-comment"># 用海象：</span><br><span class="hljs-keyword">while</span> (line := f.readline()):<br>    process(line)<br><span class="hljs-comment">#一行搞定，不会漏掉更新。</span><br><br><span class="hljs-comment"># 经典场景 3：列表推导式里过滤 + 复用</span><br><span class="hljs-comment"># 找出所有平方值大于 10 的数，并且顺便用这个平方值</span><br>nums = [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]<br>result = [sq <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> nums <span class="hljs-keyword">if</span> (sq := x**<span class="hljs-number">2</span>) &gt; <span class="hljs-number">10</span>]<br><span class="hljs-comment"># result = [16, 25]  ← sq 就是 x**2 的结果</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 同时遍历两个矩阵，找出对应位置都是 0 的格子数量</span><br>count = <span class="hljs-number">0</span><br><span class="hljs-keyword">for</span> row1, row2 <span class="hljs-keyword">in</span> <span class="hljs-built_in">zip</span>(matrix1, matrix2):<br>    <span class="hljs-keyword">for</span> a, b <span class="hljs-keyword">in</span> <span class="hljs-built_in">zip</span>(row1, row2):<br>        <span class="hljs-keyword">if</span> (both_zero := (a == <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> b == <span class="hljs-number">0</span>)):<br>            count += <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>深度思考</strong>：从信息的角度看，置零方案需要 m+n bit 的标记信息，要么外存（set），要么就地编码（首行列）。就地编码的前提是这些位置”反正最后大概率要写”，提前写入不会引入歧义；唯一会被破坏的是首行列自身的原始状态，所以用两个 bool 提前存档。这与 41 题的原地哈希同源：<strong>把待处理的数据结构本身当作免费存储</strong>。</p>
+<p><strong>类似题</strong>：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/game-of-life/">289. 生命游戏</a>（同样是”下一帧依赖全图快照”的原地更新，用高位编码过渡态）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/spiral-matrix/">54. 螺旋矩阵</a>（同属矩阵模拟类）</li>
+</ul>
+<p>— Agent Resume Here —</p>
+<h4 id="54-螺旋矩阵-🟨"><a href="#54-螺旋矩阵-🟨" class="headerlink" title="54. 螺旋矩阵 🟨"></a>54. 螺旋矩阵 🟨</h4><blockquote>
+<p><strong>I</strong>: matrix: List[List[int]]</p>
+<p><strong>O</strong>: List[int]，按顺时针螺旋顺序输出所有元素</p>
+<p><strong>Cons</strong>: 所有 <code>m*n</code> 个元素必须<strong>恰好访问一次</strong>；模拟题，时间 O(mn) 已是最优，比拼的是空间与边界处理。</p>
+</blockquote>
+<p><strong>核心思路</strong>：模拟螺旋行为。方向只有 4 种且循环切换（右下左上），”碰壁”（越界或踏入故地）就转向；进阶思路：每次碰壁都会让”墙壁越来越厚” → 用<strong>动态边界收缩</strong>编码这个信息，省掉 visited 数组。</p>
+<p><strong>一题多解</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>解法</th>
+<th>时间</th>
+<th>空间</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>解法一：visited 模拟</td>
+<td>O(mn)</td>
+<td>O(mn)</td>
+<td>直觉解</td>
+</tr>
+<tr>
+<td>解法二：边界收缩 ✅</td>
+<td>O(mn)</td>
+<td>O(1)（不含输出）</td>
+<td>把 visited 信息编码进 4 个边界变量</td>
+</tr>
+</tbody></table>
+<p>（作者解法一）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">spiralOrder</span>(<span class="hljs-params">self, matrix: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]]</span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]:<br>    <span class="hljs-comment"># 不像是算法题，更像是程序设计题，模拟螺旋行为即可</span><br>    <span class="hljs-comment"># 总共只有4种行为的循环：右下左上（0,1,2,3）...</span><br>    <span class="hljs-comment"># 每种行为的切换都有规律：下一步越界或者下一步到达“故地”。</span><br>    <br>    <span class="hljs-comment"># 行为：</span><br>    act = <span class="hljs-number">0</span><br>    <span class="hljs-comment"># 走过的格子的数量</span><br>    count = <span class="hljs-number">0</span><br>    ans = []<br>    m = <span class="hljs-built_in">len</span>(matrix)<br>    n = <span class="hljs-built_in">len</span>(matrix[<span class="hljs-number">0</span>])<br>    <span class="hljs-comment"># 注意visited不能这样写：</span><br>    <span class="hljs-comment"># visited = [[False]*n]*m (浅拷贝陷阱)</span><br>    visited = [[<span class="hljs-literal">False</span> <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)] <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(m)]<br><br>    <span class="hljs-comment"># 热身开始</span><br>    i = j = <span class="hljs-number">0</span><br>    visited[i][j] = <span class="hljs-literal">True</span><br>    count = <span class="hljs-number">1</span><br>    ans.append(matrix[i][j])<br><br>    <span class="hljs-comment"># 正式开始</span><br>    <span class="hljs-keyword">while</span> count&lt; m*n:<br>        <span class="hljs-keyword">if</span> act%<span class="hljs-number">4</span>==<span class="hljs-number">0</span>:<br>            <span class="hljs-comment">#向右</span><br>            <span class="hljs-keyword">if</span> (j+<span class="hljs-number">1</span>&lt;n) <span class="hljs-keyword">and</span> (<span class="hljs-keyword">not</span> visited[i][j+<span class="hljs-number">1</span>]):<br>                j+=<span class="hljs-number">1</span><br>                ans.append(matrix[i][j])<br>                visited[i][j]=<span class="hljs-literal">True</span><br>                count += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">else</span>:<br>                act+=<span class="hljs-number">1</span><br>                <span class="hljs-keyword">continue</span><br>        <span class="hljs-keyword">elif</span> act%<span class="hljs-number">4</span>==<span class="hljs-number">1</span>:<br>            <span class="hljs-comment">#向下</span><br>            <span class="hljs-keyword">if</span> (i+<span class="hljs-number">1</span>&lt;m) <span class="hljs-keyword">and</span> (<span class="hljs-keyword">not</span> visited[i+<span class="hljs-number">1</span>][j]):<br>                i+=<span class="hljs-number">1</span><br>                ans.append(matrix[i][j])<br>                visited[i][j]=<span class="hljs-literal">True</span><br>                count += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">else</span>:<br>                act+=<span class="hljs-number">1</span><br>                <span class="hljs-keyword">continue</span><br>        <span class="hljs-keyword">elif</span> act%<span class="hljs-number">4</span>==<span class="hljs-number">2</span>:<br>            <span class="hljs-comment">#向左</span><br>            <span class="hljs-keyword">if</span> (j-<span class="hljs-number">1</span>&gt;=<span class="hljs-number">0</span>) <span class="hljs-keyword">and</span> (<span class="hljs-keyword">not</span> visited[i][j-<span class="hljs-number">1</span>]):<br>                j-=<span class="hljs-number">1</span><br>                ans.append(matrix[i][j])<br>                visited[i][j]=<span class="hljs-literal">True</span><br>                count += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">else</span>:<br>                act+=<span class="hljs-number">1</span><br>                <span class="hljs-keyword">continue</span><br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-comment">#向上</span><br>            <span class="hljs-keyword">if</span> (i-<span class="hljs-number">1</span>&gt;=<span class="hljs-number">0</span>) <span class="hljs-keyword">and</span> (<span class="hljs-keyword">not</span> visited[i-<span class="hljs-number">1</span>][j]):<br>                i-=<span class="hljs-number">1</span><br>                ans.append(matrix[i][j])<br>                visited[i][j]=<span class="hljs-literal">True</span><br>                count += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">else</span>:<br>                act+=<span class="hljs-number">1</span><br>                <span class="hljs-keyword">continue</span><br>    <span class="hljs-keyword">return</span> ans<br><br><br>    <span class="hljs-comment"># 但能否不用visited呢？</span><br>    <span class="hljs-comment"># 其实会发现每次‘碰壁’，会都使得下次**更可能**‘碰壁’ -- 或者说 ‘墙壁越来越厚了’</span><br>    <span class="hljs-comment"># 这样思考的话，其实就是和visited的处理等价了，如果能动态进行”边界收缩“，那么就不必需要visited数组了。节省O(mn)的空间</span><br></code></pre></td></tr></table></figure>
+<p>通过收缩边界来节省visited数组空间，但是注意边界条件和易错点：向左和向上需要额外判断纵向和横向没越界。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">spiralOrder</span>(<span class="hljs-params">self, matrix: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]]</span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]:<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> matrix <span class="hljs-keyword">or</span> <span class="hljs-keyword">not</span> matrix[<span class="hljs-number">0</span>]:<br>        <span class="hljs-keyword">return</span> []<br><br>    top,bottom = <span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(matrix)-<span class="hljs-number">1</span><br>    left,right = <span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(matrix[<span class="hljs-number">0</span>])-<span class="hljs-number">1</span><br>    ans = [] <br><br>    <span class="hljs-keyword">while</span> top &lt;= bottom <span class="hljs-keyword">and</span> left&lt;= right:<br>        <span class="hljs-comment"># Go Right</span><br>        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(left,right+<span class="hljs-number">1</span>):<br>            ans.append(matrix[top][j])<br>        top+=<span class="hljs-number">1</span><br><br>        <span class="hljs-comment"># Go Down</span><br>        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(top,bottom+<span class="hljs-number">1</span>):<br>            ans.append(matrix[j][right])<br>        right-=<span class="hljs-number">1</span><br><br>        <span class="hljs-comment"># Go Left</span><br>        <span class="hljs-keyword">if</span> top&lt;= bottom:<br>            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(right,left-<span class="hljs-number">1</span>,-<span class="hljs-number">1</span>):<br>                ans.append(matrix[bottom][j])<br>            bottom-=<span class="hljs-number">1</span><br>        <br>        <span class="hljs-comment"># Go Up</span><br>        <span class="hljs-keyword">if</span> left&lt;=right:<br>            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(bottom,top-<span class="hljs-number">1</span>,-<span class="hljs-number">1</span>):<br>                ans.append(matrix[j][left])<br>            left+=<span class="hljs-number">1</span><br>    <span class="hljs-keyword">return</span> ans<br></code></pre></td></tr></table></figure>
+
+<p><strong>易错点</strong>：</p>
+<ol>
+<li><code>visited = [[False]*n]*m</code> 是<strong>浅拷贝陷阱</strong>（作者已标注）：m 行共享同一个内层 list，标记一处等于标记整列；必须用列表推导逐行新建。</li>
+<li>解法二中向左、向上之前要补判 <code>top&lt;=bottom</code> &#x2F; <code>left&lt;=right</code>（作者已强调”向左和向上需要额外判断”）：剩最后一行&#x2F;一列时，走完右&#x2F;下后区域已被穿过，再走会重复输出。</li>
+<li>解法一碰壁时只换向（<code>act+=1; continue</code>）不移动，终止靠 count 计数——转向本身不会死循环，别在碰壁分支里也移动指针。</li>
+</ol>
+<p><strong>深度思考</strong>：解法二的正确性在于不变式”每完整走完一条边就永久废弃它”（top++ &#x2F; right– &#x2F; bottom– &#x2F; left++），剩余区域始终是矩形。这把 O(mn) 的 visited 信息压缩进 4 个标量——与 42 题（前后缀数组压成双指针）、238 题（后缀积压成标量）是同一种<strong>信息压缩</strong>思维。</p>
+<p><strong>类似题</strong>：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/spiral-matrix-ii/">59. 螺旋矩阵 II</a>（反向题：给定 n 生成螺旋方阵，同一套边界收缩）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/shun-shi-zhen-da-yin-ju-zhen-lcof/">剑指 Offer 29. 顺时针打印矩阵</a>（本题镜像）</li>
+</ul>
+<hr>
+<h4 id="48-旋转图像-🟨"><a href="#48-旋转图像-🟨" class="headerlink" title="48. 旋转图像 🟨"></a>48. 旋转图像 🟨</h4><blockquote>
+<p><strong>I</strong>: matrix: List[List[int]]，n×n 方阵</p>
+<p><strong>O</strong>: 无返回值，原地顺时针旋转 90°</p>
+<p><strong>Cons</strong>: 必须<strong>原地</strong>修改（不申请另一个矩阵）；方阵才能用转置 trick。</p>
+</blockquote>
+<p><strong>核心思路</strong>：顺时针旋转 90° 的置换 <code>(i,j) → (j, n-1-i)</code> 可分解为两步简单对称操作：<strong>转置</strong>（<code>(i,j)→(j,i)</code>）+ <strong>水平翻转</strong>（<code>(j,i)→(j,n-1-i)</code>）。</p>
+<p><strong>一题多解</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>解法</th>
+<th>时间</th>
+<th>空间</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>新开矩阵按映射填</td>
+<td>O(n²)</td>
+<td>O(n²)</td>
+<td>违反原地 Cons</td>
+</tr>
+<tr>
+<td>转置 + 水平翻转 ✅</td>
+<td>O(n²)</td>
+<td>O(1)</td>
+<td>见下方代码</td>
+</tr>
+<tr>
+<td>四数轮换（分层旋转）</td>
+<td>O(n²)</td>
+<td>O(1)</td>
+<td>189 环状替换的二维版</td>
+</tr>
+</tbody></table>
+<p>（作者解法）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">rotate</span>(<span class="hljs-params">self, matrix: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]]</span>) -&gt; <span class="hljs-literal">None</span>:<br>    <span class="hljs-comment"># 等价于： 转置 + 水平翻转</span><br>    <span class="hljs-comment"># 转置</span><br>    n = <span class="hljs-built_in">len</span>(matrix)<br>    count = <span class="hljs-number">1</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):<br>        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(count):<br>            matrix[i][j],matrix[j][i] = matrix[j][i],matrix[i][j]<br>        count+=<span class="hljs-number">1</span><br><br>    <span class="hljs-comment"># 水平翻转</span><br>    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">int</span>(n/<span class="hljs-number">2</span>)):<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):<br>            matrix[i][j],matrix[i][n-<span class="hljs-number">1</span>-j]=matrix[i][n-<span class="hljs-number">1</span>-j],matrix[i][j]<br></code></pre></td></tr></table></figure>
+
+<p><strong>易错点</strong>：</p>
+<ol>
+<li>转置只能遍历<strong>下三角</strong>（作者代码中 count 控制每行列数）：全遍历等于把转置做两遍，矩阵复原。</li>
+<li>第二步是<strong>水平翻转</strong>（列交换 <code>j ↔ n-1-j</code>），别写成上下翻转——那是逆时针。口诀：顺时针 &#x3D; 转置 + 左右翻；逆时针 &#x3D; 转置 + 上下翻。</li>
+</ol>
+<p><strong>深度思考</strong>：与 189 题三次反转完全同构——<strong>把一个复杂置换分解为若干简单对称操作的复合</strong>。这里 <code>(i,j)→(j,n-1-i)</code> 被拆成”交换坐标 + 翻转一维”，各自都能原地 O(1) 完成；189 里平移被拆成三次反转（<code>(AB)^R = B^R·A^R</code>）。遇到任何”原地重排”类题目，先问：这个置换能否分解为转置 &#x2F; 翻转 &#x2F; 环换这类初等变换？</p>
+<p><strong>类似题</strong>：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/rotate-array/">189. 轮转数组</a>（一维版：置换分解思想相同）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/transpose-matrix/">867. 转置矩阵</a>（非方阵转置，无法原地 trick）</li>
+</ul>
+<h4 id="240-搜索二维矩阵-II-🟨"><a href="#240-搜索二维矩阵-II-🟨" class="headerlink" title="240. 搜索二维矩阵 II 🟨"></a>240. 搜索二维矩阵 II 🟨</h4><blockquote>
+<p><strong>I</strong>: matrix: List[List[int]]; target: int</p>
+<p><strong>O</strong>: bool，target 是否在矩阵中</p>
+<p><strong>Cons</strong>: 每行从左到右升序、每列从上到下升序，但<strong>下一行首不一定大于上一行尾</strong>（非全局有序 → 不能整体一次二分）；目标 O(m+n)。</p>
+</blockquote>
+<p><strong>核心思路</strong>：出生点决定确定性（作者洞察）。从<strong>右上角</strong>（鞍点：行最大、列最小）出发，每步 cur&gt;target 只能左移、cur&lt;target 只能下移——二选一、步步排除，退化为线性扫描。</p>
+<p><strong>一题多解</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>解法</th>
+<th>时间</th>
+<th>空间</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>解法一：逐行 in（行内有序可二分）</td>
+<td>O(mn) &#x2F; O(mlogn)</td>
+<td>O(1)</td>
+<td>直觉解</td>
+</tr>
+<tr>
+<td>解法二：DFS&#x2F;BFS 盲搜</td>
+<td>O(mn)</td>
+<td>O(mn) visited</td>
+<td>分支不确定</td>
+</tr>
+<tr>
+<td>解法三：右上角排除法 ✅</td>
+<td>O(m+n)</td>
+<td>O(1)</td>
+<td>作者最终解法</td>
+</tr>
+</tbody></table>
+<p>（作者解法一）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">searchMatrix</span>(<span class="hljs-params">self, matrix: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]], target: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">bool</span>:<br>    <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> matrix:<br>        <span class="hljs-keyword">if</span> target <span class="hljs-keyword">in</span> row:  <span class="hljs-comment"># row 本身是有序的话用二分，无序就直接 in</span><br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">searchMatrix</span>(<span class="hljs-params">self, matrix: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]], target: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">bool</span>:<br>    m, n = <span class="hljs-built_in">len</span>(matrix), <span class="hljs-built_in">len</span>(matrix[<span class="hljs-number">0</span>])<br>    visited = <span class="hljs-built_in">set</span>()<br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">dfs</span>(<span class="hljs-params">i, j</span>):<br>        <span class="hljs-keyword">if</span> i &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">or</span> i &gt;= m <span class="hljs-keyword">or</span> j &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">or</span> j &gt;= n <span class="hljs-keyword">or</span> (i, j) <span class="hljs-keyword">in</span> visited:<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br>        <span class="hljs-keyword">if</span> matrix[i][j] == target:<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br>        visited.add((i, j))<br>        <span class="hljs-comment"># 只走四个方向，不要走对角线，减少分支</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">any</span>(dfs(i+di, j+dj) <span class="hljs-keyword">for</span> di, dj <span class="hljs-keyword">in</span> [(<span class="hljs-number">1</span>,<span class="hljs-number">0</span>), (-<span class="hljs-number">1</span>,<span class="hljs-number">0</span>), (<span class="hljs-number">0</span>,<span class="hljs-number">1</span>), (<span class="hljs-number">0</span>,-<span class="hljs-number">1</span>)])<br>    <br>    <span class="hljs-keyword">return</span> dfs(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>)<br></code></pre></td></tr></table></figure>
+<p>其实很容易陷入惯性思维，为什么非得从0,0处开始搜索呢？0,0处是最小的，容易想出下面的方案：</p>
+<ol>
+<li>无脑bfs，8个方向扩，</li>
+<li>dfs，根据target和当前值(cur)调整蔓延方向，但分支数量还是多：</li>
+</ol>
+<ul>
+<li>若cur&gt;target: 可以选择三种方案（i-1,j-1,i-1且j-1）或者两种方案（i-1，j-1，因为考虑到i-1和j-1同时进行的方案后续也会做到）</li>
+<li>若…</li>
+</ul>
+<p>以上的核心在于不确定性，因为对于某种《效应》，都有两条路可以做到，而这一切的核心都是因为我们选择了0,0这个初始点。<br>假如选择右上角或者左下角作为出生点，那么下一步则是《确定的》，以右上角为例：</p>
+<ul>
+<li>cur &lt; target: i+&#x3D;1</li>
+<li>cur &gt; target: j-&#x3D;1</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">searchMatrix</span>(<span class="hljs-params">self, matrix: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]], target: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">bool</span>:<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> matrix <span class="hljs-keyword">or</span> <span class="hljs-keyword">not</span> matrix[<span class="hljs-number">0</span>]:<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br>    m,n = <span class="hljs-built_in">len</span>(matrix),<span class="hljs-built_in">len</span>(matrix[<span class="hljs-number">0</span>])<br><br>    i,j = <span class="hljs-number">0</span>,n-<span class="hljs-number">1</span><br><br>    <span class="hljs-keyword">while</span> i&lt;m <span class="hljs-keyword">and</span> j&gt;=<span class="hljs-number">0</span>:<br>        <span class="hljs-keyword">if</span> matrix[i][j] == target:<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br>        <span class="hljs-keyword">elif</span> matrix[i][j] &gt; target:<br>            j-=<span class="hljs-number">1</span><br>        <span class="hljs-keyword">else</span>:<br>            i+=<span class="hljs-number">1</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>易错点</strong>：</p>
+<ol>
+<li>循环终止条件是 <code>i &lt; m and j &gt;= 0</code>：两个指针任一出界即失败，不能只判一个。</li>
+<li>出生点只能是<strong>右上角或左下角</strong>这两个鞍点；左上角（两侧都更大）与右下角（两侧都更小）无法唯一确定淘汰方向。</li>
+</ol>
+<p><strong>深度思考</strong>：作者的反思值得记住——从 (0,0) 出发的所有方案（BFS 八方向、带方向剪枝的 DFS）都困在”分支不确定性”里，根源是出生点两侧都单调增。而鞍点的性质是”小于它的都在左边、大于它的都在下边”，比较一次即可整行&#x2F;整列排除——这是<strong>排除法的极限形态</strong>，与 11 题对撞双指针”每次排除一批被支配状态”同构（二维对撞指针）。</p>
+<p><strong>类似题</strong>：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/search-a-2d-matrix/">74. 搜索二维矩阵</a>（全局有序强化版 → 当作一维二分）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/kth-smallest-element-in-a-sorted-matrix/">378. 有序矩阵中第 K 小的元素</a>（二分答案 + 鞍点计数）</li>
+</ul>
+<h3 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h3><h4 id="215-数组中的第K个最大元素-🟨"><a href="#215-数组中的第K个最大元素-🟨" class="headerlink" title="215. 数组中的第K个最大元素 🟨"></a>215. 数组中的第K个最大元素 🟨</h4><blockquote>
+<p><strong>I</strong>: nums: List[int]; k: int</p>
+<p><strong>O</strong>: int，第 k 个最大元素（重复元素也计数：<code>[3,2,3]</code> 第 2 大是 3）</p>
+<p><strong>Cons</strong>: 面试官会构造有序 &#x2F; 全相等输入考察退化；进阶追问 O(n)；考察手写 partition 而非调库。</p>
+</blockquote>
+<p><strong>核心思路</strong>：快速选择——partition 后 pivot 的落位名次”100% 确定”，若恰为 k 直接返回，否则<strong>只递归包含答案的一侧</strong>（这是与快排的本质区别）。</p>
+<p><strong>一题多解</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>解法</th>
+<th>时间</th>
+<th>空间</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>解法一：排序取下标</td>
+<td>O(nlogn)</td>
+<td>O(logn)</td>
+<td>直觉解</td>
+</tr>
+<tr>
+<td>大小为 k 的小顶堆</td>
+<td>O(nlogk)</td>
+<td>O(k)</td>
+<td>数据流场景更优（见 295）</td>
+</tr>
+<tr>
+<td>快速选择 + 随机 pivot ✅</td>
+<td>期望 O(n)，最坏 O(n²)</td>
+<td>O(1)</td>
+<td>作者主解法</td>
+</tr>
+<tr>
+<td>BFPRT 中位数的中位数</td>
+<td>严格 O(n)</td>
+<td>O(logn)</td>
+<td>理论最优、常数大，见扩展</td>
+</tr>
+</tbody></table>
+<p>（作者解法一）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">findKthLargest</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>], k: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        nums.sort()<br>        <span class="hljs-keyword">return</span> nums[<span class="hljs-built_in">len</span>(nums)-k]<br></code></pre></td></tr></table></figure>
+
+<p>Lomuto分区<br>选一个 pivot（通常放最右边），用一个指针i标记”已处理的小于等于 pivot 区域的边界”，另一个指针j向后单向扫描。遇到小的就扩大小区域，最后把 pivot 放到正中间。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">partition_lomuto</span>(<span class="hljs-params">arr, low, high</span>):<br>    pivot = arr[high]          <span class="hljs-comment"># pivot 放最右</span><br>    i = low - <span class="hljs-number">1</span>                <span class="hljs-comment"># i 是&quot;小区域&quot;的末尾</span><br>    <br>    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(low, high):<br>        <span class="hljs-keyword">if</span> arr[j] &lt;= pivot:    <span class="hljs-comment"># 注意：是 &lt;=</span><br>            i += <span class="hljs-number">1</span><br>            arr[i], arr[j] = arr[j], arr[i]<br>    <br>    arr[i + <span class="hljs-number">1</span>], arr[high] = arr[high], arr[i + <span class="hljs-number">1</span>]  <span class="hljs-comment"># pivot 落位</span><br>    <span class="hljs-keyword">return</span> i + <span class="hljs-number">1</span>                  <span class="hljs-comment"># pivot 的最终位置（100% 确定）</span><br><br></code></pre></td></tr></table></figure>
+<p>结合本题：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">findKthLargest</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>], k: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">partition</span>(<span class="hljs-params">left: <span class="hljs-built_in">int</span>, right: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        <span class="hljs-comment"># 随机选 pivot 放到最右边</span><br>        pivot_idx = random.randint(left, right)<br>        nums[pivot_idx], nums[right] = nums[right], nums[pivot_idx]<br>        pivot = nums[right]<br>        <br>        i = left - <span class="hljs-number">1</span><br>        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(left, right):<br>            <span class="hljs-keyword">if</span> nums[j] &gt; pivot:      <span class="hljs-comment"># 降序：大的放左边</span><br>                i += <span class="hljs-number">1</span><br>                nums[i], nums[j] = nums[j], nums[i]<br>        nums[i + <span class="hljs-number">1</span>], nums[right] = nums[right], nums[i + <span class="hljs-number">1</span>]<br>        <span class="hljs-keyword">return</span> i + <span class="hljs-number">1</span><br><br>    left, right = <span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(nums) - <span class="hljs-number">1</span><br>    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>        part = partition(left, right)<br>        <span class="hljs-keyword">if</span> part + <span class="hljs-number">1</span> == k:<br>            <span class="hljs-keyword">return</span> nums[part]<br>        <span class="hljs-keyword">elif</span> part + <span class="hljs-number">1</span> &gt; k:<br>            right = part - <span class="hljs-number">1</span><br>        <span class="hljs-keyword">else</span>:<br>            left = part + <span class="hljs-number">1</span><br><br></code></pre></td></tr></table></figure>
+
+<p>Hoare分区<br>双指针从两头对向扫描，左边找”比 pivot 大&#x2F;小的”，右边找”比 pivot 小&#x2F;大的”，找到就交换。直到两指针交叉。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">partition_hoare</span>(<span class="hljs-params">arr, low, high</span>):<br>    pivot = arr[(low + high) // <span class="hljs-number">2</span>]   <span class="hljs-comment"># pivot 随便选，这里选中点</span><br>    i = low - <span class="hljs-number">1</span><br>    j = high + <span class="hljs-number">1</span><br>    <br>    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>        i += <span class="hljs-number">1</span><br>        <span class="hljs-keyword">while</span> arr[i] &lt; pivot:        <span class="hljs-comment"># 注意：是 &lt;，不是 &lt;=</span><br>            i += <span class="hljs-number">1</span><br>        <br>        j -= <span class="hljs-number">1</span><br>        <span class="hljs-keyword">while</span> arr[j] &gt; pivot:        <span class="hljs-comment"># 注意：是 &gt;，不是 &gt;=</span><br>            j -= <span class="hljs-number">1</span><br>        <br>        <span class="hljs-keyword">if</span> i &gt;= j:<br>            <span class="hljs-keyword">return</span> j                 <span class="hljs-comment"># 返回分界点（不是 pivot 位置！）</span><br>        <br>        arr[i], arr[j] = arr[j], arr[i]<br></code></pre></td></tr></table></figure>
+<p>Hoare最关键和易错的地方：<strong>返回值不是 pivot 的位置</strong><br>Hoare 返回的是 j（分界点），此时：<br>[low … j] 全部 &lt;&#x3D; pivot<br>[j+1 … high] 全部 &gt;&#x3D; pivot<br>但 arr[j] 不一定等于 pivot！所以不能像 Lomuto 那样直接 return arr[part] 就完事。<br>结合本题：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">findKthLargest</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>], k: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">partition</span>(<span class="hljs-params">left: <span class="hljs-built_in">int</span>, right: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        <span class="hljs-string">&quot;&quot;&quot;Hoare 分区（降序：大的在左，小的在右）&quot;&quot;&quot;</span><br>        pivot = nums[random.randint(left, right)]<br>        i = left<br>        j = right<br>        <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>            <span class="hljs-comment"># 左边跳过所有 &gt; pivot 的，停在 &lt;= pivot 的位置</span><br>            <span class="hljs-keyword">while</span> i &lt;= j <span class="hljs-keyword">and</span> nums[i] &gt; pivot:<br>                i += <span class="hljs-number">1</span><br>            <span class="hljs-comment"># 右边跳过所有 &lt; pivot 的，停在 &gt;= pivot 的位置</span><br>            <span class="hljs-keyword">while</span> i &lt;= j <span class="hljs-keyword">and</span> nums[j] &lt; pivot:<br>                j -= <span class="hljs-number">1</span><br>            <br>            <span class="hljs-keyword">if</span> i &gt;= j:<br>                <span class="hljs-keyword">break</span><br>            <br>            <span class="hljs-comment"># 把小的换到右边，大的换到左边</span><br>            nums[i], nums[j] = nums[j], nums[i]<br>            i += <span class="hljs-number">1</span><br>            j -= <span class="hljs-number">1</span><br>        <br>        <span class="hljs-keyword">return</span> j  <span class="hljs-comment"># 返回分界点（不是 pivot 的排序位置！）</span><br><br>    left, right = <span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(nums) - <span class="hljs-number">1</span><br>    k_idx = k - <span class="hljs-number">1</span>  <span class="hljs-comment"># 第 k 大对应的 0-based 索引</span><br>    <br>    <span class="hljs-comment"># 不断缩小范围，直到 left == right</span><br>    <span class="hljs-keyword">while</span> left &lt; right:<br>        p = partition(left, right)<br>        <span class="hljs-keyword">if</span> k_idx &lt;= p:<br>            <span class="hljs-comment"># 第 k 大在左半部分（含 p）</span><br>            right = p<br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-comment"># 第 k 大在右半部分</span><br>            left = p + <span class="hljs-number">1</span><br>    <br>    <span class="hljs-keyword">return</span> nums[left]<br></code></pre></td></tr></table></figure>
+<p><strong>深度思考</strong>（作者原文）：时间复杂度为什么是O(n)，快速排序明明是O(nlogn)</p>
+<blockquote>
+<p>快速选择每次只处理一边，而快排要处理两边。只走一条分支，工作量加起来是一个等比数列，收敛到 O(n)。n → n&#x2F;2 → n&#x2F;4 → n&#x2F;8 → … → 1. 这就是一个等比数列，加起来约等于 2n。<br>但是运气差也会退化到O(n^2),如果 pivot 每次都选到最值（最大或最小），分区极度不平衡：<br>第 1 轮：扫描 n 个，pivot 在最边上，一边 0 个，一边 n-1 个<br>第 2 轮：扫描 n-1 个<br>第 3 轮：扫描 n-2 个</p>
+</blockquote>
+<p>T(n) &#x3D; n + (n-1) + (n-2) + … + 1 &#x3D; n(n+1)&#x2F;2 &#x3D; O(n²)<br>下面的情况会退化：</p>
+<ul>
+<li>数组已经有序（升序或降序）</li>
+<li>每次都固定选第一个&#x2F;最后一个当 pivot（没有随机化）</li>
+<li>所有元素都相等，但比较符号写错导致分区不平衡</li>
+</ul>
+<p><strong>扩展：严格 O(n) 的实现——BFPRT 算法（Median of Medians）</strong></p>
+<p>它不用随机 pivot，而用确定性方法选 pivot，保证每次至少砍掉 30% 的元素：</p>
+<blockquote>
+<p>BFPRT 的精髓在于 pivot 的选法。它不用随机选，而是用一种确定性方法，保证 pivot 不会太偏。</p>
+</blockquote>
+<p><strong>步骤概览</strong></p>
+<ol>
+<li>把数组每 5 个分成一组（最后一组可能不足 5 个）</li>
+<li>每组内部排序，找出中位数（共 n&#x2F;5 个中位数）</li>
+<li>递归调用 BFPRT，从这 n&#x2F;5 个中位数中找出它们的中位数 → 这就是 pivot</li>
+<li>用这个 pivot 做 partition</li>
+<li>和快速选择一样，只递归处理包含目标的那一半</li>
+</ol>
+<p><strong>为什么能保证砍掉至少 30%？（核心推导）</strong></p>
+<ul>
+<li>第一步：5 个一组<br>[ a1 a2 a3 a4 a5 ] [ b1 b2 b3 b4 b5 ] [ c1 c2 c3 c4 c5 ] …<br>每组 5 个数，排序后中位数是第 3 个。比如第一组排序后：<br>小 小 [中位] 大 大<br>↑ 这是组中位数</li>
+<li>第二步：所有组的中位数集合<br>假设有 m &#x3D; ⌈n&#x2F;5⌉ 组，就有 m 个组中位数。</li>
+<li>第三步：递归找这些中位数的中位数（记为 M）<br>M 是这 m 个中位数的中位数。这意味着：<br>至少有 ⌈m&#x2F;2⌉ 个组中位数 ≤ M（因为 M 是中位数）<br>至少有 ⌈m&#x2F;2⌉ 个组中位数 ≥ M</li>
+<li>第四步：关键——M 在全局中处于什么位置？<br>取一个 ≤ M 的组中位数，它所在的组里：<br>小 小 [中位] 大 大<br>这个组里至少有 3 个数 ≤ 这个组中位数 ≤ M。<br>所以每个 ≤ M 的组，贡献 至少 3 个 ≤ M 的数。<br>一共有 ⌈m&#x2F;2⌉ 个这样的组，所以：<br>至少有 3 × ⌈m&#x2F;2⌉ 个数 ≤ M<br>代入 m &#x3D; ⌈n&#x2F;5⌉：<br>3 × ⌈n&#x2F;10⌉ ≥ 3n&#x2F;10 - 1.5<br>也就是说，至少有 ~30% 的元素 ≤ M。<br>同理，至少有 ~30% 的元素 ≥ M。<br>结论<br>pivot M 至少能把数组分成 30% &#x2F; 70%​ 两部分。无论输入是什么，永远不会出现 0&#x2F;n 的极端情况。</li>
+</ul>
+<p><strong>递归式推导</strong><br>T(n) &#x3D; 找 pivot 的代价 + partition 的代价 + 递归处理一边的代价<br>找 pivot：每组排序 O(1) × n&#x2F;5 &#x3D; O(n)，加上递归找中位数的中位数 T(n&#x2F;5)<br>partition：O(n)<br>递归处理：最多处理 7n&#x2F;10 个元素（因为至少砍掉了 3n&#x2F;10）<br>T(n) &#x3D; T(n&#x2F;5) + T(7n&#x2F;10) + O(n)<br>这个递归式为什么是 O(n)？<br>画递归树：<br>每一层的总工作量：n + n×(9&#x2F;10) + n×(9&#x2F;10)² + …<br>因为 1&#x2F;5 + 7&#x2F;10 &#x3D; 9&#x2F;10 &lt; 1，所以每层的工作量在收缩<br>总深度有限，总和是 O(n)<br>严格证明可以用代入法或递归树展开，结论是 T(n) &#x3D; O(n)。</p>
+<p><strong>为什么是 5 个一组？不是 3 个？不是 7 个？</strong>（见下方表格）</p>
+<p><strong>代码骨架</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">bfprt</span>(<span class="hljs-params">arr, left, right, k</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;在 arr[left:right+1] 中找第 k 小（1-based）&quot;&quot;&quot;</span><br>    <span class="hljs-keyword">if</span> left == right:<br>        <span class="hljs-keyword">return</span> arr[left]<br>    <br>    pivot = median_of_medians(arr, left, right)<br>    <br>    <span class="hljs-comment"># partition，返回 pivot 的最终位置</span><br>    p = partition(arr, left, right, pivot)<br>    <br>    <span class="hljs-keyword">if</span> k == p - left + <span class="hljs-number">1</span>:<br>        <span class="hljs-keyword">return</span> arr[p]<br>    <span class="hljs-keyword">elif</span> k &lt; p - left + <span class="hljs-number">1</span>:<br>        <span class="hljs-keyword">return</span> bfprt(arr, left, p - <span class="hljs-number">1</span>, k)<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">return</span> bfprt(arr, p + <span class="hljs-number">1</span>, right, k - (p - left + <span class="hljs-number">1</span>))<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">median_of_medians</span>(<span class="hljs-params">arr, left, right</span>):<br>    n = right - left + <span class="hljs-number">1</span><br>    <span class="hljs-keyword">if</span> n &lt;= <span class="hljs-number">5</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">sorted</span>(arr[left:right+<span class="hljs-number">1</span>])[n // <span class="hljs-number">2</span>]<br>    <br>    <span class="hljs-comment"># 每 5 个一组，找中位数</span><br>    medians = []<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(left, right + <span class="hljs-number">1</span>, <span class="hljs-number">5</span>):<br>        group_end = <span class="hljs-built_in">min</span>(i + <span class="hljs-number">4</span>, right)<br>        medians.append(<span class="hljs-built_in">sorted</span>(arr[i:group_end+<span class="hljs-number">1</span>])[(group_end - i + <span class="hljs-number">1</span>) // <span class="hljs-number">2</span>])<br>    <br>    <span class="hljs-comment"># 递归找中位数的中位数</span><br>    <span class="hljs-keyword">return</span> bfprt(medians, <span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(medians) - <span class="hljs-number">1</span>, <span class="hljs-built_in">len</span>(medians) // <span class="hljs-number">2</span> + <span class="hljs-number">1</span>)<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>“快速选择 + 随机化 pivot 的期望是 O(n)，但最坏 O(n²)。如果要严格 O(n)，可以用 BFPRT 算法：把数组每 5 个一组，找每组的中位数，再递归找这些中位数的中位数作为 pivot。这样可以保证每次至少砍掉 30% 的元素，递归式 T(n) &#x3D; T(n&#x2F;5) + T(7n&#x2F;10) + O(n)，解是 O(n)。不过实际中因为常数大，一般用随机化快速选择就够了。”</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>每组大小</th>
+<th>砍掉比例</th>
+<th>递归式</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>3</td>
+<td>每组至少 2 个 ≤ 中位数，2 × ⌈n&#x2F;6⌉ ≈ n&#x2F;3 被砍掉</td>
+<td><code>T(n/3) + T(2n/3) + O(n)</code></td>
+<td>O(n log n) ❌</td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td><strong>砍掉 ~3n&#x2F;10</strong></td>
+<td><strong><code>T(n/5) + T(7n/10) + O(n)</code></strong></td>
+<td><strong>O(n)</strong> ✅</td>
+</tr>
+<tr>
+<td>7</td>
+<td>砍掉 ~4n&#x2F;14 &#x3D; 2n&#x2F;7 ≈ 28.6%</td>
+<td><code>T(n/7) + T(5n/7) + O(n)</code></td>
+<td>O(n) ✅ 但常数更大</td>
+</tr>
+</tbody></table>
+<p><strong>易错点</strong>：</p>
+<ol>
+<li><strong>Hoare 分区返回的不是 pivot 的位置</strong>（作者重点标注）：返回的分界点 j 只保证 <code>[low..j] ≤ pivot ≤ [j+1..high]</code>，递归时只能用它切范围（<code>k_idx &lt;= p → right = p</code>），不能像 Lomuto 那样直接判断 <code>part+1 == k</code> 取值。</li>
+<li>比较符细节：Lomuto 用 <code>&lt;=</code>（升序）&#x2F; <code>&gt;</code>（改降序）；Hoare 内层是严格 <code>&lt;</code> &#x2F; <code>&gt;</code>——写成交叉的等号会在”全部相等”输入上不平衡甚至死循环。</li>
+<li>随机化 pivot 不是可选项：固定取端点在有序输入上必然退化 O(n²)。</li>
+</ol>
+<p><strong>类似题</strong>：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/sort-an-array/">912. 排序数组</a>（手写快排 + 随机化的标准考场）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/k-closest-points-to-origin/">973. 最接近原点的 K 个点</a>（快速选择直接套壳）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/kth-largest-element-in-a-stream/">703. 数据流中的第 K 大元素</a>（在线版本 → 堆）</li>
+</ul>
+<h4 id="347-前K个高频元素-🟨"><a href="#347-前K个高频元素-🟨" class="headerlink" title="347. 前K个高频元素 🟨"></a>347. 前K个高频元素 🟨</h4><blockquote>
+<p><strong>I</strong>: nums: List[int]; k: int</p>
+<p><strong>O</strong>: List[int]，出现频次前 k 高的元素（顺序任意）</p>
+<p><strong>Cons</strong>: 答案顺序任意；进阶要求优于 O(nlogn) → 引出桶排序 O(n)。突破口：<strong>频次的值域天然受限</strong>（∈ [1, n]）。</p>
+</blockquote>
+<p><strong>核心思路</strong>：Counter 计数后，把”频次”当作桶的下标，从高频桶向低频桶收集——用桶排序绕开比较排序的 Ω(nlogn) 下界。</p>
+<p><strong>一题多解</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>解法</th>
+<th>时间</th>
+<th>空间</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>方法一：Counter + 全排序</td>
+<td>O(nlogn)</td>
+<td>O(n)</td>
+<td>直觉解</td>
+</tr>
+<tr>
+<td>小顶堆维护前 k</td>
+<td>O(nlogk)</td>
+<td>O(n)</td>
+<td>TopK 通解</td>
+</tr>
+<tr>
+<td>方法二：桶排序 ✅</td>
+<td>O(n)</td>
+<td>O(n)</td>
+<td>利用频次值域小</td>
+</tr>
+</tbody></table>
+<p>方法一：统计出现频次（O(n)）然后对频次排序O(nlogn)</p>
+<p>方法二：将数组的下标作为频次，数组的值是此频次的数字，然后从数组尾部开始往前输出答案：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">topKFrequent</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>], k: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]:<br>    cnt = Counter(nums)<br>    <br>    <span class="hljs-comment"># 用 maxcnt 控制桶大小，省空间</span><br>    maxcnt = <span class="hljs-built_in">max</span>(cnt.values())<br>    bucket = [[] <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(maxcnt + <span class="hljs-number">1</span>)]<br>    <br>    <span class="hljs-keyword">for</span> num, freq <span class="hljs-keyword">in</span> cnt.items():<br>        bucket[freq].append(num)<br>    <br>    <span class="hljs-comment"># 从后往前拼，用 &gt;= 保证正确性</span><br>    res = []<br>    <span class="hljs-keyword">for</span> group <span class="hljs-keyword">in</span> <span class="hljs-built_in">reversed</span>(bucket):<br>        res += group<br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(res) &gt;= k:<br>            <span class="hljs-keyword">return</span> res[:k]   <span class="hljs-comment"># 或者直接 break 后返回 res</span><br>    <br>    <span class="hljs-keyword">return</span> res<br></code></pre></td></tr></table></figure>
+
+<p><strong>易错点</strong>：</p>
+<ol>
+<li>桶大小用 <code>maxcnt</code> 控制而不是固定 <code>n+1</code>，省空间（作者注释）。</li>
+<li>从后往前收集时 <code>len(res) &gt;= k</code> 即可提前返回：某个频次桶里可能有多个元素，收完当前桶可能已凑满。</li>
+<li>频次相同的元素之间无需再排——题目允许顺序任意；若像 692 题要求字典序，桶内还得排序。</li>
+</ol>
+<p><strong>深度思考</strong>：比较排序 Ω(nlogn) 的下界建立在”键可以是任意大小”上；一旦键的值域受限（频次 ∈ [1, maxcnt]），就能用<strong>桶&#x2F;计数排序</strong>以空间换线性时间。本题还有第二层巧思——“统计量的再利用”：频次本来是计算结果，这里又被拿来做桶下标。凡是 “TopK + 键值域小” 的组合，优先想桶。</p>
+<p><strong>类似题</strong>：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/top-k-frequent-words/">692. 前K个高频单词</a>（要求字典序 → 桶内需再排序）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/sort-characters-by-frequency/">451. 根据字符出现频率排序</a>（桶排序字符串版）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/kth-largest-element-in-an-array/">215. 数组中的第K个最大元素</a>（TopK 三板斧对照）</li>
+</ul>
+<h4 id="295-数据流的中位数-🟥"><a href="#295-数据流的中位数-🟥" class="headerlink" title="295. 数据流的中位数 🟥"></a>295. 数据流的中位数 🟥</h4><blockquote>
+<p><strong>I</strong>: addNum(num: int)；findMedian() -&gt; float</p>
+<p><strong>O</strong>: 数据流当前所有整数的中位数（偶数个取中间两数平均）</p>
+<p><strong>Cons</strong>: 数据流式，addNum 与 findMedian 都被高频调用 → <strong>不能查询时再排序</strong>；设计题，考察数据结构选型。</p>
+</blockquote>
+<p><strong>核心思路</strong>（作者的推导）：不需要全体有序，只需要”中间那 1~2 个数”。中位数天然把集合切成左右两半，只需维护 <strong>left 的最大值</strong> 与 <strong>right 的最小值</strong> → 双堆（left 大顶堆 + right 小顶堆），并维持两条不变式：① 两堆大小差 ≤ 1（约定奇数时 right 多一个）；② left 全部 ≤ right。</p>
+<p><strong>一题多解</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>解法</th>
+<th>时间</th>
+<th>空间</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>暴力：查询时排序</td>
+<td>add O(1)，find O(nlogn)</td>
+<td>O(n)</td>
+<td>作者暴力法，被 Cons 否决</td>
+</tr>
+<tr>
+<td>有序插入（bisect.insort）</td>
+<td>add O(n)，find O(1)</td>
+<td>O(n)</td>
+<td>查询远多于插入时反而优</td>
+</tr>
+<tr>
+<td>双堆 ✅</td>
+<td>add O(logn)，find O(1)</td>
+<td>O(n)</td>
+<td>作者优化版</td>
+</tr>
+</tbody></table>
+<p>（作者暴力法）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MedianFinder</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        self.value=[]<br>        self.n=<span class="hljs-number">0</span><br>        <span class="hljs-comment"># 是否为偶数</span><br>        self.flag=<span class="hljs-literal">True</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">addNum</span>(<span class="hljs-params">self, num: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-literal">None</span>:<br>        self.value.append(num)<br>        self.n+=<span class="hljs-number">1</span><br>        self.flag=<span class="hljs-keyword">not</span> self.flag<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">findMedian</span>(<span class="hljs-params">self</span>) -&gt; <span class="hljs-built_in">float</span>:<br>        self.value.sort()<br>        <span class="hljs-keyword">if</span> self.flag:<br>            <span class="hljs-keyword">return</span> (self.value[(self.n)//<span class="hljs-number">2</span>-<span class="hljs-number">1</span>]+self.value[(self.n)//<span class="hljs-number">2</span>])/<span class="hljs-number">2</span><br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-keyword">return</span> self.value[self.n//<span class="hljs-number">2</span>]<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>我们不需要全部有序，只需要知道排在中间的那 1~2 个数是谁。</p>
+</blockquote>
+<p>比如现在有 6 个数：1,5,6,2,3,4，要计算中位数，可以把这 6 个数从小到大排序，得到 1,2,3,4,5,6，中间 3 和 4 的平均值 3.5 就是中位数。<br>中位数……可将数值集合划分为相等的两部分。<br>中位数把这 6 个数均分成了左右两部分，小的那一组记作 left&#x3D;[1,2,3]，大的那一组记作 right&#x3D;[4,5,6]。我们要计算的中位数，就来自 left 中的最大值，以及 right 中的最小值。<br>随着 addNum 不断地添加数字，我们需要：</p>
+<ul>
+<li>保证 left 的大小和 right 的大小尽量相等。规定：在有奇数个数时，left 比 right 多 1 个数。</li>
+<li>保证 left 的所有元素都小于等于 right 的所有元素。</li>
+</ul>
+<p>只要时时刻刻满足以上两个要求（满足中位数的定义），我们就可以用 left 中的最大值以及 right 中的最小值计算中位数。<br>分类讨论：</p>
+<ul>
+<li>如果当前 left 的大小和 right 的大小相等：<ul>
+<li>如果添加的数字 num 比较大，比如添加 7，那么把 7 加到 right 中。现在 left 比 right 少 1 个数，不符合前文的规定，所以必须把 right 的最小值从 right 中去掉，添加到 left 中。如此操作后，可以保证 left 的所有元素都小于等于 right 的所有元素。</li>
+<li>如果添加的数字 num 比较小，比如添加 0，那么把 0 加到 left 中。</li>
+<li>这两种情况可以合并：无论 num 是大是小，都可以先把 num 加到 right 中，然后把 right 的最小值从 right 中去掉，并添加到 left 中。</li>
+</ul>
+</li>
+<li>如果当前 left 比 right 多 1 个数：<ul>
+<li>如果添加的数字 num 比较大，比如添加 7，那么把 7 加到 right 中。</li>
+<li>如果添加的数字 num 比较小，比如添加 0，那么把 0 加到 left 中。现在 left 比 right 多 2 个数，不符合前文的规定，所以必须把 left 的最大值从 left 中去掉，添加到 right 中。如此操作后，可以保证 left 的所有元素都小于等于 right 的所有元素。</li>
+<li>这两种情况可以合并：无论 num 是大是小，都可以先把 num 加到 left 中，然后把 left 的最大值从 left 中去掉，并添加到 right 中。</li>
+</ul>
+</li>
+</ul>
+<p>最后，我们需要什么样的数据结构？这个数据结构要能高效地执行如下操作：</p>
+<ol>
+<li>添加元素。</li>
+<li>找到最大（小）值。</li>
+<li>删除最大（小）值。</li>
+</ol>
+<p>这个数据结构是堆。</p>
+<p>left 是最大堆，right 是最小堆。</p>
+<p>如果当前有奇数个元素，中位数是 left 的堆顶。<br>如果当前有偶数个元素，中位数是 left 的堆顶和 right 的堆顶的平均值。</p>
+<p>大顶堆+小顶堆结合优化：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MedianFinder</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-comment"># 大顶堆（存负数模拟）→ 较小的一半</span><br>        self.left_max_heap = []<br>        <span class="hljs-comment"># 小顶堆 → 较大的一半</span><br>        self.right_min_heap = []<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">addNum</span>(<span class="hljs-params">self, num: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-literal">None</span>:<br>        <span class="hljs-comment"># 情况1：两边一样大（当前总数为偶数）</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(self.left_max_heap) == <span class="hljs-built_in">len</span>(self.right_min_heap):<br>            <span class="hljs-comment"># 先放左堆，再弹最大值给右堆</span><br>            heapq.heappush(self.left_max_heap, -num)<br>            heapq.heappush(self.right_min_heap, -heapq.heappop(self.left_max_heap))<br>        <br>        <span class="hljs-comment"># 情况2：左堆多一个（当前总数为奇数）</span><br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-comment"># 先放右堆，再弹最小值给左堆</span><br>            heapq.heappush(self.right_min_heap, num)<br>            heapq.heappush(self.left_max_heap, -heapq.heappop(self.right_min_heap))<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">findMedian</span>(<span class="hljs-params">self</span>) -&gt; <span class="hljs-built_in">float</span>:<br>        <span class="hljs-comment"># 偶数个 → 两堆顶平均</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(self.left_max_heap) == <span class="hljs-built_in">len</span>(self.right_min_heap):<br>            <span class="hljs-keyword">return</span> (-self.left_max_heap[<span class="hljs-number">0</span>] + self.right_min_heap[<span class="hljs-number">0</span>]) / <span class="hljs-number">2</span><br>        <span class="hljs-comment"># 奇数个 → 右堆顶（因为右堆永远多一个或相等时我们让右堆多一个）</span><br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-keyword">return</span> self.right_min_heap[<span class="hljs-number">0</span>]<br></code></pre></td></tr></table></figure>
+
+<p><strong>易错点</strong>：</p>
+<ol>
+<li>Python 的 heapq 只有最小堆，大顶堆要<strong>存负数模拟</strong>（作者注释）；取出&#x2F;取堆顶时记得再取负。</li>
+<li>“先放对面堆、再搬最值回来”是<strong>原子操作对</strong>：单独执行任何一半都会破坏”大小差 ≤ 1”的不变式。分类讨论合并后，两种情况各只剩这一对操作。</li>
+<li>本实现的约定是奇数个时 <strong>right 堆多一个</strong>，中位数取 <code>right_min_heap[0]</code>——照抄别人”left 多一个”的版本会取错堆，保持自洽即可。</li>
+</ol>
+<p><strong>深度思考</strong>：作者的分类讨论给出了漂亮的对称化：无论新数大小如何，都可”先丢给对面、再搬最值回来”，两种 case 合并成一个动作。双堆的不变式就是中位数的定义本身。数据结构设计题的通用解法路径（作者已示范）：<strong>先找到问题的数学性质（中位数 &#x3D; 左右分割），再挑一个能廉价维护该性质的结构（堆）</strong>——与 239 单调队列、41 原地哈希一脉相承。</p>
+<p><strong>类似题</strong>：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/sliding-window-median/">480. 滑动窗口中位数</a>（双堆 + 延迟删除，难度陡增）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/kth-largest-element-in-a-stream/">703. 数据流中的第 K 大元素</a>（单堆维护 TopK）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/ipo/">502. IPO</a>（堆 + 贪心组合运用）</li>
+</ul>
+<p>扩展1：Python heapq库常用函数</p>
+<ul>
+<li><p>🔹最小堆函数（Python3通用）</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>heapify(x)</code></td>
+<td>将list x原地转为最小堆O(n)</td>
+</tr>
+<tr>
+<td><code>heappush(heap, item)</code></td>
+<td>插入元素，保持最小堆性质</td>
+</tr>
+<tr>
+<td><code>heappop(heap)</code></td>
+<td>弹出最小值（堆顶），空堆报 IndexError</td>
+</tr>
+<tr>
+<td><code>heappushpop(heap, item)</code></td>
+<td>先 push 再 pop​ 的原子操作，比分开写更高效</td>
+</tr>
+<tr>
+<td><code>heapreplace(heap, item)</code></td>
+<td>先 pop 再 push，堆大小不变</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>🔹最大堆函数（Python3.14）在上述函数名称后加<code>_max</code></p>
+</li>
+<li><p>🔹通用函数<br><code>heapq.merge(*iterables, key=None, reverse=False)</code><br>将多个已排序的输入合并为一个已排序的输出（例如，合并来自多个日志文件的带时间戳的条目）。返回已排序值的 iterator。</p>
+</li>
+</ul>
+<p>类似于 sorted(itertools.chain(*iterables)) 但返回一个可迭代对象，不会一次性地将数据全部放入内存，并假定每个输入流都是已排序的（从小到大）。</p>
+<p>具有两个可选参数，它们都必须指定为关键字参数。</p>
+<p>key 指定带有单个参数的 key function，用于从每个输入元素中提取比较键。默认值为 None (直接比较元素)。</p>
+<p>reverse 为一个布尔值。如果设为 True，则输入元素将按比较结果逆序进行合并。要达成与 sorted(itertools.chain(*iterables), reverse&#x3D;True) 类似的行为，所有可迭代对象必须是已从大到小排序的。</p>
+<p><code>heapq.nlargest(n, iterable, key=None)</code><br>从 iterable 所定义的数据集中返回前 n 个最大元素组成的列表。如果提供了 key 则其应指定一个单参数的函数，用于从 iterable 的每个元素中提取比较键 (例如 key&#x3D;str.lower)。 等价于: sorted(iterable, key&#x3D;key, reverse&#x3D;True)[:n]。</p>
+<p><code>heapq.nsmallest(n, iterable, key=None)</code><br>从 iterable 所定义的数据集中返回前 n 个最小元素组成的列表。 如果提供了 key 则其应指定一个单参数的函数，用于从 iterable 的每个元素中提取比较键 (例如 key&#x3D;str.lower)。 等价于: sorted(iterable, key&#x3D;key)[:n]。</p>
+<p>后两个函数在 n 值较小时性能最好。对于更大的值，使用 sorted() 函数会更有效率。此外，当 n&#x3D;&#x3D;1 时，使用内置的 min() 和 max() 函数会更有效率。如果需要重复使用这些函数，请考虑将可迭代对象转为真正的堆。</p>
+<p>扩展2：Python手撕大根堆，小根堆<br>堆的本质是完全二叉树，用列表存储。对于索引 i：</p>
+<ul>
+<li>父节点：(i - 1) &#x2F;&#x2F; 2</li>
+<li>左孩子：2 * i + 1</li>
+<li>右孩子：2 * i + 2<br>核心操作就两个：</li>
+<li>上浮（heapify up）：插入新元素后，一路跟父节点比</li>
+<li>下沉（heapify down）：删除堆顶后，一路跟孩子比</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MinHeap</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        self.heap = []<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">_heapify_up</span>(<span class="hljs-params">self, idx</span>):<br>        <span class="hljs-string">&quot;&quot;&quot;新元素在 idx，向上调整&quot;&quot;&quot;</span><br>        parent = (idx - <span class="hljs-number">1</span>) // <span class="hljs-number">2</span><br>        <span class="hljs-keyword">while</span> idx &gt; <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> self.heap[idx] &lt; self.heap[parent]:  <span class="hljs-comment"># 比父节点小就交换</span><br>            self.heap[idx], self.heap[parent] = self.heap[parent], self.heap[idx]<br>            idx = parent<br>            parent = (idx - <span class="hljs-number">1</span>) // <span class="hljs-number">2</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">_heapify_down</span>(<span class="hljs-params">self, idx</span>):<br>        <span class="hljs-string">&quot;&quot;&quot;堆顶被替换后，从 idx 向下调整&quot;&quot;&quot;</span><br>        n = <span class="hljs-built_in">len</span>(self.heap)<br>        <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>            left, right = <span class="hljs-number">2</span> * idx + <span class="hljs-number">1</span>, <span class="hljs-number">2</span> * idx + <span class="hljs-number">2</span><br>            smallest = idx<br>            <span class="hljs-keyword">if</span> left &lt; n <span class="hljs-keyword">and</span> self.heap[left] &lt; self.heap[smallest]:<br>                smallest = left<br>            <span class="hljs-keyword">if</span> right &lt; n <span class="hljs-keyword">and</span> self.heap[right] &lt; self.heap[smallest]:<br>                smallest = right<br>            <span class="hljs-keyword">if</span> smallest != idx:<br>                self.heap[idx], self.heap[smallest] = self.heap[smallest], self.heap[idx]<br>                idx = smallest<br>            <span class="hljs-keyword">else</span>:<br>                <span class="hljs-keyword">break</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">push</span>(<span class="hljs-params">self, val</span>):<br>        self.heap.append(val)<br>        self._heapify_up(<span class="hljs-built_in">len</span>(self.heap) - <span class="hljs-number">1</span>)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">pop</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> self.heap:<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span><br>        self.heap[<span class="hljs-number">0</span>], self.heap[-<span class="hljs-number">1</span>] = self.heap[-<span class="hljs-number">1</span>], self.heap[<span class="hljs-number">0</span>]<br>        val = self.heap.pop()<br>        <span class="hljs-keyword">if</span> self.heap:<br>            self._heapify_down(<span class="hljs-number">0</span>)<br>        <span class="hljs-keyword">return</span> val<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">peek</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">return</span> self.heap[<span class="hljs-number">0</span>] <span class="hljs-keyword">if</span> self.heap <span class="hljs-keyword">else</span> <span class="hljs-literal">None</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__len__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">len</span>(self.heap)<br></code></pre></td></tr></table></figure>
+<p>手撕大根堆（只改比较符号）<br>把 <code>_heapify_up</code> 和 <code>_heapify_down</code> 里的 <code>&lt;</code> 全部改成 <code>&gt;</code> </p>
 
                 
               </div>
